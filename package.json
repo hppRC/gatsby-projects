@@ -15,6 +15,6 @@
   "version": "1.0.0",
   "devDependencies": {
     "@types/react": "16.9.19",
-    "typescript": "3.8.0-beta"
+    "typescript": "3.8.0-dev.20200207"
   }
 }
