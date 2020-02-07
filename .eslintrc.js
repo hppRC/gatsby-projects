@@ -82,7 +82,7 @@ module.exports = {
     'react/jsx-filename-extension': [
       1,
       {
-        extensions: ['.js', '.jsx', '.tsx']
+        extensions: ['.js', '.jsx', 'ts', '.tsx']
       }
     ],
     'react-hooks/rules-of-hooks': 'error',

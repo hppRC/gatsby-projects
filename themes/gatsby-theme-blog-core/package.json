@@ -10,10 +10,13 @@
     "url": "https://github.com/hppRC/gatsby-themes.git",
     "directory": "themes/gatsby-theme-blog-core"
   },
+  "peerDependencies": {
+    "gatsby": "^2.17.10",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
   "dependencies": {
-    "@emotion/styled": "^10.0.27",
-    "@types/react": "^16.9.19",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27"
   }
 }
