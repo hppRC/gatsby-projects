@@ -7,16 +7,34 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
 
+    "sourceMap": true,
+
     "strict": true,
 
     "noEmit": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
 
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "assumeChangesOnlyAffectDirectDependencies": true,
+
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    // "baseUrl": ".",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["*"] // Capture all absolute paths
+    }
+    // "typeRoots": ["./node_modules/@types", "./packages/types"]
+  },
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    "fallbackPolling": "dynamicPriority"
   },
   "include": ["./themes/**/src/**/*", "./examples/**/src/**/*"],
   "exclude": ["node_modules", "themes/**/node_modules"]
