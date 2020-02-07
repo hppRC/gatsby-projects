@@ -1,6 +1,16 @@
 {
   "private": true,
   "workspaces": [
-    "packages/*"
-  ]
+    "themes/*",
+    "examples/*"
+  ],
+  "author": "hppRC <hpp.ricecake@gmail.com>",
+  "description": "My open-source collection of free Gatsby themes",
+  "license": "MIT",
+  "name": "@hpprc/gatsby-themes",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": "https://github.com/hppRC/gatsby-themes",
+  "version": "1.0.0"
 }

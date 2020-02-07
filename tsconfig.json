@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es2019"],
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+
+    "strict": true,
+
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["./themes/**/src/**/*", "./examples/**/src/**/*"],
+  "exclude": ["node_modules", "themes/**/node_modules"]
+}
