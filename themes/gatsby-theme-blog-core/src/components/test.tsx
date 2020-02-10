@@ -2,16 +2,10 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import Test from 'gatsby-theme-blog/src/test';
-
 type ContainerProps = {};
 type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className }) => (
-  <div className={className}>
-    <Test />
-  </div>
-);
+const Component: React.FCX<Props> = ({ className }) => <div className={className}></div>;
 
 const StyledComponent = styled(Component)`
   @media screen and (max-width: 1100px) {

@@ -12,11 +12,9 @@
     "strict": true,
 
     "noEmit": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
 
     "isolatedModules": true,
-    "strictNullChecks": true,
     "assumeChangesOnlyAffectDirectDependencies": true,
 
     "noUnusedLocals": true,
@@ -33,8 +31,8 @@
     "typeRoots": ["types", "node_modules/@types"]
   },
   "watchOptions": {
-    "watchFile": "useFsEvents",
-    "watchDirectory": "useFsEvents",
+    "watchFile": "dynamicPriorityPolling",
+    "watchDirectory": "dynamicPriorityPolling",
     "fallbackPolling": "dynamicPriority"
   }
 }
