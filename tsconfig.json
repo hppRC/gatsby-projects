@@ -27,15 +27,14 @@
     // "baseUrl": ".",
     "baseUrl": ".",
     "paths": {
-      "*": ["*"] // Capture all absolute paths
-    }
-    // "typeRoots": ["./node_modules/@types", "./packages/types"]
+      "*": ["./themes/*"], // Capture all absolute paths
+      "types/*": ["./types/*"]
+    },
+    "typeRoots": ["types", "node_modules/@types"]
   },
   "watchOptions": {
     "watchFile": "useFsEvents",
     "watchDirectory": "useFsEvents",
     "fallbackPolling": "dynamicPriority"
-  },
-  "include": ["./themes/**/src/**/*", "./examples/**/src/**/*"],
-  "exclude": ["node_modules", "themes/**/node_modules"]
+  }
 }
