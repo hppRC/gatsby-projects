@@ -1,7 +1,16 @@
-const withDefaults = require(`./src/default-options`);
+// you should write require('ts-node').register once in projects's gatsby-*.js
+'use strict';
+require('ts-node').register({
+  compilerOptions: {
+    module: 'commonjs',
+    target: 'es2019'
+  }
+});
+
+const withDefault = require('./src/with-default').withDefault;
 
 module.exports = themeOptions => {
-  const options = withDefaults(themeOptions);
+  const options = withDefault(themeOptions);
   const { mdx = true } = themeOptions;
 
   return {

@@ -1,15 +1,6 @@
-type Props = {
-  basePath: string;
-  blogPath: string;
-  postsPath: string;
-  pagesPath: string;
-  tagsPath: string;
-  externalLinks: string[];
-  navigation: string[];
-  showLineNumbers: boolean;
-};
+import { PluginOptions } from 'gatsby';
 
-const withDefault = (themeOptions: Props) => {
+export const withDefault = (themeOptions: PluginOptions) => {
   const {
     basePath = '/',
     blogPath = '/blog',

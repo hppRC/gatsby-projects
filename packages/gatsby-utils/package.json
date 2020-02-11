@@ -1,0 +1,15 @@
+{
+  "author": "hppRC <hpp.ricecake@gmail.com>",
+  "description": "useful gatsby utilities",
+  "name": "@hpprc/gatsby-utils",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hppRC/gatsby-projects.git",
+    "directory": "packages/gatsby-utils"
+  },
+  "peerDependencies": {},
+  "dependencies": {}
+}
