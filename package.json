@@ -14,9 +14,9 @@
   "repository": "https://github.com/hppRC/gatsby-themes",
   "version": "1.0.0",
   "devDependencies": {
-    "@types/react": "^16.9.19",
+    "@types/react": "16.9.19",
     "stylelint": "^13.0.0",
     "stylelint-order": "^4.0.0",
-    "typescript": "^3.8.0-beta"
+    "typescript": "3.8.0-dev.20200211"
   }
 }
