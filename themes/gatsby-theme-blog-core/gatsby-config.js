@@ -56,7 +56,8 @@ module.exports = themeOptions => {
       },
       `gatsby-transformer-sharp`,
       `gatsby-plugin-sharp`,
-      `gatsby-plugin-typescript`
+      `gatsby-plugin-typescript`,
+      `gatsby-plugin-root-import`
     ].filter(Boolean)
   };
 };

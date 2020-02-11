@@ -12,11 +12,10 @@
   },
   "peerDependencies": {},
   "dependencies": {
-    "@emotion/core": "^10.0.27",
-    "@emotion/styled": "^10.0.27",
     "@mdx-js/mdx": "^1.5.5",
     "@mdx-js/react": "^1.5.5",
     "gatsby-plugin-mdx": "^1.0.71",
+    "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-plugin-typescript": "^2.1.27",
     "gatsby-remark-images": "^3.1.44",
