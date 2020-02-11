@@ -10,7 +10,7 @@ require('ts-node').register({
 const withDefault = require('./src/with-default').withDefault;
 
 module.exports = themeOptions => {
-  const options = withDefault(themeOptions);
+  const { contentsPath } = withDefault(themeOptions);
   const { mdx = true } = themeOptions;
 
   return {
@@ -18,15 +18,15 @@ module.exports = themeOptions => {
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          name: options.postsPath,
-          path: options.postsPath
+          name: `posts`,
+          path: `${contentsPath}/posts`
         }
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          name: options.pagesPath,
-          path: options.pagesPath
+          name: `assets`,
+          path: `${contentsPath}/assets`
         }
       },
       mdx && {
@@ -38,7 +38,7 @@ module.exports = themeOptions => {
               options: {
                 maxWidth: 960,
                 quality: 90,
-                linkImagesToOriginal: false
+                linkImagesToOriginal: true
               }
             }
           ],
@@ -48,7 +48,7 @@ module.exports = themeOptions => {
               options: {
                 maxWidth: 960,
                 quality: 90,
-                linkImagesToOriginal: false
+                linkImagesToOriginal: true
               }
             }
           ]

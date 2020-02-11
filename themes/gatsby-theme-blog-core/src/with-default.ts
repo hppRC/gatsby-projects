@@ -4,21 +4,17 @@ export const withDefault = (themeOptions: PluginOptions) => {
   const {
     basePath = '/',
     blogPath = '/blog',
-    postsPath = 'content/posts',
-    pagesPath = 'content/posts',
+    contentsPath = 'contents',
     tagsPath = '/tags',
     externalLinks = [],
     navigation = [],
     showLineNumbers = true
   } = themeOptions;
 
-  console.log('theme options', themeOptions);
-
   return {
     basePath,
     blogPath,
-    postsPath,
-    pagesPath,
+    contentsPath,
     tagsPath,
     externalLinks,
     navigation,

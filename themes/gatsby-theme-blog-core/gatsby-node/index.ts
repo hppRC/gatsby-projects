@@ -1,6 +1,31 @@
-import { GatsbyNode, PluginOptions, SourceNodesArgs } from 'gatsby';
+import fs from 'fs';
+import { GatsbyNode, ParentSpanPluginArgs, PluginOptions, SourceNodesArgs } from 'gatsby';
+import mkdirp from 'mkdirp';
+import path from 'path';
 
-import { withDefault } from '@hpprc/gatsby-theme-blog-core/src';
+import { withDefault } from '@hpprc/gatsby-theme-blog-core';
+
+export const onPreBootstrap: GatsbyNode['onPreBootstrap'] = (
+  { reporter, store }: ParentSpanPluginArgs,
+  themeOptions: PluginOptions
+) => {
+  const { program } = store.getState();
+
+  const { contentsPath } = withDefault(themeOptions);
+
+  console.log('program directory', program.directory);
+  const dirs = [
+    path.join(program.directory, contentsPath as string, 'posts'),
+    path.join(program.directory, contentsPath as string, 'assets')
+  ];
+
+  dirs.forEach(dir => {
+    if (!fs.existsSync(dir)) {
+      reporter.info(`Initializing "${dir}" directory`);
+      mkdirp.sync(dir);
+    }
+  });
+};
 
 export const sourceNodes: GatsbyNode['sourceNodes'] = async (
   { actions, createNodeId, createContentDigest }: SourceNodesArgs,
