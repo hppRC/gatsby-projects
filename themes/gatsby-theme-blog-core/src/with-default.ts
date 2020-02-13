@@ -4,7 +4,8 @@ export const withDefault = (themeOptions: PluginOptions) => {
   const {
     basePath = '/',
     blogPath = '/blog',
-    contentsPath = 'contents',
+    assetsPath = 'contents/assets',
+    postsPath = 'contents/posts',
     tagsPath = '/tags',
     externalLinks = [],
     navigation = [],
@@ -14,7 +15,8 @@ export const withDefault = (themeOptions: PluginOptions) => {
   return {
     basePath,
     blogPath,
-    contentsPath,
+    assetsPath,
+    postsPath,
     tagsPath,
     externalLinks,
     navigation,

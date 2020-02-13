@@ -10,12 +10,11 @@ export const onPreBootstrap: GatsbyNode['onPreBootstrap'] = (
   themeOptions: PluginOptions
 ) => {
   const { program } = store.getState();
-  const { contentsPath } = withDefault(themeOptions);
+  const { assetsPath, postsPath } = withDefault(themeOptions);
 
-  console.log('program directory', program.directory);
   const dirs = [
-    path.join(program.directory, contentsPath as string, 'posts'), // default: /contents/posts
-    path.join(program.directory, contentsPath as string, 'assets') // default: /contents/assets
+    path.join(program.directory, postsPath as string), // default: /contents/posts
+    path.join(program.directory, assetsPath as string) // default: /contents/assets
   ];
 
   dirs.forEach(dir => {

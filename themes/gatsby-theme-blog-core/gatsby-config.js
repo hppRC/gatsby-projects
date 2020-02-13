@@ -7,11 +7,11 @@ require('ts-node').register({
   }
 });
 
-const withDefault = require('./src/with-default').withDefault;
+const { withDefault } = require('./src/with-default');
 
 module.exports = themeOptions => {
-  const { contentsPath } = withDefault(themeOptions);
-  const { mdx = true } = themeOptions;
+  const { postsPath, assetsPath } = withDefault(themeOptions);
+  const { mdx = true, gatsbyRemarkPlugins } = themeOptions;
 
   return {
     plugins: [
@@ -19,38 +19,31 @@ module.exports = themeOptions => {
         resolve: `gatsby-source-filesystem`,
         options: {
           name: `posts`,
-          path: `${contentsPath}/posts`
+          path: postsPath
         }
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
           name: `assets`,
-          path: `${contentsPath}/assets`
+          path: assetsPath
         }
       },
       mdx && {
         resolve: `gatsby-plugin-mdx`,
         options: {
+          extensions: [`.mdx`, `.md`],
           gatsbyRemarkPlugins: [
+            `gatsby-remark-relative-images`,
             {
               resolve: `gatsby-remark-images`,
               options: {
-                maxWidth: 960,
+                maxWidth: 1400,
                 quality: 90,
                 linkImagesToOriginal: true
               }
-            }
-          ],
-          plugins: [
-            {
-              resolve: `gatsby-remark-images`,
-              options: {
-                maxWidth: 960,
-                quality: 90,
-                linkImagesToOriginal: true
-              }
-            }
+            },
+            ...gatsbyRemarkPlugins
           ]
         }
       },
