@@ -1,6 +1,10 @@
 import fs from 'fs';
-import { GatsbyNode, ParentSpanPluginArgs, PluginOptions, SourceNodesArgs } from 'gatsby';
+import {
+    CreatePagesArgs, CreateSchemaCustomizationArgs, GatsbyNode, Node, ParentSpanPluginArgs,
+    PluginOptions, SourceNodesArgs
+} from 'gatsby';
 import { FluidObject } from 'gatsby-image';
+// @ts-ignore
 import { fmImagesToRelative } from 'gatsby-remark-relative-images';
 import { createFilePath } from 'gatsby-source-filesystem';
 import mkdirp from 'mkdirp';
@@ -8,47 +12,17 @@ import path from 'path';
 
 import { withDefault } from './src';
 
-type Result = {
-  allMdx: {
-    edges: {
-      previous: {
-        frontmatter: Frontmatter;
-        excerpt: string;
-      } | null;
-      next: {
-        frontmatter: Frontmatter;
-        excerpt: string;
-      } | null;
-      node: {
-        frontmatter: Frontmatter;
-        excerpt: string;
-      };
-    }[];
-  };
-};
-
-type Frontmatter = {
-  slug: string;
-  title: string;
-  date: string;
-  tags: string[];
-  cover: {
-    childImageSharp: {
-      fluid: FluidObject;
-    };
-  } | null;
-};
-
 export const onPreBootstrap: GatsbyNode['onPreBootstrap'] = (
   { reporter, store }: ParentSpanPluginArgs,
   themeOptions: PluginOptions
 ) => {
   const { program } = store.getState();
-  const { assetsPath, postsPath } = withDefault(themeOptions);
+  const { assetsPath, postsPath, templatesPath } = withDefault(themeOptions);
 
   const dirs = [
     path.join(program.directory, postsPath), // default: /contents/posts
-    path.join(program.directory, assetsPath) // default: /contents/assets
+    path.join(program.directory, assetsPath), // default: /contents/assets
+    path.join(program.directory, templatesPath) // default: /src/templates
   ];
 
   dirs.forEach(dir => {
@@ -80,27 +54,35 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (
   });
 };
 
-export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions: { createPage } }) => {
-  const postTemplate = path.resolve('src/templates/post.tsx');
-  const postByTagTemplate = path.resolve('src/templates/posts-by-tag.tsx');
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = async ({}: //actions
+CreateSchemaCustomizationArgs) => {
+  //console.log(actions);
+};
+
+export const createPages: GatsbyNode['createPages'] = async (
+  { graphql, actions: { createPage } },
+  themeOptions: PluginOptions
+) => {
+  const { blogPath, tagsPath, templatesPath } = withDefault(themeOptions);
+  const postTemplate = path.resolve(`${templatesPath}/post`);
+  const postByTagTemplate = path.resolve(`${templatesPath}/posts-by-tag`);
 
   const result = await graphql<Result>(query);
 
   const edges = result?.data?.allMdx.edges;
   const postsByTag: {
     [key: string]: { frontmatter: Frontmatter; excerpt: string }[];
-  } = {}; //タグごとの投稿を格納する
+  } = {}; //Store posts for each tag
 
   edges?.forEach(({ previous, next, node }) => {
     node.frontmatter.tags?.forEach(tag => {
-      if (!postsByTag[tag]) {
-        postsByTag[tag] = [];
-      }
+      if (!postsByTag[tag]) postsByTag[tag] = [];
+
       postsByTag[tag].push(node);
     });
 
     createPage({
-      path: `posts/${node.frontmatter.slug}`,
+      path: `${blogPath}/${node.frontmatter.slug}`,
       component: postTemplate,
       context: {
         previous,
@@ -115,7 +97,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions:
   tags.forEach(tagName => {
     const posts = postsByTag[tagName];
     createPage({
-      path: `/tags/${tagName}`,
+      path: `${tagsPath}/${tagName}`,
       component: postByTagTemplate,
       context: {
         posts,
@@ -125,8 +107,14 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions:
   });
 };
 
-export const onCreateNode: GatsbyNode['createPages'] = ({ node, actions: { createNodeField }, getNode }: any) => {
+export const onCreateNode: GatsbyNode['createPages'] = args => {
+  const {
+    node,
+    actions: { createNodeField },
+    getNode
+  } = args as CreatePagesArgs & { node: Node };
   fmImagesToRelative(node);
+  console.log(node.internal);
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode });
     createNodeField({
@@ -215,3 +203,34 @@ query {
   }
 }
 `;
+
+type Result = {
+  allMdx: {
+    edges: {
+      previous: {
+        frontmatter: Frontmatter;
+        excerpt: string;
+      } | null;
+      next: {
+        frontmatter: Frontmatter;
+        excerpt: string;
+      } | null;
+      node: {
+        frontmatter: Frontmatter;
+        excerpt: string;
+      };
+    }[];
+  };
+};
+
+type Frontmatter = {
+  slug: string;
+  title: string;
+  date: string;
+  tags: string[];
+  cover: {
+    childImageSharp: {
+      fluid: FluidObject;
+    };
+  } | null;
+};

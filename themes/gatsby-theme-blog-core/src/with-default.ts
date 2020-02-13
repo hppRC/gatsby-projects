@@ -16,10 +16,10 @@ export const withDefault = (themeOptions: PluginOptions) => {
   const {
     basePath = '/',
     blogPath = '/blog',
+    tagsPath = '/tags',
     assetsPath = 'contents/assets',
     postsPath = 'contents/posts',
     templatesPath = 'src/templates',
-    tagsPath = '/tags',
     externalLinks = [],
     navigations = [],
     showLineNumbers = true,
