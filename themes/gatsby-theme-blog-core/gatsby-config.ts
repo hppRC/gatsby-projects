@@ -2,13 +2,8 @@ import { PluginOptions } from 'gatsby';
 
 import { withDefault } from './src';
 
-const safeRemarkPlugins = (gatsbyRemarkPlugins: unknown) => {
-  return typeof gatsbyRemarkPlugins === 'undefined' ? [] : (gatsbyRemarkPlugins as unknown[]);
-};
-
 export default (themeOptions: PluginOptions) => {
-  const { postsPath, assetsPath } = withDefault(themeOptions);
-  const { mdx = true, gatsbyRemarkPlugins } = themeOptions;
+  const { postsPath, assetsPath, mdx, gatsbyRemarkPlugins } = withDefault(themeOptions);
 
   return {
     plugins: [
@@ -40,7 +35,7 @@ export default (themeOptions: PluginOptions) => {
                 linkImagesToOriginal: true
               }
             },
-            ...safeRemarkPlugins(gatsbyRemarkPlugins)
+            ...gatsbyRemarkPlugins
           ]
         }
       },

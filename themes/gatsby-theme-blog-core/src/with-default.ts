@@ -10,6 +10,8 @@ type WithDefaultProps = {
   externalLinks: string[];
   navigations: string[];
   showLineNumbers: boolean;
+  gatsbyRemarkPlugins: string[];
+  mdx: boolean;
 };
 
 export const withDefault = (themeOptions: PluginOptions) => {
@@ -23,6 +25,8 @@ export const withDefault = (themeOptions: PluginOptions) => {
     externalLinks = [],
     navigations = [],
     showLineNumbers = true,
+    gatsbyRemarkPlugins = [],
+    mdx = true,
     ...rest
   } = themeOptions;
 
@@ -36,6 +40,8 @@ export const withDefault = (themeOptions: PluginOptions) => {
     externalLinks,
     navigations,
     showLineNumbers,
+    gatsbyRemarkPlugins,
+    mdx,
     ...rest
   } as WithDefaultProps;
 };

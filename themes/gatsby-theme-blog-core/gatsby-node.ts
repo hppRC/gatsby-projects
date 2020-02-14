@@ -6,7 +6,7 @@ import {
 import { FluidObject } from 'gatsby-image';
 // @ts-ignore
 import { fmImagesToRelative } from 'gatsby-remark-relative-images';
-import { createFilePath } from 'gatsby-source-filesystem';
+import kebabCase from 'lodash.kebabcase';
 import mkdirp from 'mkdirp';
 import path from 'path';
 
@@ -26,17 +26,17 @@ export const onPreBootstrap: GatsbyNode['onPreBootstrap'] = (
   ];
 
   dirs.forEach(dir => {
-    if (!fs.existsSync(dir)) {
-      reporter.info(`Initializing "${dir}" directory`);
-      mkdirp.sync(dir);
-    }
+    if (fs.existsSync(dir)) return;
+
+    reporter.info(`Initializing "${dir}" directory`);
+    mkdirp.sync(dir);
   });
 };
 
-export const sourceNodes: GatsbyNode['sourceNodes'] = async (
+export const sourceNodes: GatsbyNode['sourceNodes'] = (
   { actions, createNodeId, createContentDigest }: SourceNodesArgs,
   themeOptions: PluginOptions
-) => {
+): any => {
   const { createNode } = actions;
   const config = withDefault(themeOptions);
 
@@ -46,7 +46,7 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (
     parent: undefined,
     children: [],
     internal: {
-      type: `BlogConfig`,
+      type: `BlogCoreConfig`,
       contentDigest: createContentDigest(config),
       content: JSON.stringify(config),
       description: `Options for @hpprc/gatsby-theme-blog-core`
@@ -54,75 +54,113 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = async (
   });
 };
 
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = async ({}: //actions
-CreateSchemaCustomizationArgs) => {
-  //console.log(actions);
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = (
+  {
+    actions
+  }: //actions
+  CreateSchemaCustomizationArgs,
+  themeOptions: PluginOptions
+): any => {
+  const { createTypes, createFieldExtension } = actions;
+  const { basePath } = withDefault(themeOptions);
+
+  const slugify = (source: any) => {
+    const slug: string = source.slug || kebabCase(source.title);
+    return path.join(basePath, slug).replace(/\/\/+/g, `/`);
+  };
+
+  createFieldExtension(
+    {
+      name: `slugify`,
+      extend() {
+        return {
+          resolve: slugify
+        };
+      }
+    },
+    { name: 'slugify' }
+  );
+
+  const typeDefs = `
+    type MdxFrontmatter @infer {
+      slug: String! @slugify
+      title: String!
+      date: Date! @dateformat
+      tags: [String]
+      cover: File @fileByRelativePath
+    }
+
+    type Mdx implements Node @infer {
+      frontmatter: MdxFrontmatter
+      excerpt(pruneLength: Int = 140): String
+    }
+
+    `;
+  createTypes(typeDefs);
 };
 
 export const createPages: GatsbyNode['createPages'] = async (
-  { graphql, actions: { createPage } },
+  { graphql, actions: { createPage }, reporter },
   themeOptions: PluginOptions
 ) => {
   const { blogPath, tagsPath, templatesPath } = withDefault(themeOptions);
-  const postTemplate = path.resolve(`${templatesPath}/post`);
-  const postByTagTemplate = path.resolve(`${templatesPath}/posts-by-tag`);
+  const postTemplateJSX = path.resolve(path.join(templatesPath, 'post.jsx'));
+  const postTemplateTSX = path.resolve(path.join(templatesPath, 'post.tsx'));
+  const postByTagTemplateJSX = path.resolve(path.join(templatesPath, 'posts-by-tag.jsx'));
+  const postByTagTemplateTSX = path.resolve(path.join(templatesPath, 'posts-by-tag.tsx'));
 
   const result = await graphql<Result>(query);
+  if (!result?.data?.allMdx) return;
 
-  const edges = result?.data?.allMdx.edges;
-  const postsByTag: {
-    [key: string]: { frontmatter: Frontmatter; excerpt: string }[];
-  } = {}; //Store posts for each tag
+  const { edges } = result?.data?.allMdx;
+  const postsByTag: PostByTag = {}; //Store posts for each tag
 
-  edges?.forEach(({ previous, next, node }) => {
-    node.frontmatter.tags?.forEach(tag => {
-      if (!postsByTag[tag]) postsByTag[tag] = [];
+  if (fs.existsSync(postTemplateJSX) || fs.existsSync(postTemplateTSX)) {
+    edges.forEach(({ previous, next, node }) => {
+      const { slug, tags } = node.frontmatter;
+      tags?.forEach(tag => {
+        if (!postsByTag[tag]) postsByTag[tag] = [];
+        postsByTag[tag].push(node);
+      });
 
-      postsByTag[tag].push(node);
+      createPage({
+        path: path.join(blogPath, slug || ''),
+        component: fs.existsSync(postTemplateJSX) ? postTemplateJSX : postTemplateTSX,
+        context: {
+          previous,
+          next,
+          slug
+        }
+      });
     });
+  } else {
+    reporter.warn(`there is no template compoent file, expected is ${path.join(templatesPath, 'post')}`);
+  }
 
-    createPage({
-      path: `${blogPath}/${node.frontmatter.slug}`,
-      component: postTemplate,
-      context: {
-        previous,
-        next,
-        slug: node.frontmatter.slug
-      }
+  // generate each tag's posts page if template exits
+  if (fs.existsSync(postByTagTemplateJSX) || fs.existsSync(postByTagTemplateTSX)) {
+    const tags = Object.keys(postsByTag);
+
+    tags.forEach(tagName => {
+      const posts = postsByTag[tagName];
+      createPage({
+        path: path.join(tagsPath, tagName),
+        component: fs.existsSync(postByTagTemplateJSX) ? postByTagTemplateJSX : postByTagTemplateTSX,
+        context: {
+          posts,
+          tagName
+        }
+      });
     });
-  });
-
-  const tags = Object.keys(postsByTag);
-
-  tags.forEach(tagName => {
-    const posts = postsByTag[tagName];
-    createPage({
-      path: `${tagsPath}/${tagName}`,
-      component: postByTagTemplate,
-      context: {
-        posts,
-        tagName
-      }
-    });
-  });
+  } else {
+    reporter.warn(`there is no template compoent file, expected is ${path.join(templatesPath, 'post-by-tag')}`);
+  }
 };
 
 export const onCreateNode: GatsbyNode['createPages'] = args => {
-  const {
-    node,
-    actions: { createNodeField },
-    getNode
-  } = args as CreatePagesArgs & { node: Node };
+  const { node } = args as CreatePagesArgs & { node: Node };
+  if (node.internal.type !== 'Mdx') return;
   fmImagesToRelative(node);
-  console.log(node.internal);
-  if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode });
-    createNodeField({
-      name: `slug`,
-      node,
-      value
-    });
-  }
 };
 
 //you can't use QraphQL query fragments to get fluid object in gatsby-node.
@@ -207,14 +245,14 @@ query {
 type Result = {
   allMdx: {
     edges: {
-      previous: {
+      previous?: {
         frontmatter: Frontmatter;
         excerpt: string;
-      } | null;
-      next: {
+      };
+      next?: {
         frontmatter: Frontmatter;
         excerpt: string;
-      } | null;
+      };
       node: {
         frontmatter: Frontmatter;
         excerpt: string;
@@ -223,7 +261,7 @@ type Result = {
   };
 };
 
-type Frontmatter = {
+type Frontmatter = Partial<{
   slug: string;
   title: string;
   date: string;
@@ -232,5 +270,9 @@ type Frontmatter = {
     childImageSharp: {
       fluid: FluidObject;
     };
-  } | null;
+  };
+}>;
+
+type PostByTag = {
+  [key: string]: { frontmatter: Frontmatter; excerpt: string }[];
 };
