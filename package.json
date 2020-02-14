@@ -16,9 +16,9 @@
   "version": "1.0.0",
   "devDependencies": {
     "@types/react": "16.9.19",
-    "stylelint": "^13.0.0",
-    "stylelint-order": "^4.0.0",
-    "ts-node": "^8.6.2",
+    "stylelint": "13.0.0",
+    "stylelint-order": "4.0.0",
+    "ts-node": "8.6.2",
     "typescript": "3.8.0-dev.20200211"
   }
 }
