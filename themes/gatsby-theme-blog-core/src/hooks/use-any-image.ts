@@ -1,35 +1,19 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { FluidObject } from 'gatsby-image';
 
-type Props = {
-  images: {
-    edges: {
-      node: {
-        relativePath: string;
-        childImageSharp: {
-          fluid: FluidObject;
-        };
-      };
-    }[];
-  };
-};
+import { AllFile } from '@hpprc/gatsby-theme-blog-core';
 
 /**
- * use any image in src/images
+ * use any image in /assets
  */
 export default (filename: string) => {
-  //relativePath: path from `image`
-  //it is configured in gatsby-config.js of `gatsby-source-filesystem`
-  const data = useStaticQuery<Props>(graphql`
+  const data = useStaticQuery<AllFile>(graphql`
     query {
-      images: allFile {
-        edges {
-          node {
-            relativePath
-            childImageSharp {
-              fluid(maxWidth: 1400, quality: 90) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+      allFile {
+        nodes {
+          relativePath
+          childImageSharp {
+            fluid(maxWidth: 1400, quality: 90) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
@@ -37,9 +21,9 @@ export default (filename: string) => {
     }
   `);
 
-  const image = data.images.edges.find(edge => {
-    return edge.node.relativePath.includes(filename);
+  const node = data.allFile.nodes.find(node => {
+    return node.relativePath.includes(filename);
   });
 
-  return image?.node.childImageSharp?.fluid;
+  return node?.childImageSharp.fluid;
 };

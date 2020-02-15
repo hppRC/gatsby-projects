@@ -19,9 +19,7 @@ export default () => {
   const tags = new Set<string>();
 
   posts.forEach(({ frontmatter }) => {
-    frontmatter.tags?.forEach((tag: string) => {
-      tags.add(tag);
-    });
+    frontmatter.tags?.forEach((tag: string) => tags.add(tag));
   });
 
   return Array.from(tags.values());

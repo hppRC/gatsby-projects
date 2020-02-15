@@ -51,3 +51,14 @@ export type Site = {
     buildTime: string;
   };
 };
+
+export type AllFile = {
+  allFile: {
+    nodes: {
+      relativePath: string;
+      childImageSharp: {
+        fluid: FluidObject;
+      };
+    }[];
+  };
+};
