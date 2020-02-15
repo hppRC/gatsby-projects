@@ -1,12 +1,10 @@
 import fs from 'fs';
 import {
-    CreatePagesArgs, CreateSchemaCustomizationArgs, GatsbyNode, Node, ParentSpanPluginArgs,
-    PluginOptions, SourceNodesArgs
+    CreatePagesArgs, GatsbyNode, Node, ParentSpanPluginArgs, PluginOptions, SourceNodesArgs
 } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 // @ts-ignore
 import { fmImagesToRelative } from 'gatsby-remark-relative-images';
-import kebabCase from 'lodash.kebabcase';
 import mkdirp from 'mkdirp';
 import path from 'path';
 
@@ -52,51 +50,6 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = (
       description: `Options for @hpprc/gatsby-theme-blog-core`
     }
   });
-};
-
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = (
-  {
-    actions
-  }: //actions
-  CreateSchemaCustomizationArgs,
-  themeOptions: PluginOptions
-): any => {
-  const { createTypes, createFieldExtension } = actions;
-  const { basePath } = withDefault(themeOptions);
-
-  const slugify = (source: any) => {
-    const slug: string = source.slug || kebabCase(source.title);
-    return path.join(basePath, slug).replace(/\/\/+/g, `/`);
-  };
-
-  createFieldExtension(
-    {
-      name: `slugify`,
-      extend() {
-        return {
-          resolve: slugify
-        };
-      }
-    },
-    { name: 'slugify' }
-  );
-
-  const typeDefs = `
-    type MdxFrontmatter @infer {
-      slug: String! @slugify
-      title: String!
-      date: Date! @dateformat
-      tags: [String]
-      cover: File @fileByRelativePath
-    }
-
-    type Mdx implements Node @infer {
-      frontmatter: MdxFrontmatter
-      excerpt(pruneLength: Int = 140): String
-    }
-
-    `;
-  createTypes(typeDefs);
 };
 
 export const createPages: GatsbyNode['createPages'] = async (
@@ -160,6 +113,7 @@ export const createPages: GatsbyNode['createPages'] = async (
 export const onCreateNode: GatsbyNode['createPages'] = args => {
   const { node } = args as CreatePagesArgs & { node: Node };
   if (node.internal.type !== 'Mdx') return;
+
   fmImagesToRelative(node);
 };
 

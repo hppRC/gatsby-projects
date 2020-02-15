@@ -15,7 +15,7 @@ tags:
   - tag6
   - tag7
   - tag8
-cover: /assets/test1.jpg
+cover: ../assets/test1.jpg
 ---
 
 # 3yayo
