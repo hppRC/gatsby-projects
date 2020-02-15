@@ -1,6 +1,16 @@
 import { PluginOptions } from 'gatsby';
+import { register } from 'ts-node';
 
-import { withDefault } from '../src';
+import { withDefault } from './src';
+
+// `register` is necessary (if you remove this code, this plugin will not work), but I don't know why.
+// please somebody help me
+register({
+  compilerOptions: {
+    module: 'commonjs',
+    target: 'es2019'
+  }
+});
 
 export default (themeOptions: PluginOptions) => {
   const { postsPath, assetsPath, mdx, gatsbyRemarkPlugins } = withDefault(themeOptions);

@@ -16,11 +16,7 @@
   "dependencies": {
     "@hpprc/gatsby-theme-blog-core": "^1.0.0",
     "@hpprc/gatsby-utils": "*",
-    "gatsby": "^2.19.12",
-    "gatsby-remark-autolink-headers": "^2.1.24",
-    "gatsby-remark-code-titles": "^1.1.0",
-    "gatsby-remark-katex": "^3.1.24",
-    "katex": "^0.11.1",
+    "gatsby": "^2.19.17",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },

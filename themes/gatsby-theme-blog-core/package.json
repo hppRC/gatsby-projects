@@ -2,13 +2,13 @@
   "author": "hppRC <hpp.ricecake@gmail.com>",
   "description": "hpp's blog theme",
   "name": "@hpprc/gatsby-theme-blog-core",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "dist/index",
+  "types": "dist/index",
   "scripts": {
-    "build": "yarn clean && yarn compile && yarn copy",
+    "build": "yarn clean && yarn compile",
     "clean": "rm -rf ./dist",
-    "compile": "tsc",
-    "copy": "cp ./gatsby-node.js ./dist/ && cp ./gatsby-config.js ./dist/"
+    "compile": "tsc"
   },
   "license": "MIT",
   "repository": {
@@ -24,7 +24,7 @@
     "@types/lodash.kebabcase": "^4.1.6",
     "gatsby-image": "^2.2.41",
     "gatsby-plugin-lodash": "^3.1.20",
-    "gatsby-plugin-mdx": "^1.0.71",
+    "gatsby-plugin-mdx": "^1.0.73",
     "gatsby-plugin-offline": "^3.0.34",
     "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-sharp": "^2.4.5",
@@ -34,5 +34,12 @@
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-transformer-sharp": "^2.3.14",
     "lodash.kebabcase": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.19",
+    "gatsby": "^2.19.17",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "webpack": "^4.41.6"
   }
 }
