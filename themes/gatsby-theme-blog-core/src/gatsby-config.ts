@@ -1,6 +1,6 @@
 import { PluginOptions } from 'gatsby';
 
-import { withDefault } from './src';
+import withDefault from './with-default';
 
 export default (themeOptions: PluginOptions) => {
   const { postsPath, assetsPath, mdx, gatsbyRemarkPlugins } = withDefault(themeOptions);

@@ -3,8 +3,8 @@
   "description": "hpp's blog theme",
   "name": "@hpprc/gatsby-theme-blog-core",
   "version": "1.1.0",
-  "main": "dist/index",
-  "types": "dist/index",
+  "main": "index",
+  "types": "index",
   "scripts": {
     "build": "yarn clean && yarn compile",
     "clean": "rm -rf ./dist",

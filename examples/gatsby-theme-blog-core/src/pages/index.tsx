@@ -1,15 +1,12 @@
 import React from 'react';
 
-import { useAnyImage } from '@hpprc/gatsby-theme-blog-core';
-
 type ContainerProps = {};
-type Props = { fluid: any } & ContainerProps;
+type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className, fluid }) => <div className={className}>{JSON.stringify(fluid)}</div>;
+const Component: React.FCX<Props> = ({ className }) => <div className={className}>test</div>;
 
 const Container: React.FCX<ContainerProps> = props => {
-  const fluid = useAnyImage('test1.jpg');
-  return <Component {...props} fluid={fluid} />;
+  return <Component {...props} />;
 };
 
 export default Container;

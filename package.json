@@ -22,9 +22,7 @@
     "typescript": "3.8.0-dev.20200211"
   },
   "scripts": {
-    "blog-core": "yarn build-blog-core && yarn start-blog-core",
-    "build-blog-core": "yarn workspace @hpprc/gatsby-theme-blog-core build",
-    "clean-blog-core": "yarn workspace blog-core clean",
+    "blog-core": "yarn start-blog-core",
     "start-blog-core": "yarn workspace blog-core start"
   }
 }
