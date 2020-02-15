@@ -7,4 +7,4 @@ require('ts-node').register({
   }
 });
 
-module.exports = require('./gatsby-config.ts');
+module.exports = require('./gatsby-config/index');

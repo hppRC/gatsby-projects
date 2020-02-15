@@ -8,7 +8,7 @@ import { fmImagesToRelative } from 'gatsby-remark-relative-images';
 import mkdirp from 'mkdirp';
 import path from 'path';
 
-import { withDefault } from './src';
+import { withDefault } from '../src';
 
 export const onPreBootstrap: GatsbyNode['onPreBootstrap'] = (
   { reporter, store }: ParentSpanPluginArgs,
