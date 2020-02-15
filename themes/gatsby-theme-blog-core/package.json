@@ -2,14 +2,10 @@
   "author": "hppRC <hpp.ricecake@gmail.com>",
   "description": "hpp's blog theme",
   "name": "@hpprc/gatsby-theme-blog-core",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "index",
   "types": "index",
-  "scripts": {
-    "build": "yarn clean && yarn compile",
-    "clean": "rm -rf ./dist",
-    "compile": "tsc"
-  },
+  "scripts": {},
   "license": "MIT",
   "repository": {
     "type": "git",

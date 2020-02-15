@@ -22,7 +22,7 @@
     "typescript": "3.8.0-dev.20200211"
   },
   "scripts": {
-    "blog-core": "yarn start-blog-core",
-    "start-blog-core": "yarn workspace blog-core start"
+    "blog": "yarn workspace blog start",
+    "blog-core": "yarn workspace blog-core start"
   }
 }

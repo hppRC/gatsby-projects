@@ -1,12 +1,18 @@
 {
   "name": "@hpprc/gatsby-theme-blog",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/hppRC/gatsby-themes.git",
     "directory": "themes/gatsby-theme-blog"
+  },
+  "dependencies": {
+    "@hpprc/gatsby-theme-blog-core": "^1.2.1",
+    "gatsby": "^2.19.17",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "peerDependencies": {}
 }
