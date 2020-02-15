@@ -3,7 +3,12 @@
   "description": "hpp's blog theme",
   "name": "@hpprc/gatsby-theme-blog-core",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index",
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",

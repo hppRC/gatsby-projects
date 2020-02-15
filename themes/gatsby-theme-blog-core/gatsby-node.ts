@@ -56,7 +56,9 @@ export const createPages: GatsbyNode['createPages'] = async (
   { graphql, actions: { createPage }, reporter },
   themeOptions: PluginOptions
 ) => {
-  const { blogPath, tagsPath, templatesPath } = withDefault(themeOptions);
+  const { blogPath, tagsPath, templatesPath, mdx } = withDefault(themeOptions);
+  if (!mdx) return;
+
   const postTemplateJSX = path.resolve(path.join(templatesPath, 'post.jsx'));
   const postTemplateTSX = path.resolve(path.join(templatesPath, 'post.tsx'));
   const postByTagTemplateJSX = path.resolve(path.join(templatesPath, 'posts-by-tag.jsx'));
@@ -199,14 +201,14 @@ query {
 type Result = {
   allMdx: {
     edges: {
-      previous?: {
+      previous: {
         frontmatter: Frontmatter;
         excerpt: string;
-      };
-      next?: {
+      } | null;
+      next: {
         frontmatter: Frontmatter;
         excerpt: string;
-      };
+      } | null;
       node: {
         frontmatter: Frontmatter;
         excerpt: string;
