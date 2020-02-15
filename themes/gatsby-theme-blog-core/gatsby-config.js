@@ -1,8 +1,6 @@
-import { PluginOptions } from 'gatsby';
+const withDefault = require('./with-default');
 
-import { withDefault } from './src';
-
-export default (themeOptions: PluginOptions) => {
+module.exports = themeOptions => {
   const { postsPath, assetsPath, mdx, gatsbyRemarkPlugins } = withDefault(themeOptions);
 
   return {
@@ -46,5 +44,5 @@ export default (themeOptions: PluginOptions) => {
       `gatsby-plugin-offline`,
       `gatsby-plugin-lodash`
     ].filter(Boolean)
-  } as const;
+  };
 };

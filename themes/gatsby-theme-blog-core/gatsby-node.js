@@ -1,19 +1,10 @@
-import fs from 'fs';
-import {
-    CreatePagesArgs, GatsbyNode, Node, ParentSpanPluginArgs, PluginOptions, SourceNodesArgs
-} from 'gatsby';
-import { FluidObject } from 'gatsby-image';
-// @ts-ignore
-import { fmImagesToRelative } from 'gatsby-remark-relative-images';
-import mkdirp from 'mkdirp';
-import path from 'path';
+const fs = require('fs');
+const { fmImagesToRelative } = require('gatsby-remark-relative-images');
+const mkdirp = require('mkdirp');
+const path = require('path');
+const withDefault = require('./with-default');
 
-import { withDefault } from './src';
-
-export const onPreBootstrap: GatsbyNode['onPreBootstrap'] = (
-  { reporter, store }: ParentSpanPluginArgs,
-  themeOptions: PluginOptions
-) => {
+exports.onPreBootstrap = ({ reporter, store }, themeOptions) => {
   const { program } = store.getState();
   const { assetsPath, postsPath, templatesPath } = withDefault(themeOptions);
 
@@ -31,10 +22,7 @@ export const onPreBootstrap: GatsbyNode['onPreBootstrap'] = (
   });
 };
 
-export const sourceNodes: GatsbyNode['sourceNodes'] = (
-  { actions, createNodeId, createContentDigest }: SourceNodesArgs,
-  themeOptions: PluginOptions
-): any => {
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }, themeOptions) => {
   const { createNode } = actions;
   const config = withDefault(themeOptions);
 
@@ -52,10 +40,7 @@ export const sourceNodes: GatsbyNode['sourceNodes'] = (
   });
 };
 
-export const createPages: GatsbyNode['createPages'] = async (
-  { graphql, actions: { createPage }, reporter },
-  themeOptions: PluginOptions
-) => {
+exports.createPages = async ({ graphql, actions: { createPage }, reporter }, themeOptions) => {
   const { blogPath, tagsPath, templatesPath, mdx } = withDefault(themeOptions);
   if (!mdx) return;
 
@@ -64,16 +49,17 @@ export const createPages: GatsbyNode['createPages'] = async (
   const postByTagTemplateJSX = path.resolve(path.join(templatesPath, 'posts-by-tag.jsx'));
   const postByTagTemplateTSX = path.resolve(path.join(templatesPath, 'posts-by-tag.tsx'));
 
-  const result = await graphql<Result>(query);
-  if (!result?.data?.allMdx) return;
+  const result = await graphql(query);
+  if (!result || !result.data || !result.data.allMdx) return;
 
-  const { edges } = result?.data?.allMdx;
-  const postsByTag: PostByTag = {}; //Store posts for each tag
+  const { edges } = result.data.allMdx;
+  const postsByTag = {}; //Store posts for each tag
 
   if (fs.existsSync(postTemplateJSX) || fs.existsSync(postTemplateTSX)) {
     edges.forEach(({ previous, next, node }) => {
       const { slug, tags } = node.frontmatter;
-      tags?.forEach(tag => {
+      if (!tags) return;
+      tags.forEach(tag => {
         if (!postsByTag[tag]) postsByTag[tag] = [];
         postsByTag[tag].push(node);
       });
@@ -112,8 +98,8 @@ export const createPages: GatsbyNode['createPages'] = async (
   }
 };
 
-export const onCreateNode: GatsbyNode['createPages'] = args => {
-  const { node } = args as CreatePagesArgs & { node: Node };
+exports.onCreateNode = args => {
+  const { node } = args;
   if (node.internal.type !== 'Mdx') return;
 
   fmImagesToRelative(node);
@@ -197,38 +183,3 @@ query {
   }
 }
 `;
-
-type Result = {
-  allMdx: {
-    edges: {
-      previous: {
-        frontmatter: Frontmatter;
-        excerpt: string;
-      } | null;
-      next: {
-        frontmatter: Frontmatter;
-        excerpt: string;
-      } | null;
-      node: {
-        frontmatter: Frontmatter;
-        excerpt: string;
-      };
-    }[];
-  };
-};
-
-type Frontmatter = Partial<{
-  slug: string;
-  title: string;
-  date: string;
-  tags: string[];
-  cover: {
-    childImageSharp: {
-      fluid: FluidObject;
-    };
-  };
-}>;
-
-type PostByTag = {
-  [key: string]: { frontmatter: Frontmatter; excerpt: string }[];
-};

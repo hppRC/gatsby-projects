@@ -6,9 +6,10 @@
   "main": "dist/index",
   "types": "dist/index",
   "scripts": {
-    "build": "yarn clean && yarn compile",
+    "build": "yarn clean && yarn compile && yarn copy",
     "clean": "rm -rf ./dist",
-    "compile": "tsc"
+    "compile": "tsc",
+    "copy": "cp ./gatsby-config.js ./dist/ && cp ./gatsby-node.js ./dist/ && cp ./with-default.js ./dist/"
   },
   "license": "MIT",
   "repository": {

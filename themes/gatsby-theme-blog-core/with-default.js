@@ -1,20 +1,4 @@
-import { PluginOptions } from 'gatsby';
-
-type WithDefaultProps = {
-  basePath: string;
-  blogPath: string;
-  assetsPath: string;
-  postsPath: string;
-  templatesPath: string;
-  tagsPath: string;
-  externalLinks: string[];
-  navigations: string[];
-  showLineNumbers: boolean;
-  gatsbyRemarkPlugins: string[];
-  mdx: boolean;
-};
-
-export const withDefault = (themeOptions: PluginOptions) => {
+module.exports = themeOptions => {
   const {
     basePath = '/',
     blogPath = '/blog',
@@ -43,7 +27,5 @@ export const withDefault = (themeOptions: PluginOptions) => {
     gatsbyRemarkPlugins,
     mdx,
     ...rest
-  } as WithDefaultProps;
+  };
 };
-
-export default withDefault;
