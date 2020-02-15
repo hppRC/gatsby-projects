@@ -2,7 +2,7 @@
   "author": "hppRC <hpp.ricecake@gmail.com>",
   "description": "hpp's blog theme",
   "name": "@hpprc/gatsby-theme-blog-core",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "index",
   "types": "index",
   "scripts": {
