@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es5",
     "module": "commonjs",
     "jsx": "react",
-    "lib": ["dom", "es2015", "es2019"],
+    "lib": ["dom", "es2015", "es2020"],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,

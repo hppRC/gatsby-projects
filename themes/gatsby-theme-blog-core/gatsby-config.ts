@@ -8,7 +8,7 @@ import { withDefault } from './src';
 register({
   compilerOptions: {
     module: 'commonjs',
-    target: 'es2019'
+    target: 'es5'
   }
 });
 
