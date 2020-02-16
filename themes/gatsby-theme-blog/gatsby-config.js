@@ -1,37 +1,13 @@
-const siteMetadata = {
-  siteTitle: `hpp blog🌝`,
-  siteTitleAlt: `hpp blog - @hppRC/hpp-blog`,
-  siteHeadline: `personal blog of @hppRC`,
-  siteUrl: `https://blog.hpprc.com`,
-  siteDescription: `personal blog made with Gatsby, TypeScript.`,
-  siteLanguage: `ja`,
-  siteImage: `/banner.jpg`,
-  author: `@hpp_ricecake`, // twitter account id
-  basePath: `/`,
-  social: {
-    twitter: 'https://twitter.com/hpp_ricecake',
-    github: 'https://github.com/hppRC',
-    qiita: 'https://qiita.com/hppRC'
-  }
-};
-
-module.exports = {
-  plugins: [
-    {
-      resolve: `@hpprc/gatsby-theme-blog-core`,
-      options: {
-        basePath: '/',
-        blogPath: '/blog',
-        tagsPath: '/tags',
-        assetsPath: 'contents/assets',
-        postsPath: 'contents/posts',
-        templatesPath: 'src/templates',
-        externalLinks: [],
-        navigations: [],
-        showLineNumbers: true,
-        gatsbyRemarkPlugins: [],
-        mdx: true
-      }
-    }
-  ]
-};
+module.exports = options => ({
+  siteMetadata: {
+    siteTitle: `Lupin`,
+    siteTitleAlt: `Minimal Blog - @lekoarts/gatsby-theme-minimal-blog`,
+    siteHeadline: `Minimal Blog - Gatsby Theme from @lekoarts`,
+    siteUrl: `https://minimal-blog.lekoarts.de`,
+    siteDescription: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.`,
+    siteLanguage: `en`,
+    siteImage: `/banner.jpg`,
+    author: `@lekoarts_de`
+  },
+  plugins: []
+});

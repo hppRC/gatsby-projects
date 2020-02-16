@@ -1,41 +1,41 @@
 {
-  "author": "hppRC <hpp.ricecake@gmail.com>",
-  "description": "hpp's blog theme",
   "name": "@hpprc/gatsby-theme-blog-core",
-  "version": "1.2.1",
   "main": "index",
   "types": "index",
+  "author": "hppRC <hpp.ricecake@gmail.com>",
+  "version": "1.2.1",
   "scripts": {},
   "license": "MIT",
   "repository": {
-    "type": "git",
     "url": "https://github.com/hppRC/gatsby-projects.git",
+    "type": "git",
     "directory": "themes/gatsby-theme-blog-core"
   },
-  "peerDependencies": {},
+  "description": "hpp's blog theme",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.5",
+    "gatsby-image": "^2.2.41",
     "@mdx-js/react": "^1.5.5",
     "@types/lodash": "^4.14.149",
-    "@types/lodash.kebabcase": "^4.1.6",
-    "gatsby-image": "^2.2.41",
-    "gatsby-plugin-lodash": "^3.1.20",
+    "lodash.kebabcase": "^4.1.1",
     "gatsby-plugin-mdx": "^1.0.73",
-    "gatsby-plugin-offline": "^3.0.34",
-    "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-sharp": "^2.4.5",
-    "gatsby-plugin-typescript": "^2.1.27",
+    "gatsby-plugin-lodash": "^3.1.20",
     "gatsby-remark-images": "^3.1.44",
-    "gatsby-remark-relative-images": "^0.2.3",
+    "gatsby-plugin-offline": "^3.0.34",
+    "@types/lodash.kebabcase": "^4.1.6",
+    "gatsby-plugin-typescript": "^2.1.27",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-transformer-sharp": "^2.3.14",
-    "lodash.kebabcase": "^4.1.1"
+    "gatsby-plugin-root-import": "^2.0.5",
+    "gatsby-remark-relative-images": "^0.2.3"
   },
   "devDependencies": {
-    "@types/react": "^16.9.19",
-    "gatsby": "^2.19.17",
     "react": "^16.12.0",
+    "gatsby": "^2.19.17",
+    "webpack": "^4.41.6",
     "react-dom": "^16.12.0",
-    "webpack": "^4.41.6"
-  }
+    "@types/react": "^16.9.19"
+  },
+  "peerDependencies": {}
 }
