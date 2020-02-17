@@ -1,7 +1,8 @@
 module.exports = themeOptions => {
   const {
-    siteTitle = 'Your Site Title',
+    siteTitle = 'Site Title',
     siteUrl = 'https://blog.hpprc.com',
+    siteDescription = 'personal blog made with Gatsby, TypeScript.',
     basePath = '/',
     blogPath = '/blog',
     tagsPath = '/tags',
@@ -9,13 +10,17 @@ module.exports = themeOptions => {
     postsPath = 'contents/posts',
     gatsbyRemarkPlugins = [],
     mdx = true,
+    webpackBundleAnalyzer = true,
     iconPath = './contents/assets/icon.png',
-    ...rest
+    googleAnalyticsTrackingId = 'UA-149661454-2',
+    backgroundColor = '#ffffff',
+    themeColor = '#09090f'
   } = themeOptions;
 
   return {
     siteTitle,
     siteUrl,
+    siteDescription,
     basePath,
     blogPath,
     assetsPath,
@@ -23,7 +28,10 @@ module.exports = themeOptions => {
     tagsPath,
     gatsbyRemarkPlugins,
     mdx,
+    webpackBundleAnalyzer,
     iconPath,
-    ...rest
+    googleAnalyticsTrackingId,
+    backgroundColor,
+    themeColor
   };
 };

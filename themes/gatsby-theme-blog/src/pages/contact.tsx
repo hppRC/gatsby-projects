@@ -2,13 +2,18 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import { SEO } from '../components';
+import { NetlifyForm, SEO } from '../components';
 import { baseStyle } from '../styles';
 
 type ContainerProps = { path: string };
 type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className }) => <main className={className}>main</main>;
+const Component: React.FCX<Props> = ({ className }) => (
+  <main className={className}>
+    <h1>Contact</h1>
+    <NetlifyForm />
+  </main>
+);
 
 const StyledComponent = styled(Component)`
   ${baseStyle}
@@ -25,7 +30,7 @@ const StyledComponent = styled(Component)`
 const Container: React.FCX<ContainerProps> = props => {
   return (
     <>
-      <SEO title='Top' pathname={props.path} />
+      <SEO title='Contact' pathname={props.path} />
       <StyledComponent {...props} />
     </>
   );

@@ -35,12 +35,12 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }, themeOpti
       type: `hpprcBlogThemeConfig`,
       contentDigest: createContentDigest(config),
       content: JSON.stringify(config),
-      description: `Options for @hpprc/gatsby-theme-blog-core`
+      description: `Options for @hpprc/gatsby-theme-blog-core (with defaul option)`
     }
   });
 };
 
-exports.createPages = async ({ graphql, actions: { createPage }, reporter }, themeOptions) => {
+exports.createPages = async ({ graphql, actions: { createPage } }, themeOptions) => {
   const { blogPath, tagsPath, mdx } = withDefault(themeOptions);
   if (!mdx) return;
 
