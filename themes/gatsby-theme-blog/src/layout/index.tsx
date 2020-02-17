@@ -2,10 +2,17 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
+import Header from './Header';
+
 type ContainerProps = {};
 type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className }) => <div className={className}>Layout</div>;
+const Component: React.FCX<Props> = ({ children }) => (
+  <>
+    <Header />
+    {children}
+  </>
+);
 
 const StyledComponent = styled(Component)`
   color: red;

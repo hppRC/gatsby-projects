@@ -1,7 +1,15 @@
 {
+  "ignoreFiles": ["**/node_modules/**"],
+
+  "extends": ["stylelint-config-recommended", "stylelint-config-styled-components"],
   "plugins": ["stylelint-order"],
   "rules": {
-    "order/order": ["custom-properties", "declarations"],
-    "order/properties-alphabetical-order": true
+    "font-family-no-missing-generic-family-keyword": true,
+    "order/properties-alphabetical-order": true,
+    "font-family-no-duplicate-names": true,
+    "color-no-invalid-hex": true,
+    "at-rule-no-unknown": null,
+    "no-eol-whitespace": true,
+    "block-no-empty": null
   }
 }
