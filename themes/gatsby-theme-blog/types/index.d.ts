@@ -57,8 +57,8 @@ export type UseSiteBuildtime = DeepReadonly<{
 }>;
 
 export type UseSiteMetadata = DeepReadonly<{
-  site: DeepPartial<{
-    siteMetadata: {
+  site: {
+    siteMetadata: DeepPartial<{
       siteTitle: string;
       siteTitleAlt: string;
       siteHeadline: string;
@@ -71,6 +71,6 @@ export type UseSiteMetadata = DeepReadonly<{
         github: string;
         qiita: string;
       };
-    };
-  }>;
+    }>;
+  };
 }>;

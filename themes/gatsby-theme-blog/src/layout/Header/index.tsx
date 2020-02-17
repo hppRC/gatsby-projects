@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { animated, useSpring } from 'react-spring';
 import { useScroll } from 'react-use-gesture';
 
@@ -68,4 +68,4 @@ const Container: React.FCX<ContainerProps> = () => {
   return <StyledComponent mode={mode} />;
 };
 
-export default Container;
+export default memo(Container);

@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { memo } from 'react';
 import { animated, SpringValue } from 'react-spring';
 
 import styled from '@emotion/styled';
@@ -39,4 +39,4 @@ const Container: React.FCX<ContainerProps> = ({ scale }) => {
   return <StyledComponent scale={scale} />;
 };
 
-export default Container;
+export default memo(Container);

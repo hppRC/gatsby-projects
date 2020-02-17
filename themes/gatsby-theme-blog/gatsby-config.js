@@ -5,6 +5,12 @@ module.exports = themeOptions => {
 
   return {
     plugins: [
+      `gatsby-transformer-sharp`,
+      `gatsby-plugin-sharp`,
+      `gatsby-plugin-typescript`,
+      `gatsby-plugin-root-import`,
+      `gatsby-plugin-offline`,
+      `gatsby-plugin-lodash`,
       {
         resolve: `gatsby-source-filesystem`,
         options: {
@@ -36,13 +42,7 @@ module.exports = themeOptions => {
             ...gatsbyRemarkPlugins
           ]
         }
-      },
-      `gatsby-transformer-sharp`,
-      `gatsby-plugin-sharp`,
-      `gatsby-plugin-typescript`,
-      `gatsby-plugin-root-import`,
-      `gatsby-plugin-offline`,
-      `gatsby-plugin-lodash`
+      }
     ].filter(Boolean)
   };
 };
