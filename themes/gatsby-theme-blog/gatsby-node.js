@@ -7,12 +7,11 @@ const withDefault = require('./with-default');
 
 exports.onPreBootstrap = ({ reporter, store }, themeOptions) => {
   const { program } = store.getState();
-  const { assetsPath, postsPath, templatesPath } = withDefault(themeOptions);
+  const { assetsPath, postsPath } = withDefault(themeOptions);
 
   const dirs = [
     path.join(program.directory, postsPath), // default: /contents/posts
-    path.join(program.directory, assetsPath), // default: /contents/assets
-    path.join(program.directory, templatesPath) // default: /src/templates
+    path.join(program.directory, assetsPath) // default: /contents/assets
   ];
 
   dirs.forEach(dir => {
@@ -33,7 +32,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }, themeOpti
     parent: undefined,
     children: [],
     internal: {
-      type: `BlogCoreConfig`,
+      type: `hpprcBlogThemeConfig`,
       contentDigest: createContentDigest(config),
       content: JSON.stringify(config),
       description: `Options for @hpprc/gatsby-theme-blog-core`
@@ -42,13 +41,11 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }, themeOpti
 };
 
 exports.createPages = async ({ graphql, actions: { createPage }, reporter }, themeOptions) => {
-  const { blogPath, tagsPath, templatesPath, mdx } = withDefault(themeOptions);
+  const { blogPath, tagsPath, mdx } = withDefault(themeOptions);
   if (!mdx) return;
 
-  const postTemplateJSX = path.resolve(path.join(templatesPath, 'post.jsx'));
-  const postTemplateTSX = path.resolve(path.join(templatesPath, 'post.tsx'));
-  const postByTagTemplateJSX = path.resolve(path.join(templatesPath, 'posts-by-tag.jsx'));
-  const postByTagTemplateTSX = path.resolve(path.join(templatesPath, 'posts-by-tag.tsx'));
+  const postTemplate = require.resolve('./src/templates/post.tsx');
+  const postsByTagTemplate = require.resolve('./src/templates/posts-by-tag.tsx');
 
   const result = await graphql(query);
   if (!result || !result.data || !result.data.allMdx || !result.data.allMdx.edges) return;
@@ -56,47 +53,39 @@ exports.createPages = async ({ graphql, actions: { createPage }, reporter }, the
   const { edges } = result.data.allMdx;
   const postsByTag = {}; //Store posts for each tag
 
-  if (fs.existsSync(postTemplateJSX) || fs.existsSync(postTemplateTSX)) {
-    edges.forEach(({ previous, next, node }) => {
-      const { slug, tags } = node.frontmatter;
-      if (!tags) return;
-      tags.forEach(tag => {
-        if (!postsByTag[tag]) postsByTag[tag] = [];
-        postsByTag[tag].push(node);
-      });
-
-      createPage({
-        path: path.join(blogPath, slug || ''),
-        component: fs.existsSync(postTemplateJSX) ? postTemplateJSX : postTemplateTSX,
-        context: {
-          previous,
-          next,
-          slug
-        }
-      });
+  edges.forEach(({ previous, next, node }) => {
+    const { slug, tags } = node.frontmatter;
+    if (!tags) return;
+    tags.forEach(tag => {
+      if (!postsByTag[tag]) postsByTag[tag] = [];
+      postsByTag[tag].push(node);
     });
-  } else {
-    reporter.warn(`there is no template compoent file, expected is ${path.join(templatesPath, 'post')}`);
-  }
+
+    createPage({
+      path: path.join(blogPath, slug || ''),
+      component: postTemplate,
+      context: {
+        previous,
+        next,
+        slug
+      }
+    });
+  });
 
   // generate each tag's posts page if template exits
-  if (fs.existsSync(postByTagTemplateJSX) || fs.existsSync(postByTagTemplateTSX)) {
-    const tags = Object.keys(postsByTag);
+  const tags = Object.keys(postsByTag);
 
-    tags.forEach(tagName => {
-      const posts = postsByTag[tagName];
-      createPage({
-        path: path.join(tagsPath, tagName),
-        component: fs.existsSync(postByTagTemplateJSX) ? postByTagTemplateJSX : postByTagTemplateTSX,
-        context: {
-          posts,
-          tagName
-        }
-      });
+  tags.forEach(tagName => {
+    const posts = postsByTag[tagName];
+    createPage({
+      path: path.join(tagsPath, tagName),
+      component: postsByTagTemplate,
+      context: {
+        posts,
+        tagName
+      }
     });
-  } else {
-    reporter.warn(`there is no template compoent file, expected is ${path.join(templatesPath, 'post-by-tag')}`);
-  }
+  });
 };
 
 exports.onCreateNode = args => {
