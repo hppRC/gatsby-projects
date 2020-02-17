@@ -13,15 +13,15 @@
   },
   "description": "hpp's blog theme",
   "dependencies": {
-    "gatsby-plugin-typescript": "^2.1.27",
-    "@hpprc/gatsby-theme-blog-core": "^1.2.1"
+    "@hpprc/gatsby-theme-blog-core": "^1.2.1",
+    "gatsby-plugin-typescript": "^2.1.27"
   },
   "devDependencies": {
-    "react": "^16.12.0",
+    "@types/react": "^16.9.19",
     "gatsby": "^2.19.17",
-    "webpack": "^4.41.6",
+    "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "@types/react": "^16.9.19"
+    "webpack": "^4.41.6"
   },
   "peerDependencies": {}
 }
