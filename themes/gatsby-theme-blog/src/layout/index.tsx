@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
+import { GlobalCss, ResetCss } from '../components';
 import Header from './Header';
 
 type ContainerProps = {};
@@ -9,6 +10,8 @@ type Props = {} & ContainerProps;
 
 const Component: React.FCX<Props> = ({ children }) => (
   <>
+    <ResetCss />
+    <GlobalCss />
     <Header />
     {children}
   </>

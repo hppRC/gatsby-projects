@@ -31,7 +31,7 @@ const StyledComponent = styled(Component)`
   outline: none;
   transition: border 0.3s;
 
-  ::after {
+  &::after {
     position: absolute;
     top: 0;
     left: 0;
@@ -44,13 +44,10 @@ const StyledComponent = styled(Component)`
     transition: border 0.3s;
   }
 
-  div {
+  > div {
     width: 4rem;
     height: 4rem;
     border-radius: 2rem;
-  }
-  span {
-    display: none;
   }
 
   @media screen and (max-width: 1100px) {

@@ -1,4 +1,3 @@
-import { Link } from 'gatsby';
 import React, { useEffect } from 'react';
 import { animated, useSpring } from 'react-spring';
 import { useScroll } from 'react-use-gesture';
@@ -7,6 +6,7 @@ import styled from '@emotion/styled';
 
 import { ColorModeContainer } from '../../store';
 import ModeButton from './mode-button';
+import SlideInOutTitle from './slide-in-out-title';
 
 type ContainerProps = {};
 type Props = { mode: boolean } & ContainerProps;
@@ -33,12 +33,7 @@ const Component: React.FCX<Props> = ({ className }) => {
   return (
     <header className={className}>
       <animated.div style={{ transform: translate }}>
-        <Link to='/'>
-          <h1>
-            hpp blog
-            <animated.span style={{ transform: scale }}>🌝</animated.span>
-          </h1>
-        </Link>
+        <SlideInOutTitle scale={scale} />
       </animated.div>
       <nav>
         <ModeButton />
@@ -57,23 +52,12 @@ const StyledComponent = styled(Component)`
   width: 100vw;
   padding: 0 0.5rem;
 
-  div {
+  > div {
     padding: 1rem;
     will-change: transform;
-    a {
-      text-decoration: none;
-      h1 {
-        color: #fff;
-        span {
-          display: inline-block;
-          width: 2rem;
-          padding: 0.3rem 0.5rem;
-        }
-      }
-    }
   }
 
-  nav {
+  > nav {
     padding: 1.5rem;
   }
 `;

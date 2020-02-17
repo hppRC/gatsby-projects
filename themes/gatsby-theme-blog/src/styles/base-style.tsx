@@ -9,7 +9,7 @@ export default css`
 
   margin: 0 auto;
 
-  h1 {
+  > h1 {
     padding-bottom: 3rem;
     font-size: 4rem;
   }
