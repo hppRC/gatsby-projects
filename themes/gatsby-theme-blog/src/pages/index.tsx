@@ -2,7 +2,9 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-type ContainerProps = {};
+import { SEO } from '../components';
+
+type ContainerProps = { path: string };
 type Props = {} & ContainerProps;
 
 const Component: React.FCX<Props> = ({ className }) => <main className={className}></main>;
@@ -19,7 +21,12 @@ const StyledComponent = styled(Component)`
 `;
 
 const Container: React.FCX<ContainerProps> = props => {
-  return <StyledComponent {...props} />;
+  return (
+    <>
+      <SEO title='Top' pathname={props.path} />
+      <StyledComponent {...props} />
+    </>
+  );
 };
 
 export default Container;

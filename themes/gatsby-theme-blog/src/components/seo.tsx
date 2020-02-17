@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
+import { JsonLdConfig } from '../../types';
 import { useAnyImage, useSiteBuildTime, useSiteMetadata } from '../hooks';
 
 type Props = {
@@ -9,64 +10,6 @@ type Props = {
   pathname?: string;
   image?: string;
 };
-
-type JsonLdConfigProps = Partial<{
-  '@context': string;
-  '@type': string;
-  inLanguage: string;
-  url: string;
-  headline: string;
-  name: string;
-  alternateName: string;
-  description: string;
-  author: Partial<{
-    '@type': string;
-    name: string;
-    sameas: string;
-    url: string;
-    image: Partial<{
-      '@type': string;
-      url: string;
-      width: number;
-      height: number;
-    }>;
-  }>[];
-  publisher: Partial<{
-    '@type': string;
-    name: string;
-    description: string;
-    logo: Partial<{
-      '@type': string;
-      url: string;
-      width: number;
-      height: number;
-    }>;
-  }>;
-  image:
-    | Partial<{
-        '@type': string;
-        url: string;
-      }>
-    | string;
-  itemListElement: [
-    Partial<{
-      '@type': string;
-      position: number;
-      item: Partial<{
-        '@id': string;
-        name: string;
-        image: string;
-      }>;
-    }>
-  ];
-  datePublished: string;
-  dateModified: string;
-  potentialAction: {};
-  mainEntityOfPage: Partial<{
-    '@type': string;
-    '@id': string;
-  }>;
-}>[];
 
 const SEO: React.FCX<Props> = ({ title = '', description = '', pathname = '', image = '' }) => {
   const metadata = useSiteMetadata();
@@ -134,7 +77,7 @@ const SEO: React.FCX<Props> = ({ title = '', description = '', pathname = '', im
     }
   };
 
-  const jsonLdConfigs: JsonLdConfigProps = [
+  const jsonLdConfigs: JsonLdConfig = [
     {
       '@context': 'http://schema.org',
       '@type': 'WebSite',
