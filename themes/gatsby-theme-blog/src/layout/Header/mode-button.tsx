@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { animated, useSpring } from 'react-spring';
 
 import styled from '@emotion/styled';
@@ -9,15 +9,11 @@ type ContainerProps = {};
 type Props = { mode: boolean; toggle: () => void } & ContainerProps;
 
 const Component: React.FCX<Props> = ({ className, mode, toggle }) => {
-  const sp = useMemo(
-    () =>
-      useSpring({
-        transform: mode ? 'translate3d(2rem, 0, 0)' : 'translate3d(-2rem, 0, 0)',
-        backgroundColor: mode ? '#ffffff' : '#09090f',
-        border: mode ? '2px solid #09090f' : '2px solid #ffffff'
-      }),
-    []
-  );
+  const sp = useSpring({
+    transform: mode ? 'translate3d(2rem, 0, 0)' : 'translate3d(-2rem, 0, 0)',
+    backgroundColor: mode ? '#ffffff' : '#09090f',
+    border: mode ? '2px solid #09090f' : '2px solid #ffffff'
+  });
 
   return (
     <button onClick={toggle} className={className}>
@@ -27,31 +23,31 @@ const Component: React.FCX<Props> = ({ className, mode, toggle }) => {
 };
 
 const StyledComponent = styled(Component)`
+  position: relative;
+  padding: 0 2rem;
+  cursor: pointer;
   border: ${({ mode }) => (mode ? '2px solid #ffffff' : '2px solid #09090f')};
   border-radius: 4rem;
-  cursor: pointer;
   outline: none;
-  padding: 0 2rem;
-  position: relative;
   transition: border 0.3s;
 
   ::after {
-    border: ${({ mode }) => (mode ? '2px solid #09090f' : '2px solid #ffffff')};
-    border-radius: 4rem;
-    content: '';
-    height: 100%;
-    left: 0;
     position: absolute;
     top: 0;
-    transition: border 0.3s;
-    width: 100%;
+    left: 0;
     z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    border: ${({ mode }) => (mode ? '2px solid #09090f' : '2px solid #ffffff')};
+    border-radius: 4rem;
+    transition: border 0.3s;
   }
 
   div {
-    border-radius: 2rem;
-    height: 4rem;
     width: 4rem;
+    height: 4rem;
+    border-radius: 2rem;
   }
   span {
     display: none;

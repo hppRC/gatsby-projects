@@ -15,6 +15,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
+    "emotion-theming": "^10.0.27",
     "gatsby": "^2.19.17",
     "gatsby-plugin-typescript": "^2.1.27",
     "prismjs": "^1.19.0",

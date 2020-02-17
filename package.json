@@ -20,13 +20,14 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
-    "ts-node": "8.6.2",
-    "stylelint": "^13.2.0",
-    "typescript": "3.8.0-dev.20200211",
     "@types/react": "16.9.19",
-    "stylelint-order": "4.0.0",
-    "stylelint-config-standard": "^20.0.0",
+    "stylelint": "^13.2.0",
+    "stylelint-config-recess-order": "^2.0.3",
     "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-styled-components": "^0.1.1"
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-order": "4.0.0",
+    "ts-node": "8.6.2",
+    "typescript": "3.8.0-dev.20200211"
   }
 }
