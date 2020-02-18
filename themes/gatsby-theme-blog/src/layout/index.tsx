@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
-import { GlobalCss, ResetCss } from '../components';
+import { GlobalCSS, ResetCSS } from '../components';
 import Footer from './footer';
 import Header from './header';
 
@@ -11,8 +11,8 @@ type Props = {} & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ children }) => (
   <>
-    <ResetCss />
-    <GlobalCss />
+    <ResetCSS />
+    <GlobalCSS />
     <Header />
     {children}
     <Footer />
@@ -20,7 +20,6 @@ const Component: React.FCX<Props> = memo(({ children }) => (
 ));
 
 const StyledComponent = styled(Component)`
-  color: red;
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 768px) {

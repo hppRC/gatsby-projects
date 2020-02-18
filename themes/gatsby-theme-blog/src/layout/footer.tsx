@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
-import { ColorModeContainer } from '../../store';
+import { ColorModeContainer } from '../store';
 
 type ContainerProps = {};
 type Props = { mode: boolean } & ContainerProps;
