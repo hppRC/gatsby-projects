@@ -27,5 +27,5 @@ export default () => {
     }
   `);
 
-  return site.siteMetadata;
+  return site;
 };

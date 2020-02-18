@@ -4,7 +4,7 @@ import { css, Global } from '@emotion/core';
 
 import { ColorModeContainer } from '../store';
 
-export default () => {
+const GlobalCSS = () => {
   const { mode } = ColorModeContainer.useContainer();
   return (
     <Global
@@ -238,3 +238,5 @@ export default () => {
     />
   );
 };
+
+export default GlobalCSS;

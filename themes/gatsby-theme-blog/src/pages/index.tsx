@@ -6,7 +6,7 @@ import { SEO } from '../components';
 import { baseStyle } from '../styles';
 
 type ContainerProps = { path: string };
-type Props = {} & ContainerProps;
+type Props = {};
 
 const Component: React.FCX<Props> = ({ className }) => <main className={className}>main</main>;
 
@@ -26,7 +26,7 @@ const Container: React.FCX<ContainerProps> = props => {
   return (
     <>
       <SEO title='Top' pathname={props.path} />
-      <StyledComponent {...props} />
+      <StyledComponent />
     </>
   );
 };

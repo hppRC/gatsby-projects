@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
@@ -7,7 +7,7 @@ import { ColorModeContainer } from '../store';
 type ContainerProps = {};
 type Props = { mode: boolean } & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className }) => (
+const Component: React.FCX<Props> = memo(({ className }) => (
   <form className={className} name='contact' method='POST' data-netlify='true' data-netlify-honeypot='bot-field'>
     <input type='hidden' name='form-name' value='contact' />
     <input type='hidden' name='bot-field' />
@@ -45,7 +45,7 @@ const Component: React.FCX<Props> = ({ className }) => (
 
     <button type='submit'>submit</button>
   </form>
-);
+));
 
 const StyledComponent = styled(Component)`
   position: relative;
@@ -107,4 +107,4 @@ const Container: React.FCX<ContainerProps> = () => {
   return <StyledComponent mode={mode} />;
 };
 
-export default Container;
+export default memo(Container);

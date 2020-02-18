@@ -3,4 +3,8 @@ export { default as WrapPageElement } from './wrap-page-element';
 export { default as GlobalCss } from './global-css';
 export { default as ResetCss } from './reset-css';
 export { default as SEO } from './seo';
+export { default as ArticleCard } from './article-card';
 export { default as NetlifyForm } from './netlify-form';
+export { default as DecoMoon } from './deco-moon';
+export { default as TagsList } from './tags-list';
+export { default as ScatteredChars } from './scattered-chars';

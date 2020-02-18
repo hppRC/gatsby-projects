@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { animated, useSpring } from 'react-spring';
 
 import styled from '@emotion/styled';
@@ -8,7 +8,7 @@ import { ColorModeContainer } from '../../store';
 type ContainerProps = {};
 type Props = { mode: boolean; toggle: () => void } & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className, mode, toggle }) => {
+const Component: React.FCX<Props> = memo(({ className, mode, toggle }) => {
   const sp = useSpring({
     transform: mode ? 'translate3d(2rem, 0, 0)' : 'translate3d(-2rem, 0, 0)',
     backgroundColor: mode ? '#ffffff' : '#09090f',
@@ -20,11 +20,12 @@ const Component: React.FCX<Props> = ({ className, mode, toggle }) => {
       <animated.div style={sp} />
     </button>
   );
-};
+});
 
 const StyledComponent = styled(Component)`
   position: relative;
   padding: 0 2rem;
+  pointer-events: auto;
   cursor: pointer;
   border: ${({ mode }) => (mode ? '2px solid #ffffff' : '2px solid #09090f')};
   border-radius: 4rem;
@@ -65,4 +66,4 @@ const Container: React.FCX<ContainerProps> = () => {
   return <StyledComponent mode={mode} toggle={toggle} />;
 };
 
-export default Container;
+export default memo(Container);

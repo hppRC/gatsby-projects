@@ -132,3 +132,32 @@ export type JsonLdConfig = Partial<{
     '@id': string;
   }>;
 }>[];
+
+export type UseHpprcThemeConfig = {
+  hpprcBlogThemeConfig: DeepReadonly<{
+    assetsPath: string;
+    backgroundColor: string;
+    basePath: string;
+    blogPath: string;
+    googleAnalyticsTrackingId: string;
+    iconPath: string;
+    id: string;
+    mdx: boolean;
+    postsPath: string;
+    siteDescription: string;
+    gatsbyRemarkPlugins: string[];
+    siteTitle: string;
+    siteUrl: string;
+    tagsPath: string;
+    themeColor: string;
+    webpackBundleAnalyzer: boolean;
+  }>;
+};
+
+export type AllPosts = DeepReadonly<
+  {
+    body: string;
+    excerpt: string;
+    frontmatter: Frontmatter;
+  }[]
+>;

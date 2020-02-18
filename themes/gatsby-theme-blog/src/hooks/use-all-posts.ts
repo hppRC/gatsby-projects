@@ -7,6 +7,7 @@ export default () => {
     query {
       allMdx(sort: { order: ASC, fields: [frontmatter___date] }) {
         nodes {
+          body
           excerpt(pruneLength: 100)
           frontmatter {
             title

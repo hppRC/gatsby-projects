@@ -73,6 +73,7 @@ export default () => (
       }
 
       a {
+        text-decoration: none;
         background-color: transparent; /* Remove the gray background on active links in IE 10 */
       }
 
@@ -144,6 +145,10 @@ export default () => (
       textarea {
         overflow: auto; /* Internet Explorer 11+ */
         resize: vertical; /* Specify textarea resizability */
+      }
+
+      li {
+        list-style: none;
       }
 
       button,

@@ -7,17 +7,18 @@ import styled from '@emotion/styled';
 type ContainerProps = { scale: SpringValue<string> };
 type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className, scale }) => (
+const Component: React.FCX<Props> = memo(({ className, scale }) => (
   <Link to='/' className={className}>
     <h1>
       hpp blog
       <animated.span style={{ transform: scale }}>🌝</animated.span>
     </h1>
   </Link>
-);
+));
 
 const StyledComponent = styled(Component)`
-  text-decoration: none;
+  pointer-events: auto;
+
   > h1 {
     color: #fff;
     > span {

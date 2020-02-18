@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Helmet from 'react-helmet';
 
 import { JsonLdConfig } from '../../types';
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const SEO: React.FCX<Props> = ({ title = '', description = '', pathname = '', image = '' }) => {
-  const metadata = useSiteMetadata();
+  const { siteMetadata } = useSiteMetadata();
   const buildTime = useSiteBuildTime();
   const icon = useAnyImage('icon.png');
   const banner = useAnyImage('banner.jpg');
@@ -25,7 +25,7 @@ const SEO: React.FCX<Props> = ({ title = '', description = '', pathname = '', im
     siteLanguage,
     author,
     social = {}
-  } = metadata;
+  } = siteMetadata;
 
   const { twitter, github, qiita } = social;
 
@@ -163,4 +163,4 @@ const SEO: React.FCX<Props> = ({ title = '', description = '', pathname = '', im
   );
 };
 
-export default SEO;
+export default memo(SEO);

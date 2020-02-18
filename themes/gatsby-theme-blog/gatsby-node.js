@@ -17,7 +17,7 @@ exports.onPreBootstrap = ({ reporter, store }, themeOptions) => {
   dirs.forEach(dir => {
     if (fs.existsSync(dir)) return;
 
-    reporter.info(`Initializing "${dir}" directory`);
+    reporter.info(`Initializing "${dir}" directory by @hpprc/gatsby-theme-blog`);
     mkdirp.sync(dir);
   });
 };
@@ -40,7 +40,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }, themeOpti
   });
 };
 
-exports.createPages = async ({ graphql, actions: { createPage } }, themeOptions) => {
+exports.createPages = async ({ reporter, graphql, actions: { createPage } }, themeOptions) => {
   const { blogPath, tagsPath, mdx } = withDefault(themeOptions);
   if (!mdx) return;
 

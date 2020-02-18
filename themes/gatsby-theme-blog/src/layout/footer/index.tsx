@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
@@ -7,9 +7,9 @@ import { ColorModeContainer } from '../../store';
 type ContainerProps = {};
 type Props = { mode: boolean } & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className }) => (
-  <footer className={className}>Copyright © 2019 hppRC All Rights Reserved.</footer>
-);
+const Component: React.FCX<Props> = memo(({ className }) => (
+  <footer className={className}>Copyright © 2020 hppRC All Rights Reserved.</footer>
+));
 
 const StyledComponent = styled(Component)`
   display: flex;
@@ -36,4 +36,4 @@ const Container: React.FCX<ContainerProps> = () => {
   return <StyledComponent mode={mode} />;
 };
 
-export default Container;
+export default memo(Container);

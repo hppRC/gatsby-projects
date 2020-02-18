@@ -4,14 +4,13 @@ import { useScroll } from 'react-use-gesture';
 
 import styled from '@emotion/styled';
 
-import { ColorModeContainer } from '../../store';
 import ModeButton from './mode-button';
 import SlideInOutTitle from './slide-in-out-title';
 
 type ContainerProps = {};
-type Props = { mode: boolean } & ContainerProps;
+type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className }) => {
+const Component: React.FCX<Props> = memo(({ className }) => {
   const [{ translate, scale }, set] = useSpring(() => ({
     translate: `translate3d(0rem, 0, 0)`,
     scale: 'scale(1.0)'
@@ -40,7 +39,7 @@ const Component: React.FCX<Props> = ({ className }) => {
       </nav>
     </header>
   );
-};
+});
 
 const StyledComponent = styled(Component)`
   position: fixed;
@@ -51,6 +50,7 @@ const StyledComponent = styled(Component)`
   justify-content: space-between;
   width: 100vw;
   padding: 0 0.5rem;
+  pointer-events: none;
 
   > div {
     padding: 1rem;
@@ -63,9 +63,7 @@ const StyledComponent = styled(Component)`
 `;
 
 const Container: React.FCX<ContainerProps> = () => {
-  const { mode } = ColorModeContainer.useContainer();
-
-  return <StyledComponent mode={mode} />;
+  return <StyledComponent />;
 };
 
 export default memo(Container);

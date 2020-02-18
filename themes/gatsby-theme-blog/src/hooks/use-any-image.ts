@@ -1,8 +1,9 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { FluidObject } from 'gatsby-image';
 
 import { UseAnyImage } from '../../types';
 
-export default (filename: string) => {
+const useAnyImage = (filename: string): FluidObject | undefined => {
   //relativePath: path from `image`
   //it is configured in gatsby-config.js of `gatsby-source-filesystem`
   const { allFile } = useStaticQuery<UseAnyImage>(graphql`
@@ -26,3 +27,5 @@ export default (filename: string) => {
 
   return targetImage?.childImageSharp.fluid;
 };
+
+export default useAnyImage;
