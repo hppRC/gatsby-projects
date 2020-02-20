@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
+import { FluidObject } from 'gatsby-image';
 import path from 'path';
 import React, { memo, useState } from 'react';
 import { animated, config, useSpring } from 'react-spring';
@@ -9,7 +9,7 @@ import styled from '@emotion/styled';
 import { Frontmatter } from '../../types';
 import { useHpprcThemeConfig } from '../hooks';
 import { ColorModeContainer } from '../store';
-import { DecoMoon, TagsList } from './';
+import { DecoMoon, MemolizedImage, TagsList } from './';
 
 type ContainerProps = {
   key: number;
@@ -18,12 +18,6 @@ type ContainerProps = {
   excerpt: string;
 };
 type Props = { mode: boolean; enter: boolean; setEnter: (enter: boolean) => void; blogPath: string } & ContainerProps;
-type EyeCatchProps = { fluid: FluidObject | undefined };
-
-// to avoid re-rendering image component
-const EyeCatch: React.FCX<EyeCatchProps> = memo(({ fluid }) => (
-  <>{fluid && <Img fluid={fluid} alt='eyecatch iage' />}</>
-));
 
 const Component: React.FCX<Props> = ({ className, key, excerpt, frontmatter, fluid, enter, setEnter, blogPath }) => {
   const { slug, title, date, tags } = frontmatter;
@@ -42,7 +36,7 @@ const Component: React.FCX<Props> = ({ className, key, excerpt, frontmatter, flu
       style={sp}
     >
       <Link to={path.join('/', blogPath, slug || '')}>
-        <EyeCatch fluid={fluid} />
+        <MemolizedImage fluid={fluid} />
         <div>
           <h2>{title}</h2>
           <p>{date}</p>
@@ -101,4 +95,4 @@ const Container: React.FCX<ContainerProps> = props => {
   return <StyledComponent {...{ ...props, enter, setEnter, mode, blogPath }} />;
 };
 
-export default Container;
+export default memo(Container);

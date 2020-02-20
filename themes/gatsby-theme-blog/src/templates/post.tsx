@@ -2,16 +2,17 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import 'katex/dist/katex.min.css';
 
 import { graphql } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
+import { FluidObject } from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 
 import styled from '@emotion/styled';
 
 import { PostData, PostNode, PostPageContext } from '../../types';
-import { Background, ScatteredChars, SEO, SideContents, TagsList } from '../components';
+import {
+    Background, MemolizedImage, ScatteredChars, SEO, SideContents, TagsList
+} from '../components';
 import { ColorModeContainer } from '../store';
-import { baseStyle } from '../styles';
 
 type ContainerProps = { path: string; data: PostData; pageContext: PostPageContext };
 type Props = {
@@ -38,7 +39,7 @@ const Component: React.FCX<Props> = ({ className, body, headings, title, date, t
     </section>
     <article>
       <div>
-        {fluid && <Img fluid={fluid} alt='eyecatch image' />}
+        <MemolizedImage fluid={fluid} />
         <MDXRenderer>{body}</MDXRenderer>
       </div>
       <SideContents headings={headings} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 
@@ -61,4 +61,4 @@ const Container: React.FCX<ContainerProps> = ({ chars }) => {
   return <StyledComponent chars={chars} />;
 };
 
-export default Container;
+export default memo(Container);

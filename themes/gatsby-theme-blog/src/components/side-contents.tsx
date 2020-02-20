@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 import { Location } from '@reach/router';
@@ -18,7 +18,7 @@ type ContainerProps = {
 
 type Props = { mode: boolean } & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className, headings }) => (
+const Component: React.FCX<Props> = memo(({ className, headings }) => (
   <Location>
     {({ location }) => (
       <div className={className}>
@@ -32,7 +32,7 @@ const Component: React.FCX<Props> = ({ className, headings }) => (
       </div>
     )}
   </Location>
-);
+));
 
 const StyledComponent = styled(Component)`
   > ul {
@@ -75,4 +75,4 @@ const Container: React.FCX<ContainerProps> = props => {
   return <StyledComponent {...props} mode={mode} />;
 };
 
-export default Container;
+export default memo(Container);
