@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import { ColorModeContainer } from '../store';
 
-type ContainerProps = { tags: string[] | undefined };
+type ContainerProps = { tags: string[] | undefined; isTitle?: boolean };
 type Props = { mode: boolean } & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ className, tags }) => (
@@ -25,9 +25,9 @@ const StyledComponent = styled(Component)`
     padding: 0.2rem 0.4rem;
     margin-right: 0.5rem;
     font-size: 1.4rem;
-    color: ${({ mode }) => (mode ? '#09090ff0' : '#fffffff0')};
+    color: ${({ mode, isTitle }) => (!isTitle && mode ? '#09090ff0' : '#fffffff0')};
     word-break: keep-all;
-    border: 0.5px solid ${({ mode }) => (mode ? '#09090ff0' : '#fffffff0')};
+    border: 0.5px solid ${({ mode, isTitle }) => (!isTitle && mode ? '#09090ff0' : '#fffffff0')};
     border-radius: 3px;
     transition: color, border 0.3s;
   }
@@ -42,9 +42,9 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
+const Container: React.FCX<ContainerProps> = ({ tags, isTitle }) => {
   const { mode } = ColorModeContainer.useContainer();
-  return <StyledComponent {...props} mode={mode} />;
+  return <StyledComponent tags={tags} mode={mode} isTitle={isTitle} />;
 };
 
 export default memo(Container);

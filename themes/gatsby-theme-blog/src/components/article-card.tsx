@@ -1,11 +1,13 @@
 import { Link } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
+import path from 'path';
 import React, { memo, useState } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 
 import styled from '@emotion/styled';
 
 import { Frontmatter } from '../../types';
+import { useHpprcThemeConfig } from '../hooks';
 import { ColorModeContainer } from '../store';
 import { DecoMoon, TagsList } from './';
 
@@ -15,7 +17,7 @@ type ContainerProps = {
   fluid: FluidObject | undefined;
   excerpt: string;
 };
-type Props = { mode: boolean; enter: boolean; setEnter: (enter: boolean) => void } & ContainerProps;
+type Props = { mode: boolean; enter: boolean; setEnter: (enter: boolean) => void; blogPath: string } & ContainerProps;
 type EyeCatchProps = { fluid: FluidObject | undefined };
 
 // to avoid re-rendering image component
@@ -23,8 +25,9 @@ const EyeCatch: React.FCX<EyeCatchProps> = memo(({ fluid }) => (
   <>{fluid && <Img fluid={fluid} alt='eyecatch iage' />}</>
 ));
 
-const Component: React.FCX<Props> = memo(({ className, key, excerpt, frontmatter, fluid, enter, setEnter }) => {
+const Component: React.FCX<Props> = ({ className, key, excerpt, frontmatter, fluid, enter, setEnter, blogPath }) => {
   const { slug, title, date, tags } = frontmatter;
+
   const sp = useSpring({
     config: config.wobbly,
     transform: enter ? 'scale(1.05)' : 'scale(1.0)'
@@ -38,19 +41,19 @@ const Component: React.FCX<Props> = memo(({ className, key, excerpt, frontmatter
       onMouseLeave={() => setEnter(false)}
       style={sp}
     >
-      <Link to={`/posts/${slug}`}>
+      <Link to={path.join('/', blogPath, slug || '')}>
         <EyeCatch fluid={fluid} />
         <div>
           <h2>{title}</h2>
           <p>{date}</p>
-          <TagsList tags={tags as string[] | undefined} />
+          <TagsList tags={tags} />
           <p>{excerpt}</p>
         </div>
       </Link>
       <DecoMoon enter={enter} />
     </animated.article>
   );
-});
+};
 
 const StyledComponent = styled(Component)`
   position: relative;
@@ -94,7 +97,8 @@ const StyledComponent = styled(Component)`
 const Container: React.FCX<ContainerProps> = props => {
   const [enter, setEnter] = useState(false);
   const { mode } = ColorModeContainer.useContainer();
-  return <StyledComponent {...props} {...{ enter, setEnter, mode }} />;
+  const { blogPath } = useHpprcThemeConfig();
+  return <StyledComponent {...{ ...props, enter, setEnter, mode, blogPath }} />;
 };
 
-export default memo(Container);
+export default Container;

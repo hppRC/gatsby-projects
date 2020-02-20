@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { animated, config, useSpring } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 
@@ -8,9 +8,9 @@ type ContainerProps = { chars: string };
 type Props = {} & ContainerProps;
 type BlockProps = { ch: string };
 
-const Block: React.FCX<BlockProps> = memo(({ ch }) => {
+const Block: React.FCX<BlockProps> = ({ ch }) => {
   const [{ x, y }, set] = useSpring(() => ({
-    config: config.gentle,
+    config: config.stiff,
     x: 0,
     y: 0
   }));
@@ -20,9 +20,9 @@ const Block: React.FCX<BlockProps> = memo(({ ch }) => {
       {ch}
     </animated.h2>
   );
-});
+};
 
-const Component: React.FCX<Props> = memo(({ className, chars }) => (
+const Component: React.FCX<Props> = ({ className, chars }) => (
   <div className={className}>
     {Array.from(chars).map((ch: string, i: number) => (
       <li key={i}>
@@ -30,7 +30,7 @@ const Component: React.FCX<Props> = memo(({ className, chars }) => (
       </li>
     ))}
   </div>
-));
+);
 
 const StyledComponent = styled(Component)`
   display: flex;
@@ -61,4 +61,4 @@ const Container: React.FCX<ContainerProps> = ({ chars }) => {
   return <StyledComponent chars={chars} />;
 };
 
-export default memo(Container);
+export default Container;

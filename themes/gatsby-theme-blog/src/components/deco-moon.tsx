@@ -11,6 +11,7 @@ const Component: React.FCX<Props> = memo(({ className, enter }) => {
     config: config.wobbly,
     transform: enter ? 'translate3d(-10rem,0rem,0)' : 'translate3d(2rem,-10rem,0)'
   });
+
   return (
     <animated.div style={sp} className={className}>
       🌝

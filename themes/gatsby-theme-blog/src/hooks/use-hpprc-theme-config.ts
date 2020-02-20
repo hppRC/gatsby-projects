@@ -6,7 +6,7 @@ import { UseHpprcThemeConfig } from '../../types';
  * ex. const {siteTitle, siteUrl} = useSiteMetadata();
  */
 export default () => {
-  const {} = useStaticQuery<UseHpprcThemeConfig>(graphql`
+  const { hpprcBlogThemeConfig } = useStaticQuery<UseHpprcThemeConfig>(graphql`
     query {
       hpprcBlogThemeConfig {
         assetsPath
@@ -27,4 +27,5 @@ export default () => {
       }
     }
   `);
+  return hpprcBlogThemeConfig;
 };

@@ -37,9 +37,9 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
+const Container: React.FCX<ContainerProps> = () => {
   const background = useAnyImage('background.jpg');
-  return <StyledComponent {...props} background={background} />;
+  return <StyledComponent background={background} />;
 };
 
-export default memo(Container);
+export default Container;

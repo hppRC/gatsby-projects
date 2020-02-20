@@ -1,21 +1,19 @@
 import { FluidObject } from 'gatsby-image';
-import { DeepPartial, DeepReadonly } from 'utility-types';
+import { DeepPartial } from 'utility-types';
 
-export type Frontmatter = DeepReadonly<
-  Partial<{
-    slug: string;
-    title: string;
-    date: string;
-    tags: string[];
-    cover: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
+export type Frontmatter = Partial<{
+  slug: string;
+  title: string;
+  date: string;
+  tags: string[];
+  cover: {
+    childImageSharp: {
+      fluid: FluidObject;
     };
-  }>
->;
+  };
+}>;
 
-export type UseAllPosts = DeepReadonly<{
+export type UseAllPosts = {
   allMdx: {
     nodes: {
       body: string;
@@ -23,13 +21,13 @@ export type UseAllPosts = DeepReadonly<{
       frontmatter: Frontmatter;
     }[];
   };
-}>;
+};
 
 export type PostsByTag = {
   [key: string]: { frontmatter: Frontmatter; excerpt: string }[];
 };
 
-export type UseAllTags = DeepReadonly<{
+export type UseAllTags = {
   allMdx: {
     nodes: {
       frontmatter: {
@@ -37,9 +35,9 @@ export type UseAllTags = DeepReadonly<{
       };
     }[];
   };
-}>;
+};
 
-export type UseAnyImage = DeepReadonly<{
+export type UseAnyImage = {
   allFile: Partial<{
     nodes: {
       relativePath: string;
@@ -48,15 +46,15 @@ export type UseAnyImage = DeepReadonly<{
       };
     }[];
   }>;
-}>;
+};
 
-export type UseSiteBuildtime = DeepReadonly<{
+export type UseSiteBuildtime = {
   site: {
     buildTime: string;
   };
-}>;
+};
 
-export type UseSiteMetadata = DeepReadonly<{
+export type UseSiteMetadata = {
   site: {
     siteMetadata: DeepPartial<{
       siteTitle: string;
@@ -73,7 +71,7 @@ export type UseSiteMetadata = DeepReadonly<{
       };
     }>;
   };
-}>;
+};
 
 export type JsonLdConfig = Partial<{
   '@context': string;
@@ -134,7 +132,7 @@ export type JsonLdConfig = Partial<{
 }>[];
 
 export type UseHpprcThemeConfig = {
-  hpprcBlogThemeConfig: DeepReadonly<{
+  hpprcBlogThemeConfig: {
     assetsPath: string;
     backgroundColor: string;
     basePath: string;
@@ -151,13 +149,31 @@ export type UseHpprcThemeConfig = {
     tagsPath: string;
     themeColor: string;
     webpackBundleAnalyzer: boolean;
-  }>;
+  };
 };
 
-export type AllPosts = DeepReadonly<
-  {
+export type AllPosts = {
+  body: string;
+  excerpt: string;
+  frontmatter: Frontmatter;
+}[];
+
+export type PostPageContext = {
+  previous: PostNode;
+  next: PostNode;
+  slug: string;
+};
+
+export type PostNode = { frontmatter: Frontmatter; excerpt: string } | null;
+
+export type PostData = {
+  mdx: {
     body: string;
     excerpt: string;
+    headings: {
+      value: string;
+      depth: number;
+    }[];
     frontmatter: Frontmatter;
-  }[]
->;
+  } | null;
+};
