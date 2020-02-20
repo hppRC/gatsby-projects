@@ -23,13 +23,13 @@ const Block: React.FCX<BlockProps> = memo(({ ch }) => {
 });
 
 const Component: React.FCX<Props> = memo(({ className, chars }) => (
-  <section className={className}>
+  <div className={className}>
     {Array.from(chars).map((ch: string, i: number) => (
       <li key={i}>
         <Block ch={ch} />
       </li>
     ))}
-  </section>
+  </div>
 ));
 
 const StyledComponent = styled(Component)`

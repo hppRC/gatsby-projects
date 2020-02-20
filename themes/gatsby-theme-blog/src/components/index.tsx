@@ -8,3 +8,4 @@ export { default as NetlifyForm } from './netlify-form';
 export { default as DecoMoon } from './deco-moon';
 export { default as TagsList } from './tags-list';
 export { default as ScatteredChars } from './scattered-chars';
+export { default as Background } from './background';

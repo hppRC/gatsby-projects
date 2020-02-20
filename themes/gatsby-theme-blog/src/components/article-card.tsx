@@ -16,6 +16,12 @@ type ContainerProps = {
   excerpt: string;
 };
 type Props = { mode: boolean; enter: boolean; setEnter: (enter: boolean) => void } & ContainerProps;
+type EyeCatchProps = { fluid: FluidObject | undefined };
+
+// to avoid re-rendering image component
+const EyeCatch: React.FCX<EyeCatchProps> = memo(({ fluid }) => (
+  <>{fluid && <Img fluid={fluid} alt='eyecatch iage' />}</>
+));
 
 const Component: React.FCX<Props> = memo(({ className, key, excerpt, frontmatter, fluid, enter, setEnter }) => {
   const { slug, title, date, tags } = frontmatter;
@@ -33,7 +39,7 @@ const Component: React.FCX<Props> = memo(({ className, key, excerpt, frontmatter
       style={sp}
     >
       <Link to={`/posts/${slug}`}>
-        {fluid && <Img fluid={fluid} alt='eyecatch iage' />}
+        <EyeCatch fluid={fluid} />
         <div>
           <h2>{title}</h2>
           <p>{date}</p>
@@ -53,6 +59,7 @@ const StyledComponent = styled(Component)`
   background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
   box-shadow: 0px 3px 10px 0px #09090f30;
   transition: background-color 0.3s;
+
   > a {
     position: relative;
     display: block;
@@ -64,11 +71,6 @@ const StyledComponent = styled(Component)`
     text-decoration: none;
     transition: color 0.3s;
 
-    > img,
-    > picture {
-      border-radius: 3px;
-    }
-
     > div {
       padding: 1rem;
       > p {
@@ -76,6 +78,8 @@ const StyledComponent = styled(Component)`
       }
     }
   }
+
+  will-change: transform;
 
   @media screen and (max-width: 1100px) {
   }
