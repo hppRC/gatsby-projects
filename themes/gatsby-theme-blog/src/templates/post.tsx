@@ -4,13 +4,13 @@ import 'katex/dist/katex.min.css';
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import React from 'react';
+import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
 import { PostData, PostNode, PostPageContext } from '../../types';
 import {
-    Background, MemolizedImage, ScatteredChars, SEO, SideContents, TagsList
+    Background, MemolizedImage, PrevNextCard, ScatteredChars, SEO, SideContents, TagsList
 } from '../components';
 import { ColorModeContainer } from '../store';
 
@@ -27,7 +27,7 @@ type Props = {
   mode: boolean;
 };
 
-const Component: React.FCX<Props> = ({ className, body, headings, title, date, tags, fluid, previous, next }) => (
+const Component: React.FCX<Props> = memo(({ className, body, headings, title, date, tags, fluid, previous, next }) => (
   <main className={className}>
     <Background />
     <section>
@@ -44,13 +44,14 @@ const Component: React.FCX<Props> = ({ className, body, headings, title, date, t
       </div>
       <SideContents headings={headings} />
     </article>
+    <PrevNextCard prev={previous} next={next} />
   </main>
-);
+));
 
 const StyledComponent = styled(Component)`
   position: relative;
 
-  > section:nth-of-type(1) {
+  > section {
     position: absolute;
     top: 0;
     left: 0;
@@ -61,9 +62,15 @@ const StyledComponent = styled(Component)`
     align-items: center;
     flex-direction: column;
 
-    > h1 {
-      color: #ffffff;
-      font-size: 10rem;
+    > div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      > p {
+        padding: 0.5rem 2rem;
+        color: #ffffff;
+      }
     }
   }
 
@@ -77,6 +84,9 @@ const StyledComponent = styled(Component)`
     > div {
       padding: 5rem 2vw 5rem 2vw;
     }
+  }
+
+  > div {
   }
   @media screen and (max-width: 1100px) {
   }
@@ -130,4 +140,4 @@ export const query = graphql`
   }
 `;
 
-export default Container;
+export default memo(Container);

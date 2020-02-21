@@ -23,4 +23,4 @@ const Container: React.FCX<ContainerProps> = props => {
   return <StyledComponent {...props} />;
 };
 
-export default Container;
+export default memo(Container);
