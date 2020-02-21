@@ -3,14 +3,13 @@ import 'katex/dist/katex.min.css';
 
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
 import { PostData, PostNode, PostPageContext } from '../../types';
 import {
-    Background, MemolizedImage, PrevNextCard, ScatteredChars, SEO, SideContents, TagsList
+    Background, PostBody, PrevNextCard, ScatteredChars, SEO, SideContents, TagsList
 } from '../components';
 import { ColorModeContainer } from '../store';
 
@@ -38,10 +37,7 @@ const Component: React.FCX<Props> = memo(({ className, body, headings, title, da
       </div>
     </section>
     <article>
-      <div>
-        <MemolizedImage fluid={fluid} />
-        <MDXRenderer>{body}</MDXRenderer>
-      </div>
+      <PostBody fluid={fluid} body={body} />
       <SideContents headings={headings} />
     </article>
     <PrevNextCard prev={previous} next={next} />
@@ -71,6 +67,13 @@ const StyledComponent = styled(Component)`
         padding: 0.5rem 2rem;
         color: #ffffff;
       }
+
+      > ul {
+        > li {
+          margin: 0 0.4rem;
+          font-size: 1.6rem;
+        }
+      }
     }
   }
 
@@ -80,14 +83,9 @@ const StyledComponent = styled(Component)`
     display: grid;
     grid-template-columns: 3fr 0.75fr;
     background-color: transparent;
-
-    > div {
-      padding: 5rem 2vw 5rem 2vw;
-    }
+    padding: 5rem 2vw 5rem 2vw;
   }
 
-  > div {
-  }
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 768px) {

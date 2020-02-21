@@ -60,14 +60,15 @@ const StyledComponent = styled(Component)`
     height: auto;
     position: relative;
     margin: 3rem;
-    padding: 2rem 1rem;
     overflow: hidden;
     border-radius: 3px;
     box-shadow: 0px 3px 10px 0px #09090f30;
     background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
 
     > a {
+      padding: 2rem 1rem;
       display: flex;
+      align-items: center;
       color: ${({ mode }) => (mode ? '#09090f' : '#fffffff0')};
 
       > .gatsby-image-wrapper {

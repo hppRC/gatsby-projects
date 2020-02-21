@@ -12,3 +12,4 @@ export { default as Background } from './background';
 export { default as SideContents } from './side-contents';
 export { default as MemolizedImage } from './memolized-image';
 export { default as PrevNextCard } from './prev-next-card';
+export { default as PostBody } from './post-body';

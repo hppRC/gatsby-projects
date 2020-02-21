@@ -11,7 +11,7 @@ type Props = { mode: boolean; toggle: () => void } & ContainerProps;
 const Component: React.FCX<Props> = memo(({ className, mode, toggle }) => {
   const sp = useSpring({
     transform: mode ? 'translate3d(2rem, 0, 0)' : 'translate3d(-2rem, 0, 0)',
-    backgroundColor: mode ? '#ffffff' : '#09090f',
+    backgroundColor: mode ? '#ffffff' : '#09090f90',
     border: mode ? '2px solid #09090f' : '2px solid #ffffff'
   });
 
@@ -27,7 +27,7 @@ const StyledComponent = styled(Component)`
   padding: 0 2rem;
   pointer-events: auto;
   cursor: pointer;
-  border: ${({ mode }) => (mode ? '2px solid #ffffff' : '2px solid #09090f')};
+  border: ${({ mode }) => (mode ? '2px solid #ffffff' : '2px solid #09090f90')};
   border-radius: 4rem;
   outline: none;
   transition: border 0.3s;
@@ -40,7 +40,7 @@ const StyledComponent = styled(Component)`
     width: 100%;
     height: 100%;
     content: '';
-    border: ${({ mode }) => (mode ? '2px solid #09090f' : '2px solid #ffffff')};
+    border: ${({ mode }) => (mode ? '2px solid #09090f90' : '2px solid #ffffff')};
     border-radius: 4rem;
     transition: border 0.3s;
   }

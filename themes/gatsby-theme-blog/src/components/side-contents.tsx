@@ -35,13 +35,13 @@ const Component: React.FCX<Props> = memo(({ className, headings }) => (
 ));
 
 const StyledComponent = styled(Component)`
+  padding: 0 2rem;
   > ul {
     position: sticky;
     top: 7.5vh;
     list-style: none;
 
     > li {
-      padding: 0.5rem;
       border-radius: 3px;
       transition: background-color 0.15s;
       :hover {
@@ -49,6 +49,8 @@ const StyledComponent = styled(Component)`
       }
 
       > a {
+        display: block;
+        padding: 0.5rem;
         color: ${({ mode }) => (mode ? '#09090f90' : '#ffffff90')};
         text-decoration: none;
         transition: color 0.15s;
@@ -75,4 +77,5 @@ const Container: React.FCX<ContainerProps> = props => {
   return <StyledComponent {...props} mode={mode} />;
 };
 
-export default memo(Container);
+// when you memolize this, you'll get an error to jump headdings(you can jump only once)
+export default Container;
