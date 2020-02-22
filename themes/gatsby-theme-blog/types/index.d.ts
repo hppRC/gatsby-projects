@@ -177,3 +177,8 @@ export type PostData = {
     frontmatter: Frontmatter;
   } | null;
 };
+
+export type PostsByTagPageContext = {
+  posts: { frontmatter: Frontmatter; excerpt: string }[];
+  tagName: string;
+};
