@@ -36,11 +36,10 @@ const StyledComponent = styled(Component)`
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
     width: 100%;
     height: 100%;
     content: '';
-    border: ${({ mode }) => (mode ? '2px solid #09090f90' : '2px solid #ffffff')};
+    border: ${({ mode }) => (mode ? '2px solid #09090f' : '2px solid #ffffff')};
     border-radius: 4rem;
     transition: border 0.3s;
   }
