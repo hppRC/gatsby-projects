@@ -2,16 +2,31 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import { SEO } from '../components';
-import { baseStyle } from '../styles';
+import { AllPosts } from '../../types';
+import { ArticleCard, Background, ScatteredChars, SEO } from '../components';
+import { useAllPosts, useHpprcThemeConfig } from '../hooks';
+import { postsStyle } from '../styles';
 
 type ContainerProps = { path: string };
-type Props = {};
+type Props = { posts: AllPosts; siteTitle: string };
 
-const Component: React.FCX<Props> = ({ className }) => <main className={className}>main</main>;
+const Component: React.FCX<Props> = ({ className, posts, siteTitle }) => (
+  <main className={className}>
+    <Background />
+    <section>
+      <ScatteredChars chars={siteTitle} />
+    </section>
+    <section>
+      {posts.map(({ excerpt, frontmatter }, i) => {
+        const fluid = frontmatter.cover?.childImageSharp.fluid;
+        return <ArticleCard key={i} frontmatter={frontmatter} fluid={fluid} excerpt={excerpt} />;
+      })}
+    </section>
+  </main>
+);
 
 const StyledComponent = styled(Component)`
-  ${baseStyle}
+  ${postsStyle}
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 768px) {
@@ -22,11 +37,13 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
+const Container: React.FCX<ContainerProps> = ({ path }) => {
+  const nodes = useAllPosts();
+  const { siteTitle } = useHpprcThemeConfig();
   return (
     <>
-      <SEO title='Top' pathname={props.path} />
-      <StyledComponent />
+      <SEO title='Top' pathname={path} />
+      <StyledComponent posts={nodes} siteTitle={siteTitle} />
     </>
   );
 };

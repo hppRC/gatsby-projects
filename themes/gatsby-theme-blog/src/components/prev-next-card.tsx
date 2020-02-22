@@ -57,11 +57,13 @@ const StyledComponent = styled(Component)`
   grid-template-columns: min(50vw, 700px) min(50vw, 700px);
 
   > article {
+    height: 100%;
     position: relative;
-    margin: 3rem;
+    margin: 0 3rem;
     overflow: hidden;
     border-radius: 3px;
-    box-shadow: 0px 6px 20px 0px ${({ mode }) => (mode ? '#09090f30' : '#00000f')};
+    box-shadow: 5px 5px 10px ${({ mode }) => (mode ? '#d9d9d9' : '#00000f')},
+      -5px -5px 10px ${({ mode }) => (mode ? '#ffffff' : '#00000f')};
     background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
 
     > a {
@@ -75,8 +77,8 @@ const StyledComponent = styled(Component)`
         width: 50%;
         height: 100%;
         border-radius: 3px;
-        > img {
-          height: 20rem;
+        > picture img {
+          height: 100%;
           border-radius: 3px;
         }
       }

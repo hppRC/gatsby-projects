@@ -23,7 +23,9 @@ export default css`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 2rem;
+    /* max-width: 1400px; */
     padding: 5rem;
+    margin: 0 auto;
   }
 
   @media screen and (max-width: 1100px) {

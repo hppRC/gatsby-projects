@@ -54,8 +54,11 @@ const StyledComponent = styled(Component)`
   overflow: hidden;
 
   background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
-  box-shadow: 0px 3px 10px 0px #09090f30;
+  box-shadow: 5px 5px 10px ${({ mode }) => (mode ? '#d9d9d9' : '#00000f')},
+    -5px -5px 10px ${({ mode }) => (mode ? '#ffffff' : '#00000f')};
   transition: background-color 0.3s;
+
+  will-change: transform;
 
   > a {
     position: relative;
@@ -75,8 +78,6 @@ const StyledComponent = styled(Component)`
       }
     }
   }
-
-  will-change: transform;
 
   @media screen and (max-width: 1100px) {
   }

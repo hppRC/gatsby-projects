@@ -1,6 +1,6 @@
 module.exports = themeOptions => {
   const {
-    siteTitle = 'Site Title',
+    siteTitle = 'hpp blog',
     siteUrl = 'https://blog.hpprc.com',
     siteDescription = 'personal blog made with Gatsby, TypeScript.',
     basePath = '/',
