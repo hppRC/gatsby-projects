@@ -23,13 +23,13 @@ const Block: React.FCX<BlockProps> = ({ ch }) => {
 };
 
 const Component: React.FCX<Props> = ({ className, chars }) => (
-  <div className={className}>
+  <ul className={className}>
     {Array.from(chars).map((ch: string, i: number) => (
       <li key={i}>
         <Block ch={ch} />
       </li>
     ))}
-  </div>
+  </ul>
 );
 
 const StyledComponent = styled(Component)`
@@ -38,7 +38,7 @@ const StyledComponent = styled(Component)`
   justify-content: center;
 
   > li {
-    z-index: 100;
+    display: felx;
     touch-action: auto;
     cursor: pointer;
     user-select: none;

@@ -57,7 +57,6 @@ const StyledComponent = styled(Component)`
   grid-template-columns: min(50vw, 700px) min(50vw, 700px);
 
   > article {
-    height: auto;
     position: relative;
     margin: 3rem;
     overflow: hidden;
@@ -66,9 +65,9 @@ const StyledComponent = styled(Component)`
     background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
 
     > a {
+      height: 100%;
       padding: 2rem 1rem;
       display: flex;
-      align-items: center;
       color: ${({ mode }) => (mode ? '#09090f' : '#fffffff0')};
 
       > .gatsby-image-wrapper {
@@ -85,6 +84,7 @@ const StyledComponent = styled(Component)`
       > section {
         display: flex;
         flex-direction: column;
+        justify-content: center;
 
         width: 50%;
         height: 100%;
