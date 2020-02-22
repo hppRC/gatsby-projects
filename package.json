@@ -3,7 +3,7 @@
   "author": "hppRC <hpp.ricecake@gmail.com>",
   "private": true,
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
     "blog": "yarn workspace blog start",
     "add-blog": "yarn workspace blog add",
