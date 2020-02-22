@@ -7,7 +7,7 @@ import { animated, config, useSpring } from 'react-spring';
 import styled from '@emotion/styled';
 
 import { Frontmatter } from '../../types';
-import { useHpprcThemeConfig } from '../hooks';
+import { useAnyImage, useHpprcThemeConfig } from '../hooks';
 import { ColorModeContainer } from '../store';
 import { DecoMoon, MemolizedImage, TagsList } from './';
 
@@ -88,11 +88,16 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
+const Container: React.FCX<ContainerProps> = ({
+  key,
+  frontmatter,
+  fluid = useAnyImage('background.png') || useAnyImage('background.jpg'),
+  excerpt
+}) => {
   const [enter, setEnter] = useState(false);
   const { mode } = ColorModeContainer.useContainer();
   const { blogPath } = useHpprcThemeConfig();
-  return <StyledComponent {...{ ...props, enter, setEnter, mode, blogPath }} />;
+  return <StyledComponent {...{ key, frontmatter, fluid, excerpt, enter, setEnter, mode, blogPath }} />;
 };
 
 export default memo(Container);

@@ -1,4 +1,5 @@
 const withDefault = require('./with-default');
+const path = require('path');
 
 module.exports = themeOptions => {
   const {

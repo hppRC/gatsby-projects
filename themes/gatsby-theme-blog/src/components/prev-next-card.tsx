@@ -6,7 +6,7 @@ import { animated, config, useSpring } from 'react-spring';
 import styled from '@emotion/styled';
 
 import { PostNode } from '../../types';
-import { useHpprcThemeConfig } from '../hooks';
+import { useAnyImage, useHpprcThemeConfig } from '../hooks';
 import { ColorModeContainer } from '../store';
 import { DecoMoon, MemolizedImage, TagsList } from './';
 
@@ -19,7 +19,7 @@ const Card: React.FCX<CardProps> = memo(({ node, blogPath }) => {
 
   const { frontmatter, excerpt } = node;
   const { title, date, slug, cover, tags } = frontmatter;
-  const fluid = cover?.childImageSharp?.fluid;
+  const fluid = cover?.childImageSharp?.fluid || useAnyImage('background.png') || useAnyImage('background.jpg');
   const [enter, setEnter] = useState(false);
 
   const sp = useSpring({

@@ -38,8 +38,9 @@ const StyledComponent = styled(Component)`
 `;
 
 const Container: React.FCX<ContainerProps> = () => {
-  const background = useAnyImage('background.jpg');
-  return <StyledComponent background={background} />;
+  const backgroundJPG = useAnyImage('background.jpg');
+  const backgroundPNG = useAnyImage('background.png');
+  return <StyledComponent background={backgroundPNG || backgroundJPG} />;
 };
 
 export default Container;
