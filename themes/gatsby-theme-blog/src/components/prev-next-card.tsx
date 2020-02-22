@@ -75,6 +75,7 @@ const StyledComponent = styled(Component)`
         margin: 0 1rem;
         width: 50%;
         height: 100%;
+        border-radius: 3px;
         > img {
           height: 20rem;
           border-radius: 3px;

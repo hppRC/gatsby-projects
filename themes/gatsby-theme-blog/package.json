@@ -35,6 +35,7 @@
     "gatsby-remark-code-titles": "^1.1.0",
     "gatsby-remark-embed-youtube": "^0.0.7",
     "gatsby-remark-emojis": "^0.4.2",
+    "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-graphviz": "^1.1.22",
     "gatsby-remark-katex": "^3.1.24",
     "gatsby-remark-prismjs": "^3.3.31",
