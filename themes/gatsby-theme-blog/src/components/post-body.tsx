@@ -20,6 +20,7 @@ const Component: React.FCX<Props> = ({ className, fluid, body }) => (
 const StyledComponent = styled(Component)`
   line-height: 1.4;
   color: ${({ mode }) => (mode ? '#09090f' : '#ffffffe0')};
+  transition: color 0.3s;
 
   @media screen and (max-width: 1100px) {
   }

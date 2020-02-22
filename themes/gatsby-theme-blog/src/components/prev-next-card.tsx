@@ -65,12 +65,14 @@ const StyledComponent = styled(Component)`
     box-shadow: 5px 5px 10px ${({ mode }) => (mode ? '#d9d9d9' : '#00000f')},
       -5px -5px 10px ${({ mode }) => (mode ? '#ffffff' : '#00000f')};
     background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
+    transition: background-color 0.3s, box-shadow 0.15s;
 
     > a {
       height: 100%;
       padding: 2rem 1rem;
       display: flex;
       color: ${({ mode }) => (mode ? '#09090f' : '#fffffff0')};
+      transition: color 0.3s;
 
       > .gatsby-image-wrapper {
         margin: 0 1rem;

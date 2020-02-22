@@ -56,7 +56,7 @@ const StyledComponent = styled(Component)`
   background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
   box-shadow: 5px 5px 10px ${({ mode }) => (mode ? '#d9d9d9' : '#00000f')},
     -5px -5px 10px ${({ mode }) => (mode ? '#ffffff' : '#00000f')};
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, box-shadow 0.15s;
 
   will-change: transform;
 
