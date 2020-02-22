@@ -24,25 +24,28 @@ type Props = {
   previous: PostNode;
   next: PostNode;
   mode: boolean;
+  slug: string;
 };
 
-const Component: React.FCX<Props> = memo(({ className, body, headings, title, date, tags, fluid, previous, next }) => (
-  <main className={className}>
-    <Background />
-    <section>
-      <ScatteredChars chars={title || 'title'} />
-      <div>
-        <p>{date}</p>
-        <TagsList tags={tags} isTitle />
-      </div>
-    </section>
-    <article>
-      <PostBody fluid={fluid} body={body} />
-      <SideContents headings={headings} />
-    </article>
-    <PrevNextCard prev={previous} next={next} />
-  </main>
-));
+const Component: React.FCX<Props> = memo(
+  ({ className, body, headings, title, date, tags, fluid, previous, next, slug }) => (
+    <main className={className}>
+      <Background />
+      <section>
+        <ScatteredChars chars={title || 'title'} />
+        <div>
+          <p>{date}</p>
+          <TagsList tags={tags} isTitle />
+        </div>
+      </section>
+      <article>
+        <PostBody fluid={fluid} body={body} />
+        <SideContents headings={headings} title={title || 'blog'} slug={slug} />
+      </article>
+      <PrevNextCard prev={previous} next={next} />
+    </main>
+  )
+);
 
 const StyledComponent = styled(Component)`
   position: relative;
@@ -102,13 +105,13 @@ const Container: React.FCX<ContainerProps> = ({ data, pageContext, path }) => {
   const { body, headings, frontmatter } = data.mdx;
   const { title, date, tags, cover } = frontmatter;
   const fluid = cover?.childImageSharp?.fluid;
-  const { previous, next } = pageContext;
+  const { previous, next, slug } = pageContext;
   const { mode } = ColorModeContainer.useContainer();
 
   return (
     <>
       <SEO title='Posts' pathname={path} />
-      <StyledComponent {...{ body, headings, title, date, tags, fluid, previous, next, mode }} />
+      <StyledComponent {...{ body, headings, title, date, tags, fluid, previous, next, mode, slug }} />
     </>
   );
 };

@@ -2,20 +2,23 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
-import { TOC } from './';
+import { ShareButtons, TOC } from './';
 
 type ContainerProps = {
   headings: {
     value: string;
     depth: number;
   }[];
+  title: string;
+  slug: string;
 };
 type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = memo(({ className, headings }) => (
+const Component: React.FCX<Props> = memo(({ className, headings, title, slug }) => (
   <div className={className}>
     <div>
       <TOC headings={headings} />
+      <ShareButtons title={title} slug={slug} />
     </div>
   </div>
 ));
@@ -38,8 +41,8 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = ({ headings }) => {
-  return <StyledComponent headings={headings} />;
+const Container: React.FCX<ContainerProps> = ({ headings, title, slug }) => {
+  return <StyledComponent headings={headings} title={title} slug={slug} />;
 };
 
 export default memo(Container);
