@@ -72,7 +72,7 @@ module.exports = themeOptions => {
             `gatsby-remark-katex`,
             `gatsby-remark-code-titles`,
             {
-              resolve: 'gatsby-remark-embed-youtube',
+              resolve: `gatsby-remark-embed-youtube`,
               options: {
                 width: 800,
                 height: 400
