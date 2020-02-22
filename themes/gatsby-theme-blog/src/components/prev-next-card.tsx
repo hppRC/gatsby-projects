@@ -61,7 +61,7 @@ const StyledComponent = styled(Component)`
     margin: 3rem;
     overflow: hidden;
     border-radius: 3px;
-    box-shadow: 0px 3px 10px 0px #09090f30;
+    box-shadow: 0px 6px 20px 0px ${({ mode }) => (mode ? '#09090f30' : '#00000f')};
     background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
 
     > a {

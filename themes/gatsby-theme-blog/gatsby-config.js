@@ -6,6 +6,7 @@ module.exports = themeOptions => {
     siteUrl,
     siteDescription,
     postsPath,
+    blogPath,
     assetsPath,
     mdx,
     webpackBundleAnalyzer,
@@ -154,8 +155,8 @@ module.exports = themeOptions => {
                   return Object.assign({}, frontmatter, {
                     description: excerpt,
                     date: date,
-                    url: `${siteUrl}/posts/${slug}`,
-                    guid: `${siteUrl}/posts/${slug}`,
+                    url: path.join(siteUrl, blogPath, slug),
+                    guid: path.join(siteUrl, blogPath, slug),
                     custom_elements: [{ 'content:encoded': body }]
                   });
                 });

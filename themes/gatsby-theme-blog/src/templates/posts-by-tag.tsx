@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
@@ -14,7 +14,7 @@ type Props = {
   mode: boolean;
 };
 
-const Component: React.FCX<Props> = ({ className, tagName, posts }) => (
+const Component: React.FCX<Props> = memo(({ className, tagName, posts }) => (
   <main className={className}>
     <Background />
     <section>
@@ -27,7 +27,7 @@ const Component: React.FCX<Props> = ({ className, tagName, posts }) => (
       })}
     </section>
   </main>
-);
+));
 
 const StyledComponent = styled(Component)`
   ${postsStyle}
@@ -53,4 +53,4 @@ const Container: React.FCX<ContainerProps> = ({ pageContext, path }) => {
   );
 };
 
-export default Container;
+export default memo(Container);
