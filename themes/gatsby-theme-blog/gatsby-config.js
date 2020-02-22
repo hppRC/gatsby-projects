@@ -156,8 +156,8 @@ module.exports = themeOptions => {
                   return Object.assign({}, frontmatter, {
                     description: excerpt,
                     date: date,
-                    url: path.join(siteUrl, blogPath, slug),
-                    guid: path.join(siteUrl, blogPath, slug),
+                    url: `${siteUrl}${path.join(blogPath, slug)}`,
+                    guid: `${siteUrl}${path.join(blogPath, slug)}`,
                     custom_elements: [{ 'content:encoded': body }]
                   });
                 });
