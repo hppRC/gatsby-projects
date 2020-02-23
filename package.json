@@ -1,7 +1,6 @@
 {
   "name": "@hpprc/gatsby-themes",
   "author": "hppRC <hpp.ricecake@gmail.com>",
-  "private": true,
   "license": "MIT",
   "version": "1.1.0",
   "scripts": {
