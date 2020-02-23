@@ -19,7 +19,7 @@ const Card: React.FCX<CardProps> = memo(({ node, blogPath }) => {
 
   const { frontmatter, excerpt } = node;
   const { title, date, slug, cover, tags } = frontmatter;
-  const fluid = cover?.childImageSharp?.fluid || useAnyImage('background.png') || useAnyImage('background.jpg');
+  const fluid = cover?.childImageSharp?.fluid || useAnyImage('banner.png') || useAnyImage('banner.jpg');
   const [enter, setEnter] = useState(false);
 
   const sp = useSpring({
