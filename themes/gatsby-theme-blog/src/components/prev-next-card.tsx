@@ -69,19 +69,15 @@ const StyledComponent = styled(Component)`
 
     > a {
       height: 100%;
-      padding: 2rem 1rem;
       display: flex;
       color: ${({ mode }) => (mode ? '#09090f' : '#fffffff0')};
       transition: color 0.3s;
 
       > .gatsby-image-wrapper {
-        margin: 0 1rem;
-        width: 50%;
+        width: 40%;
         height: 100%;
-        border-radius: 3px;
         > picture img {
           height: 100%;
-          border-radius: 3px;
         }
       }
 
@@ -90,10 +86,19 @@ const StyledComponent = styled(Component)`
         flex-direction: column;
         justify-content: center;
 
-        width: 50%;
+        width: 60%;
         height: 100%;
-        padding: 0 0.5rem;
+        padding: 0 1rem;
         transition: background-color 0.3s;
+
+        > h2 {
+          font-size: 2rem;
+          padding: 0.6rem 0;
+        }
+
+        > p {
+          font-size: 1.4rem;
+        }
       }
     }
   }

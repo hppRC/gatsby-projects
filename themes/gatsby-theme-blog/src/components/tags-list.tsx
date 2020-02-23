@@ -26,7 +26,7 @@ const Component: React.FCX<Props> = memo(({ className, tags, isTitle, tagsPath }
 
 const StyledComponent = styled(Component)`
   display: flex;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
   overflow: auto;
   list-style: none;
 

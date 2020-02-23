@@ -6,7 +6,9 @@ import styled from '@emotion/styled';
 type ContainerProps = { fluid: FluidObject | undefined };
 type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = memo(({ fluid }) => <>{fluid && <Img fluid={fluid} alt='eyecatch iage' />}</>);
+const Component: React.FCX<Props> = memo(({ fluid, className }) => (
+  <>{fluid && <Img fluid={fluid} alt='eyecatch iage' className={className} />}</>
+));
 
 const StyledComponent = styled(Component)`
   @media screen and (max-width: 1100px) {

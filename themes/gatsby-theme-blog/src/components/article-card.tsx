@@ -53,6 +53,7 @@ const StyledComponent = styled(Component)`
   overflow: hidden;
 
   background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
+  border-radius: 3px;
   box-shadow: 5px 5px 10px ${({ mode }) => (mode ? '#d9d9d9' : '#00000f')},
     -5px -5px 10px ${({ mode }) => (mode ? '#ffffff' : '#00000f')};
   transition: background-color 0.3s, box-shadow 0.15s;
@@ -63,15 +64,19 @@ const StyledComponent = styled(Component)`
     position: relative;
     display: block;
 
-    padding: 1rem;
+    padding: 0.2rem;
     color: ${({ mode }) => (mode ? '#09090fe0' : '#ffffffe0')};
     text-decoration: none;
     transition: color 0.3s;
 
     > div {
-      padding: 1rem;
+      padding: 1.3rem 1.3rem;
+
+      > h2 {
+        font-size: 2rem;
+      }
       > p {
-        padding: 0.5rem 0;
+        font-size: 1.4rem;
       }
     }
   }
