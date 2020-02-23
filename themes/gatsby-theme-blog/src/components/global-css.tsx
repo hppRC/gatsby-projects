@@ -234,6 +234,34 @@ const GlobalCSS = () => {
           background-color: #09090f;
           border-radius: 3px 3px 0 0;
         }
+
+        .katex {
+          display: felx;
+          justify-content: center;
+          padding: 2rem 0;
+          font-size: 3rem;
+        }
+
+        @media screen and (max-width: 1100px) {
+        }
+        @media screen and (max-width: 768px) {
+        }
+        @media screen and (max-width: 480px) {
+          .gatsby-highlight {
+            padding: 0.4rem;
+            font-size: 1.2rem;
+          }
+          .gatsby-code-title {
+            font-size: 1.25rem;
+          }
+
+          code[class*='language-'],
+          pre[class*='language-'] {
+            tab-size: 4;
+          }
+        }
+        @media screen and (max-height: 430px) {
+        }
       `}
     />
   );
