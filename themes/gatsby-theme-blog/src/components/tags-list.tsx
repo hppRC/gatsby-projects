@@ -37,7 +37,7 @@ const StyledComponent = styled(Component)`
     color: ${({ mode }) => (mode ? '#09090ff0' : '#fffffff0')};
     word-break: keep-all;
     border: 0.5px solid ${({ mode, isTitle }) => (!isTitle && mode ? '#09090ff0' : '#fffffff0')};
-    border-radius: 3px;
+    border-radius: 2px;
     transition: color 0.3s, border 0.3s;
 
     > a {

@@ -60,6 +60,23 @@ const StyledComponent = styled(Component)`
   > nav {
     padding: 1.5rem;
   }
+
+  @media screen and (max-width: 1100px) {
+  }
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+    padding: 0;
+    > div {
+      padding: 0rem 0.3rem;
+    }
+
+    > nav {
+      padding: 0.8rem 0;
+    }
+  }
+  @media screen and (max-height: 430px) {
+  }
 `;
 
 const Container: React.FCX<ContainerProps> = () => {

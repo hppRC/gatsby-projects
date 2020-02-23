@@ -82,7 +82,7 @@ const StyledComponent = styled(Component)`
 
   > article {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0 auto 10rem auto;
     display: grid;
     grid-template-columns: 3fr 0.75fr;
     background-color: transparent;
@@ -94,6 +94,9 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    > article {
+      grid-template-columns: 1fr;
+    }
   }
   @media screen and (max-height: 430px) {
   }

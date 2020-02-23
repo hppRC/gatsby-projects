@@ -24,7 +24,7 @@ const Component: React.FCX<Props> = memo(({ className, headings, title, slug }) 
 ));
 
 const StyledComponent = styled(Component)`
-  padding: 0 2rem;
+  margin-left: 4rem;
 
   > div {
     position: sticky;
@@ -36,6 +36,7 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    margin-left: 0;
   }
   @media screen and (max-height: 430px) {
   }

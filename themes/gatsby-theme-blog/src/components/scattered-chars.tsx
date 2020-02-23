@@ -34,6 +34,7 @@ const Component: React.FCX<Props> = ({ className, chars }) => (
 
 const StyledComponent = styled(Component)`
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
 
@@ -52,6 +53,13 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    width: 100%;
+    padding: 0.6rem;
+    > li {
+      > h2 {
+        font-size: 3rem;
+      }
+    }
   }
   @media screen and (max-height: 430px) {
   }

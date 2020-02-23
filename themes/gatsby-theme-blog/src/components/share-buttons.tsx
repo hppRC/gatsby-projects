@@ -60,6 +60,7 @@ const Component: React.FCX<Props> = ({ className, title, slug, twitter, siteUrl,
 const StyledComponent = styled(Component)`
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding: 5rem 1rem;
 
   > div {

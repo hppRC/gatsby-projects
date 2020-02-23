@@ -90,6 +90,7 @@ const StyledComponent = styled(Component)`
         height: 100%;
         padding: 0 1rem;
         transition: background-color 0.3s;
+        box-shadow: 0 -1.8rem 0.3rem -0.3rem ${({ mode }) => (mode ? '#ffffff' : '#13131f')} inset;
 
         > h2 {
           font-size: 2rem;
@@ -98,6 +99,7 @@ const StyledComponent = styled(Component)`
 
         > p {
           font-size: 1.4rem;
+          z-index: -1;
         }
       }
     }
