@@ -18,15 +18,55 @@ const Component: React.FCX<Props> = ({ className, fluid, body }) => (
 );
 
 const StyledComponent = styled(Component)`
+  width: 100%;
+
   line-height: 1.4;
   color: ${({ mode }) => (mode ? '#09090f' : '#ffffffe0')};
   transition: color 0.3s;
+
+  > svg {
+    display: block;
+    margin: 2rem auto;
+  }
+
+  > h1 {
+    left: -4rem;
+    padding-top: 6rem;
+    padding-bottom: 0.5rem;
+    font-size: 5.5rem;
+  }
+  > h2 {
+    left: -2rem;
+    padding-top: 4rem;
+    font-size: 4rem;
+  }
+  > h3 {
+    left: -1rem;
+    padding-top: 3rem;
+    font-size: 3rem;
+  }
+
+  > p {
+  }
+
+  > .gatsby-image-wrapper {
+    border-radius: 3px;
+  }
 
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    > h1 {
+      left: 0;
+    }
+    > h2 {
+      left: 0;
+    }
+    > h3 {
+      left: 0;
+    }
   }
   @media screen and (max-height: 430px) {
   }

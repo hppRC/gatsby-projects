@@ -64,10 +64,13 @@ const StyledComponent = styled(Component)`
     position: relative;
     display: block;
 
-    padding: 0.2rem;
     color: ${({ mode }) => (mode ? '#09090fe0' : '#ffffffe0')};
     text-decoration: none;
     transition: color 0.3s;
+
+    .gatsby-image-wrapper {
+      border-radius: 3px 3px 1px 1px;
+    }
 
     > div {
       padding: 1.3rem 1.3rem;
