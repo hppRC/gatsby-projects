@@ -12,14 +12,13 @@ import { ColorModeContainer } from '../store';
 import { DecoMoon, MemolizedImage, TagsList } from './';
 
 type ContainerProps = {
-  key: number;
   frontmatter: Frontmatter;
   fluid: FluidObject | undefined;
   excerpt: string;
 };
 type Props = { mode: boolean; enter: boolean; setEnter: (enter: boolean) => void; blogPath: string } & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className, key, excerpt, frontmatter, fluid, enter, setEnter, blogPath }) => {
+const Component: React.FCX<Props> = ({ className, excerpt, frontmatter, fluid, enter, setEnter, blogPath }) => {
   const { slug, title, date, tags } = frontmatter;
 
   const sp = useSpring({
@@ -29,7 +28,6 @@ const Component: React.FCX<Props> = ({ className, key, excerpt, frontmatter, flu
 
   return (
     <animated.article
-      key={key}
       className={className}
       onMouseEnter={() => setEnter(true)}
       onMouseLeave={() => setEnter(false)}
@@ -51,6 +49,7 @@ const Component: React.FCX<Props> = ({ className, key, excerpt, frontmatter, flu
 
 const StyledComponent = styled(Component)`
   position: relative;
+
   overflow: hidden;
 
   background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
@@ -64,8 +63,6 @@ const StyledComponent = styled(Component)`
     position: relative;
     display: block;
 
-    width: 100%;
-    height: 100%;
     padding: 1rem;
     color: ${({ mode }) => (mode ? '#09090fe0' : '#ffffffe0')};
     text-decoration: none;
@@ -90,7 +87,6 @@ const StyledComponent = styled(Component)`
 `;
 
 const Container: React.FCX<ContainerProps> = ({
-  key,
   frontmatter,
   fluid = useAnyImage('background.png') || useAnyImage('background.jpg'),
   excerpt
@@ -98,7 +94,7 @@ const Container: React.FCX<ContainerProps> = ({
   const [enter, setEnter] = useState(false);
   const { mode } = ColorModeContainer.useContainer();
   const { blogPath } = useHpprcThemeConfig();
-  return <StyledComponent {...{ key, frontmatter, fluid, excerpt, enter, setEnter, mode, blogPath }} />;
+  return <StyledComponent {...{ frontmatter, fluid, excerpt, enter, setEnter, mode, blogPath }} />;
 };
 
 export default memo(Container);

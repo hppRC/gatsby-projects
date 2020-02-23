@@ -16,12 +16,16 @@ const Component: React.FCX<Props> = ({ className, posts, siteTitle }) => (
     <section>
       <ScatteredChars chars={siteTitle} />
     </section>
-    <section>
+    <ul>
       {posts.map(({ excerpt, frontmatter }, i) => {
         const fluid = frontmatter.cover?.childImageSharp.fluid;
-        return <ArticleCard key={i} frontmatter={frontmatter} fluid={fluid} excerpt={excerpt} />;
+        return (
+          <li key={i}>
+            <ArticleCard frontmatter={frontmatter} fluid={fluid} excerpt={excerpt} />
+          </li>
+        );
       })}
-    </section>
+    </ul>
   </main>
 );
 

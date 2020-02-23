@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 export default css`
   position: relative;
 
-  > section:nth-of-type(1) {
+  > section {
     position: absolute;
     top: 0;
     left: 0;
@@ -19,13 +19,12 @@ export default css`
     }
   }
 
-  > section:nth-of-type(2) {
+  > ul {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 2rem;
-    /* max-width: 1400px; */
-    padding: 5rem;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 24%);
+    justify-content: space-between;
+
+    padding: 3%;
   }
 
   @media screen and (max-width: 1100px) {
