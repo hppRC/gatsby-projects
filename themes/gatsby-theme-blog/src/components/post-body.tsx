@@ -60,12 +60,19 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 480px) {
     > h1 {
       left: 0;
+      padding-top: 1rem;
+      padding-bottom: 0.2rem;
+      font-size: 3.5rem;
     }
     > h2 {
       left: 0;
+      padding-top: 0.8rem;
+      font-size: 2.5rem;
     }
     > h3 {
       left: 0;
+      padding-top: 0.6rem;
+      font-size: 1.8rem;
     }
   }
   @media screen and (max-height: 430px) {

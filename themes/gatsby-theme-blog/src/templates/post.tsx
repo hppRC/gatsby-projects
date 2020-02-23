@@ -94,6 +94,14 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    > section {
+      > div {
+        flex-direction: column;
+        > p {
+          font-size: 1.8rem;
+        }
+      }
+    }
     > article {
       grid-template-columns: 1fr;
     }
