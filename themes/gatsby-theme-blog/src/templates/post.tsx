@@ -91,6 +91,11 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 768px) {
+    > article {
+      margin: 0;
+      padding: 2rem;
+      grid-template-columns: 1fr;
+    }
   }
   @media screen and (max-width: 480px) {
     width: 100%;
@@ -101,11 +106,6 @@ const StyledComponent = styled(Component)`
           font-size: 1.8rem;
         }
       }
-    }
-    > article {
-      margin: 0;
-      padding: 2rem;
-      grid-template-columns: 1fr;
     }
   }
   @media screen and (max-height: 430px) {

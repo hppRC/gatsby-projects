@@ -115,8 +115,6 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 768px) {
-  }
-  @media screen and (max-width: 480px) {
     grid-template-columns: 1fr;
     grid-gap: 5rem;
     margin: 0;
@@ -126,6 +124,8 @@ const StyledComponent = styled(Component)`
       margin: 0;
       width: 100%;
     }
+  }
+  @media screen and (max-width: 480px) {
   }
   @media screen and (max-height: 430px) {
   }
