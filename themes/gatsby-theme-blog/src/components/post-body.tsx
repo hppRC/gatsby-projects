@@ -7,12 +7,12 @@ import styled from '@emotion/styled';
 import { ColorModeContainer } from '../store';
 import { MemolizedImage } from './';
 
-type ContainerProps = { fluid?: FluidObject; body: string };
+type ContainerProps = { cover?: FluidObject; body: string };
 type Props = { mode: boolean } & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className, fluid, body }) => (
+const Component: React.FCX<Props> = ({ className, cover, body }) => (
   <div className={className}>
-    <MemolizedImage fluid={fluid} />
+    <MemolizedImage fluid={cover} />
     <MDXRenderer>{body}</MDXRenderer>
   </div>
 );
@@ -20,7 +20,7 @@ const Component: React.FCX<Props> = ({ className, fluid, body }) => (
 const StyledComponent = styled(Component)`
   width: 100%;
 
-  line-height: 1.4;
+  line-height: 2;
   color: ${({ mode }) => (mode ? '#09090f' : '#ffffffe0')};
   transition: color 0.3s;
 
@@ -47,10 +47,6 @@ const StyledComponent = styled(Component)`
   }
 
   > p {
-  }
-
-  > .gatsby-image-wrapper {
-    border-radius: 3px;
   }
 
   @media screen and (max-width: 1100px) {
