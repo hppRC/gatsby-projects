@@ -44,17 +44,10 @@ const GlobalCSS = () => {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans CJK JP',
               'Original Yu Gothic', 'Yu Gothic', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
               'Noto Sans Emoji';
-            font-size: 1.6em;
+            font-size: 1.6rem;
             background-color: ${mode ? '#ffffff' : '#09090f'};
             /*overscroll-behavior-y: none;*/
             transition: background-color 0.15s;
-
-            @media screen and (max-width: 768px) {
-              font-size: 1.4em;
-            }
-
-            @media screen and (max-width: 480px) {
-            }
           }
         }
 
@@ -66,6 +59,7 @@ const GlobalCSS = () => {
 
         code[class*='language-'],
         pre[class*='language-'] {
+          width: 100%;
           font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
 
           -webkit-hyphens: none;
@@ -203,8 +197,8 @@ const GlobalCSS = () => {
         /* thanks to this: https://qiita.com/Takumon/items/da8347f81a9f021b637f */
         .gatsby-highlight-code-line {
           display: block;
-          padding-right: 1em;
-          padding-left: 0.8em;
+          padding-right: 0em;
+          padding-left: 0.8rem;
           background-color: #1f1f30;
           border-left: 0.2em solid #b0b7d6;
         }
@@ -236,7 +230,7 @@ const GlobalCSS = () => {
         }
 
         .katex {
-          display: felx;
+          display: flex;
           justify-content: center;
           padding: 2rem 0;
           font-size: 3rem;

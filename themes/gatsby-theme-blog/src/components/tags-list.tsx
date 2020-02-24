@@ -29,10 +29,12 @@ const StyledComponent = styled(Component)`
   padding: 0.8rem 0;
   overflow: auto;
   list-style: none;
+  ${({ isTitle }) => isTitle && 'flex-wrap: wrap'};
+  justify-content: center;
 
   > li {
     padding: ${({ isTitle }) => (isTitle ? '0 0' : '0.2rem 0.4rem')};
-    margin-right: 0.5rem;
+    margin: 0 0.3rem;
     font-size: 1.4rem;
     color: ${({ mode }) => (mode ? '#09090ff0' : '#fffffff0')};
     word-break: keep-all;

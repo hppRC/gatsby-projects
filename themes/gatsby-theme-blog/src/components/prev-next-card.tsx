@@ -54,7 +54,7 @@ const StyledComponent = styled(Component)`
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: min(50vw, 700px) min(50vw, 700px);
+  grid-template-columns: min(50%, 700px) min(50%, 700px);
 
   > article {
     height: 100%;
