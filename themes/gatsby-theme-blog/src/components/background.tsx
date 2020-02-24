@@ -19,12 +19,23 @@ const StyledComponent = styled(Component)`
     position: relative;
     width: 100%;
     height: 75vh;
+
+    ::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: '';
+      background-color: #090919;
+      opacity: 0.5;
+    }
     > img,
     > picture {
       position: absolute;
-      top: -25vh;
+      top: 0vh;
       width: 100%;
-      height: 100vh;
+      height: 75vh;
     }
   }
   @media screen and (max-width: 1100px) {

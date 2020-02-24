@@ -29,8 +29,8 @@ const StyledComponent = styled(Component)`
   padding: 0.8rem 0;
   overflow: auto;
   list-style: none;
-  ${({ isTitle }) => isTitle && 'flex-wrap: wrap'};
-  justify-content: center;
+  ${({ isTitle }) => isTitle && 'flex-wrap: wrap;'}
+  ${({ isTitle }) => isTitle && 'justify-content: center;'}
 
   > li {
     padding: ${({ isTitle }) => (isTitle ? '0 0' : '0.2rem 0.4rem')};

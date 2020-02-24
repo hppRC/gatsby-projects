@@ -20,6 +20,7 @@ const StyledComponent = styled(Component)`
   pointer-events: auto;
 
   > h1 {
+    display: inline-block;
     color: #fff;
     > span {
       display: inline-block;

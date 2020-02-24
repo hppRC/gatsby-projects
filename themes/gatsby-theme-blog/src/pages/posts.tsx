@@ -14,14 +14,18 @@ const Component: React.FCX<Props> = memo(({ className, allPosts }) => (
   <main className={className}>
     <Background />
     <section>
-      <ScatteredChars chars={'Posts'} />
+      <ScatteredChars chars={'posts'} />
     </section>
-    <section>
+    <ul>
       {allPosts.map(({ excerpt, frontmatter }, i) => {
         const fluid = frontmatter.cover?.childImageSharp.fluid;
-        return <ArticleCard key={i} frontmatter={frontmatter} fluid={fluid} excerpt={excerpt} />;
+        return (
+          <li key={i}>
+            <ArticleCard frontmatter={frontmatter} fluid={fluid} excerpt={excerpt} />
+          </li>
+        );
       })}
-    </section>
+    </ul>
   </main>
 ));
 

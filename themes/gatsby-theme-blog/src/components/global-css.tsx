@@ -82,17 +82,20 @@ const GlobalCSS = () => {
 
         /* Code blocks */
         pre[class*='language-'] {
+          width: 100%;
           overflow: auto;
           border-radius: 0.3em;
         }
 
         :not(pre) > code[class*='language-'],
         pre[class*='language-'] {
+          width: 100%;
           background: #1d1f21;
         }
 
         /* Inline code */
         :not(pre) > code[class*='language-'] {
+          width: 100%;
           padding: 0.1em;
           border-radius: 0.3em;
         }
@@ -197,6 +200,7 @@ const GlobalCSS = () => {
         /* thanks to this: https://qiita.com/Takumon/items/da8347f81a9f021b637f */
         .gatsby-highlight-code-line {
           display: block;
+          width: 100%;
           padding-right: 0em;
           padding-left: 0.8rem;
           background-color: #1f1f30;
@@ -205,7 +209,8 @@ const GlobalCSS = () => {
 
         .gatsby-highlight {
           width: 100%;
-          padding: 1rem;
+          margin-right: 0;
+          margin-left: 0;
           background-color: #09090f;
         }
 
@@ -214,6 +219,11 @@ const GlobalCSS = () => {
         }
 
         .gatsby-highlight pre[class*='language-'].line-numbers {
+          padding-left: 4rem;
+
+          .line-numbers-rows {
+            padding-left: 1em;
+          }
         }
 
         .gatsby-code-title {
@@ -242,16 +252,10 @@ const GlobalCSS = () => {
         }
         @media screen and (max-width: 480px) {
           .gatsby-highlight {
-            padding: 0.4rem;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
           }
           .gatsby-code-title {
             font-size: 1.25rem;
-          }
-
-          code[class*='language-'],
-          pre[class*='language-'] {
-            tab-size: 4;
           }
         }
         @media screen and (max-height: 430px) {

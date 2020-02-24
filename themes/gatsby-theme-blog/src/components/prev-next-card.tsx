@@ -68,16 +68,17 @@ const StyledComponent = styled(Component)`
     transition: background-color 0.3s, box-shadow 0.15s;
 
     > a {
-      height: 100%;
+      height: 20rem;
       display: flex;
       color: ${({ mode }) => (mode ? '#09090f' : '#fffffff0')};
       transition: color 0.3s;
 
       > .gatsby-image-wrapper {
+        display: block;
         width: 40%;
-        height: 100%;
+        height: 100% !important;
         > picture img {
-          height: 100%;
+          height: 100% !important;
         }
       }
 

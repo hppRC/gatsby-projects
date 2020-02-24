@@ -78,7 +78,7 @@ const StyledComponent = styled(Component)`
   }
 
   > article {
-    max-width: 1400px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto 10rem auto;
     display: grid;

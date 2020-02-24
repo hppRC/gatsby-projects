@@ -37,6 +37,7 @@ const StyledComponent = styled(Component)`
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
+  max-width: 1200px;
 
   > li {
     display: felx;
@@ -46,6 +47,7 @@ const StyledComponent = styled(Component)`
     > h2 {
       font-size: 10rem;
       color: #ffffff;
+      user-select: none;
     }
   }
   @media screen and (max-width: 1100px) {

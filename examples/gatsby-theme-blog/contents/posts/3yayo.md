@@ -23,7 +23,7 @@ cover: ../assets/test1.jpg
 ```javascript{1,5-8}:title=gatsby-config.js
 plugins: [
   {
-    resolve: `gatsby-transformer-remark`,
+    resolve: `gatsby-transformer-remark-gatsby-transformer-remark-gatsby-transformer-remark`,
     options: {
       plugins: [`gatsby-remark-prismjs`]
     }

@@ -10,7 +10,7 @@ import SlideInOutTitle from './slide-in-out-title';
 type ContainerProps = {};
 type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = memo(({ className }) => {
+const Component: React.FCX<Props> = ({ className }) => {
   const [{ translate, scale }, set] = useSpring(() => ({
     translate: `translate3d(0rem, 0, 0)`,
     scale: 'scale(1.0)'
@@ -19,8 +19,8 @@ const Component: React.FCX<Props> = memo(({ className }) => {
   const bind = useScroll(
     ({ xy: [, y] }) =>
       set({
-        translate: `translate3d(-${Math.min(y * 0.02, 15)}rem, 0, 0)`,
-        scale: `scale(${Math.min(2, 1 + y * 0.001)})`
+        translate: `translate3d(-${Math.min(y * 0.02, 25)}rem, 0, 0)`,
+        scale: `scale(${Math.min(1.5, 1 + y * 0.001)})`
       }),
     { domTarget: typeof window !== 'undefined' ? window : undefined }
   );
@@ -31,15 +31,17 @@ const Component: React.FCX<Props> = memo(({ className }) => {
 
   return (
     <header className={className}>
-      <animated.div style={{ transform: translate }}>
-        <SlideInOutTitle scale={scale} />
-      </animated.div>
-      <nav>
-        <ModeButton />
-      </nav>
+      <div>
+        <animated.div style={{ transform: translate }}>
+          <SlideInOutTitle scale={scale} />
+        </animated.div>
+        <nav>
+          <ModeButton />
+        </nav>
+      </div>
     </header>
   );
-});
+};
 
 const StyledComponent = styled(Component)`
   position: fixed;
@@ -47,18 +49,25 @@ const StyledComponent = styled(Component)`
   left: 0;
   z-index: 1000;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   padding: 0 0.5rem;
+
   pointer-events: none;
 
   > div {
-    padding: 1rem;
-    will-change: transform;
-  }
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    > div {
+      padding: 1rem;
+      will-change: transform;
+    }
 
-  > nav {
-    padding: 1.5rem;
+    > nav {
+      padding: 1.5rem;
+    }
   }
 
   @media screen and (max-width: 1100px) {
@@ -83,4 +92,4 @@ const Container: React.FCX<ContainerProps> = () => {
   return <StyledComponent />;
 };
 
-export default memo(Container);
+export default Container;

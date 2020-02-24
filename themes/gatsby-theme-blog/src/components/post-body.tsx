@@ -21,7 +21,7 @@ const StyledComponent = styled(Component)`
   width: 100%;
 
   line-height: 2;
-  color: ${({ mode }) => (mode ? '#09090f' : '#ffffffe0')};
+  color: ${({ mode }) => (mode ? '#29292f' : '#ffffff')};
   transition: color 0.3s;
 
   > svg {
@@ -47,6 +47,11 @@ const StyledComponent = styled(Component)`
   }
 
   > p {
+    padding: 2rem 0;
+  }
+
+  > .gatsby-image-wrapper {
+    border-radius: 3px;
   }
 
   @media screen and (max-width: 1100px) {
