@@ -15,7 +15,7 @@ const StyledComponent = styled(Component)`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   height: 10vh;
   color: ${({ mode }) => (mode ? '#09090f' : '#ffffff')};
   transition: color 0.3s;

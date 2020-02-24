@@ -48,7 +48,7 @@ const StyledComponent = styled(Component)`
   z-index: 1000;
   display: flex;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   padding: 0 0.5rem;
   pointer-events: none;
 

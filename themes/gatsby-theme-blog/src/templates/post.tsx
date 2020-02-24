@@ -1,6 +1,3 @@
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
-import 'katex/dist/katex.min.css';
-
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import React, { memo } from 'react';
@@ -39,7 +36,7 @@ const Component: React.FCX<Props> = memo(
         </div>
       </section>
       <article>
-        <PostBody fluid={fluid} body={body} />
+        <PostBody cover={fluid} body={body} />
         <SideContents headings={headings} title={title || 'blog'} slug={slug} />
       </article>
       <PrevNextCard prev={previous} next={next} />
@@ -54,7 +51,7 @@ const StyledComponent = styled(Component)`
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 75vh;
     display: flex;
     justify-content: center;
@@ -82,11 +79,12 @@ const StyledComponent = styled(Component)`
 
   > article {
     max-width: 1400px;
+    width: 100%;
     margin: 0 auto 10rem auto;
     display: grid;
     grid-template-columns: 3fr 0.75fr;
     background-color: transparent;
-    padding: 5rem 2vw 5rem 2vw;
+    padding: 5rem 2rem;
   }
 
   @media screen and (max-width: 1100px) {
@@ -94,6 +92,7 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    width: 100%;
     > section {
       > div {
         flex-direction: column;
@@ -103,6 +102,8 @@ const StyledComponent = styled(Component)`
       }
     }
     > article {
+      margin: 0;
+      padding: 2rem;
       grid-template-columns: 1fr;
     }
   }
