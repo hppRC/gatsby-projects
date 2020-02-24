@@ -247,7 +247,8 @@ const GlobalCSS = () => {
         }
 
         .katex-html {
-          width: 100%;
+          .base {
+          }
         }
 
         @media screen and (max-width: 1100px) {
@@ -264,6 +265,12 @@ const GlobalCSS = () => {
             font-size: 1.25rem;
             > pre {
               width: 10%;
+            }
+          }
+
+          .katex-html {
+            .base {
+              padding: 0.5rem;
             }
           }
         }

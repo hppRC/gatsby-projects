@@ -83,6 +83,14 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 2rem;
+    > div {
+      > button {
+        margin: 0 0.4rem;
+      }
+    }
   }
   @media screen and (max-height: 430px) {
   }

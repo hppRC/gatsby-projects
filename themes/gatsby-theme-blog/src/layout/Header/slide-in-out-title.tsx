@@ -8,7 +8,7 @@ import styled from '@emotion/styled';
 type ContainerProps = {};
 type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = memo(({ className }) => {
+const Component: React.FCX<Props> = ({ className }) => {
   const [{ translate, scale }, set] = useSpring(() => ({
     translate: `translate3d(0rem, 0, 0)`,
     scale: 'scale(1.0)'
@@ -18,7 +18,7 @@ const Component: React.FCX<Props> = memo(({ className }) => {
     ({ xy: [, y] }) => {
       if (typeof window === 'undefined') return;
 
-      const bk = window.innerWidth > 1100 ? 30 : window.innerWidth > 768 ? 20 : 14;
+      const bk = window.innerWidth > 1100 ? 30 : window.innerWidth > 768 ? 20 : 14.2;
       set({
         translate: `translate3d(-${Math.min(y * 0.02, bk)}rem, 0, 0)`,
         scale: `scale(${Math.min(1.5, 1 + y * 0.001)})`
@@ -41,7 +41,7 @@ const Component: React.FCX<Props> = memo(({ className }) => {
       </Link>
     </animated.div>
   );
-});
+};
 
 const StyledComponent = styled(Component)`
   padding: 1rem;
@@ -73,4 +73,4 @@ const Container: React.FCX<ContainerProps> = () => {
   return <StyledComponent />;
 };
 
-export default Container;
+export default memo(Container);

@@ -14,8 +14,8 @@ type Props = {
 const SEO: React.FCX<Props> = ({ title = '', description = '', pathname = '', image = '' }) => {
   const siteMetadata = useSiteMetadata();
   const buildTime = useSiteBuildTime();
-  const icon = useAnyImage('icon.png');
-  const banner = useAnyImage('banner.jpg');
+  const icon = useAnyImage('icon.png') || useAnyImage('icon.jpg');
+  const banner = useAnyImage('banner.png') || useAnyImage('banner.jpg');
 
   const {
     siteTitle,

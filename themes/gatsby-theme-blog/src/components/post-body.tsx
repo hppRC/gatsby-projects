@@ -21,8 +21,7 @@ const StyledComponent = styled(Component)`
   position: relative;
   width: 100%;
 
-  line-height: 2;
-  color: ${({ mode }) => (mode ? '#29292f' : '#ffffff')};
+  color: ${({ mode }) => (mode ? '#40404f' : '#f0f0f0')};
   transition: color 0.3s;
 
   > svg {
@@ -33,22 +32,25 @@ const StyledComponent = styled(Component)`
   > h1 {
     left: min(calc(-1 * min((100vw - 1200px) / 2, 2vw)), -1vw);
     padding-top: 6rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
     font-size: 5.5rem;
+    color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
   }
   > h2 {
-    left: -2vw;
+    left: min(calc(-1 * min((100vw - 1200px) / 2, 1vw)), -0.5vw);
     padding-top: 4rem;
+    padding-bottom: 1rem;
     font-size: 4rem;
   }
   > h3 {
-    left: -1vw;
+    left: min(calc(-1 * min((100vw - 1200px) / 2, 0.5vw)), -0.2vw);
     padding-top: 3rem;
     font-size: 3rem;
   }
 
   > p {
-    padding: 2rem 0;
+    padding: 1.5rem 0 3.5rem 0;
+    line-height: 2;
   }
 
   > .gatsby-image-wrapper {
@@ -58,29 +60,26 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 768px) {
+    padding: 0 4rem;
   }
   @media screen and (max-width: 480px) {
     width: 100vw;
-    padding: 2rem;
+    padding: 0 3rem;
     > h1 {
-      left: 0px;
       padding-top: 1rem;
       padding-bottom: 0.2rem;
       font-size: 3.5rem;
     }
     > h2 {
-      left: 0px;
       padding-top: 0.8rem;
       font-size: 2.5rem;
     }
     > h3 {
-      left: 0px;
-      padding-top: 0.6rem;
-      font-size: 1.8rem;
+      padding-top: 0.4rem;
+      font-size: 2rem;
     }
 
     > p {
-      padding: 0;
     }
   }
   @media screen and (max-height: 430px) {

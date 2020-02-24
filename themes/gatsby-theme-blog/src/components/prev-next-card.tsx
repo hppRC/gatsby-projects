@@ -76,9 +76,9 @@ const StyledComponent = styled(Component)`
       > .gatsby-image-wrapper {
         display: block;
         width: 40%;
-        height: 100% !important;
+        height: 100%;
         > picture img {
-          height: 100% !important;
+          height: 100%;
         }
       }
 
@@ -89,9 +89,9 @@ const StyledComponent = styled(Component)`
 
         width: 60%;
         height: 100%;
-        padding: 0 1rem;
+        padding: 1rem 2rem;
         transition: background-color 0.3s;
-        box-shadow: 0 -1.8rem 0.3rem -0.3rem ${({ mode }) => (mode ? '#ffffff' : '#13131f')} inset;
+        box-shadow: 0 -1.8rem 0.1rem -0.1rem ${({ mode }) => (mode ? '#ffffff' : '#13131f')} inset;
 
         > h2 {
           font-size: 2rem;
@@ -126,6 +126,29 @@ const StyledComponent = styled(Component)`
     }
   }
   @media screen and (max-width: 480px) {
+    > article {
+      > a {
+        flex-direction: column;
+        height: auto;
+
+        > .gatsby-image-wrapper {
+          width: 100%;
+          > picture img {
+            width: 100%;
+          }
+        }
+
+        > section {
+          width: 100%;
+          box-shadow: 0 0;
+        }
+      }
+    }
+    > article:nth-of-type(2) {
+      > a {
+        flex-direction: column;
+      }
+    }
   }
   @media screen and (max-height: 430px) {
   }

@@ -32,25 +32,29 @@ const StyledComponent = styled(Component)`
   ${({ isTitle }) => isTitle && 'flex-wrap: wrap;'}
   ${({ isTitle }) => isTitle && 'justify-content: center;'}
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   > li {
     padding: ${({ isTitle }) => (isTitle ? '0 0' : '0.2rem 0.4rem')};
     margin: 0 0.3rem;
     font-size: 1.4rem;
-    color: ${({ mode }) => (mode ? '#09090ff0' : '#fffffff0')};
+    color: ${({ mode }) => (mode ? '#09090f' : '#ffffff')};
     word-break: keep-all;
-    border: 0.5px solid ${({ mode, isTitle }) => (!isTitle && mode ? '#09090ff0' : '#fffffff0')};
-    border-radius: 2px;
+    border: 0.5px solid ${({ mode, isTitle }) => (!isTitle && mode ? '#09090f' : '#ffffff')};
+    border-radius: 3px;
     transition: color 0.3s, border 0.3s;
 
     > a {
       display: block;
-      color: #fffffff0;
+      color: #ffffff;
       border-radius: 2px;
       padding: 0.2rem 0.4rem;
       transition: color, background-color 0.15s;
 
       :hover {
-        color: #09090ff0;
+        color: #09090f;
         background-color: #ffffff;
       }
     }

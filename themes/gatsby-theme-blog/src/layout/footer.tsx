@@ -25,6 +25,7 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    font-size: 1.2rem;
   }
   @media screen and (max-height: 430px) {
   }

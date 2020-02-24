@@ -62,6 +62,7 @@ const StyledComponent = styled(Component)`
       display: flex;
       flex-direction: row;
       align-items: center;
+      padding: 2rem;
 
       > p {
         padding: 0.5rem 2rem;
