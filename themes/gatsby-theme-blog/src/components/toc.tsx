@@ -49,7 +49,6 @@ const StyledComponent = styled(Component)`
       padding: 0.5rem;
       color: ${({ mode }) => (mode ? '#09090f90' : '#ffffff90')};
       text-decoration: none;
-      white-space: nowrap;
       transition: color 0.15s;
       :hover {
         color: ${({ mode }) => (mode ? '#09090fc0' : '#ffffffc0')};

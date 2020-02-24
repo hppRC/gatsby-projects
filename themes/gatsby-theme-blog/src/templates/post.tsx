@@ -84,6 +84,7 @@ const StyledComponent = styled(Component)`
     display: grid;
     grid-template-columns: 3fr 0.75fr;
     background-color: transparent;
+    justify-content: center;
     padding: 5rem 2rem;
   }
 

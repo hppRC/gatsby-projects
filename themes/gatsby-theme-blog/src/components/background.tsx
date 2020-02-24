@@ -27,15 +27,15 @@ const StyledComponent = styled(Component)`
       width: 100%;
       height: 100%;
       content: '';
-      background-color: #090919;
-      opacity: 0.5;
+      background-color: #09090f;
+      opacity: 0.2;
     }
     > img,
     > picture {
       position: absolute;
-      top: 0vh;
+      top: -25vh;
       width: 100%;
-      height: 75vh;
+      height: 100vh;
     }
   }
   @media screen and (max-width: 1100px) {

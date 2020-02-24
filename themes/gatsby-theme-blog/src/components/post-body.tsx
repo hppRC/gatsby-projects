@@ -18,6 +18,7 @@ const Component: React.FCX<Props> = ({ className, cover, body }) => (
 );
 
 const StyledComponent = styled(Component)`
+  position: relative;
   width: 100%;
 
   line-height: 2;
@@ -30,18 +31,18 @@ const StyledComponent = styled(Component)`
   }
 
   > h1 {
-    left: -4rem;
+    left: min(calc(-1 * min((100vw - 1200px) / 2, 2vw)), -1vw);
     padding-top: 6rem;
     padding-bottom: 0.5rem;
     font-size: 5.5rem;
   }
   > h2 {
-    left: -2rem;
+    left: -2vw;
     padding-top: 4rem;
     font-size: 4rem;
   }
   > h3 {
-    left: -1rem;
+    left: -1vw;
     padding-top: 3rem;
     font-size: 3rem;
   }
@@ -59,21 +60,27 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    width: 100vw;
+    padding: 2rem;
     > h1 {
-      left: 0;
+      left: 0px;
       padding-top: 1rem;
       padding-bottom: 0.2rem;
       font-size: 3.5rem;
     }
     > h2 {
-      left: 0;
+      left: 0px;
       padding-top: 0.8rem;
       font-size: 2.5rem;
     }
     > h3 {
-      left: 0;
+      left: 0px;
       padding-top: 0.6rem;
       font-size: 1.8rem;
+    }
+
+    > p {
+      padding: 0;
     }
   }
   @media screen and (max-height: 430px) {

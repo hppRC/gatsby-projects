@@ -45,7 +45,7 @@ const StyledComponent = styled(Component)`
     cursor: pointer;
     user-select: none;
     > h2 {
-      font-size: 10rem;
+      font-size: 6vw;
       color: #ffffff;
       user-select: none;
     }

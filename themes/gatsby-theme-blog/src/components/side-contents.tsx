@@ -24,11 +24,14 @@ const Component: React.FCX<Props> = memo(({ className, headings, title, slug }) 
 ));
 
 const StyledComponent = styled(Component)`
-  margin-left: 4rem;
-
+  width: 100%;
   > div {
     position: sticky;
     top: 7.5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
   }
 
   @media screen and (max-width: 1100px) {

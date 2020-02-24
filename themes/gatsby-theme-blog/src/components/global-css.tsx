@@ -209,8 +209,7 @@ const GlobalCSS = () => {
 
         .gatsby-highlight {
           width: 100%;
-          margin-right: 0;
-          margin-left: 0;
+          margin: 0;
           background-color: #09090f;
         }
 
@@ -243,7 +242,12 @@ const GlobalCSS = () => {
           display: flex;
           justify-content: center;
           padding: 2rem 0;
+          overflow: scroll;
           font-size: 3rem;
+        }
+
+        .katex-html {
+          width: 100%;
         }
 
         @media screen and (max-width: 1100px) {
@@ -255,7 +259,12 @@ const GlobalCSS = () => {
             font-size: 1.4rem;
           }
           .gatsby-code-title {
+            padding: 1.25rem;
+            margin: 0;
             font-size: 1.25rem;
+            > pre {
+              width: 10%;
+            }
           }
         }
         @media screen and (max-height: 430px) {

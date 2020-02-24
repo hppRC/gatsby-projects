@@ -39,7 +39,7 @@ digraph graphname {
 }
 ```
 
-# Look at this Video:
+# こんな感じでみれますこんな感じでみれますこんな感じでみれますこんな感じでみれます
 
 $
 f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi

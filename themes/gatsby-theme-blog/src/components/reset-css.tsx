@@ -24,7 +24,7 @@ export default () => (
       *,
       ::before,
       ::after {
-        box-sizing: inherit;
+        box-sizing: border-box;
         background-repeat: no-repeat;
       }
 

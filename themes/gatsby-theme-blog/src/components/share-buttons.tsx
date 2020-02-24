@@ -52,7 +52,9 @@ const Component: React.FCX<Props> = ({ className, title, slug, twitter, siteUrl,
           <TwitterIcon size={32} round />
         </TwitterShareButton>
       </div>
-      <Hatebu />
+      <div>
+        <Hatebu />
+      </div>
     </div>
   );
 };
@@ -64,6 +66,8 @@ const StyledComponent = styled(Component)`
   padding: 5rem 1rem;
 
   > div {
+    display: flex;
+    flex-direction: row-reverse;
     margin: 1rem 0;
     > button {
       margin: 0 0.8rem 0 0;

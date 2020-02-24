@@ -69,6 +69,7 @@ const StyledComponent = styled(Component)`
     transition: color 0.3s;
 
     .gatsby-image-wrapper {
+      height: 30rem;
       border-radius: 3px 3px 1px 1px;
     }
 
@@ -96,7 +97,7 @@ const StyledComponent = styled(Component)`
 
 const Container: React.FCX<ContainerProps> = ({
   frontmatter,
-  fluid = useAnyImage('background.png') || useAnyImage('background.jpg'),
+  fluid = useAnyImage('banner.png') || useAnyImage('banner.jpg'),
   excerpt
 }) => {
   const [enter, setEnter] = useState(false);
