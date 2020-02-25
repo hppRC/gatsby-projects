@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'emotion-theming';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 import { ColorModeContainer } from '../store';
 
@@ -12,7 +12,7 @@ const theme = {
   }
 } as const;
 
-export const WrapRootElement = ({ element }: { element: ReactNode }) => (
+export const WrapRootElement = ({ element }: { element: React.FCX }) => (
   <ThemeProvider theme={theme}>
     <ColorModeContainer.Provider>{element}</ColorModeContainer.Provider>
   </ThemeProvider>

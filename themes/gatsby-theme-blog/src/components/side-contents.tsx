@@ -27,7 +27,7 @@ const StyledComponent = styled(Component)`
   width: 100%;
   > div {
     position: sticky;
-    top: 7.5vh;
+    top: 20vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

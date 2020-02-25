@@ -6,7 +6,7 @@ import { GlobalCSS, ResetCSS } from '../components';
 import Footer from './footer';
 import Header from './header';
 
-type ContainerProps = {};
+type ContainerProps = { children: React.FCX };
 type Props = {} & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ children }) => (
@@ -30,7 +30,7 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = props => {
   return <StyledComponent {...props} />;
 };
 

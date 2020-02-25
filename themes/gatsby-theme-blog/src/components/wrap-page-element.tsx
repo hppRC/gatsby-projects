@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 import Layout from '../layout';
 
-export const WrapPageElement = ({ element }: { element: ReactNode }) => {
+export const WrapPageElement: ReactNode = ({ element }: { element: React.FCX }) => {
   return <Layout>{element}</Layout>;
 };
 
