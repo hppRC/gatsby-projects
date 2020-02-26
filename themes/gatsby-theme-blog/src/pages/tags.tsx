@@ -27,9 +27,24 @@ const Component: React.FCX<Props> = ({ className, tags }) => (
 
 const StyledComponent = styled(Component)`
   ${postsStyle}
+  @media screen and (max-width: 1500px) {
+    > ul {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 2rem;
+    }
+  }
   @media screen and (max-width: 1100px) {
+    > ul {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 2rem;
+    }
   }
   @media screen and (max-width: 768px) {
+    > ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2rem;
+    }
   }
   @media screen and (max-width: 480px) {
   }

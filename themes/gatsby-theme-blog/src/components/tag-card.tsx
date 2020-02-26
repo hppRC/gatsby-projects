@@ -68,7 +68,7 @@ const StyledComponent = styled(Component)`
 
     .gatsby-image-wrapper {
       height: 25rem;
-      border-radius: 3px 3px 1px 1px;
+      border-radius: 3px;
     }
 
     > div {
@@ -80,6 +80,7 @@ const StyledComponent = styled(Component)`
       justify-content: center;
       width: 100%;
       height: 100%;
+
       > h2 {
         z-index: 1;
         font-size: 6rem;
@@ -100,8 +101,28 @@ const StyledComponent = styled(Component)`
   }
 
   @media screen and (max-width: 1100px) {
+    > a {
+      .gatsby-image-wrapper {
+        height: 20rem;
+      }
+      > div {
+        > h2 {
+          font-size: 4.5rem;
+        }
+      }
+    }
   }
   @media screen and (max-width: 768px) {
+    > a {
+      .gatsby-image-wrapper {
+        height: 15rem;
+      }
+      > div {
+        > h2 {
+          font-size: 3rem;
+        }
+      }
+    }
   }
   @media screen and (max-width: 480px) {
   }
