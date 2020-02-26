@@ -12,6 +12,8 @@ export { default as Background } from './background';
 export { default as SideContents } from './side-contents';
 export { default as MemolizedImage } from './memolized-image';
 export { default as PrevNextCard } from './prev-next-card';
+export { default as PostHeader } from './post-header';
 export { default as PostBody } from './post-body';
 export { default as TOC } from './toc';
 export { default as ShareButtons } from './share-buttons';
+export { default as TagCard } from './tag-card';
