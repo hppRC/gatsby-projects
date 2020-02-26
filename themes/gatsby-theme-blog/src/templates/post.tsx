@@ -1,14 +1,11 @@
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import React, { memo } from 'react';
-import { FaRegCalendarAlt, FaTags } from 'react-icons/fa';
 
 import styled from '@emotion/styled';
 
 import { PostData, PostNode, PostPageContext } from '../../types';
-import {
-    Background, PostBody, PrevNextCard, ScatteredChars, SEO, SideContents, TagsList
-} from '../components';
+import { Background, PostBody, PostHeader, PrevNextCard, SEO, SideContents } from '../components';
 import { ColorModeContainer } from '../store';
 
 type ContainerProps = { path: string; data: PostData; pageContext: PostPageContext };
@@ -29,23 +26,7 @@ const Component: React.FCX<Props> = memo(
   ({ className, body, headings, title, date, tags, fluid, previous, next, slug }) => (
     <main className={className}>
       <Background />
-      <section>
-        <ScatteredChars chars={title || 'title'} />
-        <div>
-          <p>
-            <i>
-              <FaRegCalendarAlt />
-            </i>
-            {date}
-          </p>
-          <div>
-            <i>
-              <FaTags />
-            </i>
-            <TagsList tags={tags} isTitle />
-          </div>
-        </div>
-      </section>
+      <PostHeader title={title} date={date} tags={tags} />
       <article>
         <PostBody cover={fluid} body={body} />
         <SideContents headings={headings} title={title || 'blog'} slug={slug} />
@@ -57,52 +38,14 @@ const Component: React.FCX<Props> = memo(
 
 const StyledComponent = styled(Component)`
   position: relative;
-
-  > section {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    > div {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-
-      padding: 2rem;
-
-      > p {
-        color: #ffffff;
-        > i {
-          color: #ffffff;
-          font-size: 2rem;
-          padding: 0.5rem;
-        }
-      }
-
-      > div {
-        display: flex;
-        align-items: flex-end;
-        > i {
-          color: #ffffff;
-          font-size: 2rem;
-          padding: 0.5rem;
-        }
-      }
-    }
-  }
+  padding-bottom: 10rem;
 
   > article {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto 10rem auto;
     display: grid;
-    grid-template-columns: 3fr 0.75fr;
+    grid-template-columns: 3fr 1fr;
     grid-gap: 2rem;
     background-color: transparent;
     justify-content: center;
@@ -110,24 +53,24 @@ const StyledComponent = styled(Component)`
   }
 
   @media screen and (max-width: 1100px) {
+    width: 100vw;
+    > article {
+      display: flex;
+      flex-direction: column;
+      padding: 0 rem;
+      margin: 0;
+      width: 100%;
+      grid-gap: 0;
+    }
   }
   @media screen and (max-width: 768px) {
     > article {
       margin: 0;
       padding: 2rem;
-      grid-template-columns: 1fr;
     }
   }
   @media screen and (max-width: 480px) {
     width: 100%;
-    > section {
-      > div {
-        flex-direction: column;
-        > p {
-          font-size: 1.8rem;
-        }
-      }
-    }
   }
   @media screen and (max-height: 430px) {
   }

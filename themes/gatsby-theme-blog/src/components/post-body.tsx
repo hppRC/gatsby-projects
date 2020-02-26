@@ -9,11 +9,14 @@ import { MemolizedImage } from './';
 
 type ContainerProps = { cover?: FluidObject; body: string };
 type Props = { mode: boolean } & ContainerProps;
+type BodyProps = { body: string };
+
+const Body: React.FCX<BodyProps> = memo(({ body }) => <MDXRenderer>{body}</MDXRenderer>);
 
 const Component: React.FCX<Props> = ({ className, cover, body }) => (
   <div className={className}>
     <MemolizedImage fluid={cover} />
-    <MDXRenderer>{body}</MDXRenderer>
+    <Body body={body} />
   </div>
 );
 
@@ -58,12 +61,13 @@ const StyledComponent = styled(Component)`
   }
 
   @media screen and (max-width: 1100px) {
+    padding: 1rem 10rem;
   }
   @media screen and (max-width: 768px) {
     padding: 0 4rem;
+    margin: 0 auto;
   }
   @media screen and (max-width: 480px) {
-    width: 100vw;
     padding: 0 3rem;
     > h1 {
       padding-top: 1rem;
