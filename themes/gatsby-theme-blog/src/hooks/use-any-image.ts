@@ -25,7 +25,7 @@ const useAnyImage = (filename: string): FluidObject | undefined => {
     return relativePath.includes(filename);
   });
 
-  return targetImage?.childImageSharp.fluid;
+  return targetImage?.childImageSharp?.fluid;
 };
 
 export default useAnyImage;

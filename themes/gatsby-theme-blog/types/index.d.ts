@@ -41,8 +41,8 @@ export type UseAnyImage = {
   allFile: Partial<{
     nodes: {
       relativePath: string;
-      childImageSharp: {
-        fluid: FluidObject;
+      childImageSharp?: {
+        fluid?: FluidObject;
       };
     }[];
   }>;
