@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@types/react": "16.9.23",
-    "@types/react-helmet": "^5.0.15"
+    "@types/react-helmet": "5.0.15"
   },
   "peerDependencies": {
     "react": "^16.12.0",
