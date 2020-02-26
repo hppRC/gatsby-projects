@@ -54,6 +54,13 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 768px) {
+    padding: 0 1.75rem;
+    > div {
+      width: 3.5rem;
+      height: 3.5rem;
+      transition: transform 0.25s ease-out;
+      transform: ${({ mode }) => (mode ? 'translate3d(1.75rem, 0, 0)' : 'translate3d(-1.75rem, 0, 0)')};
+    }
   }
   @media screen and (max-width: 480px) {
     padding: 0 1.5rem;

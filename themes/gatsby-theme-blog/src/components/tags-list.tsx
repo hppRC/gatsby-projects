@@ -44,14 +44,16 @@ const StyledComponent = styled(Component)`
     word-break: keep-all;
     border: 0.5px solid ${({ mode, isTitle }) => (!isTitle && mode ? '#13131f' : '#ffffff')};
     border-radius: 3px;
+    font-weight: 500;
     transition: color 0.3s, border 0.3s;
 
     > a {
       display: block;
       color: #ffffff;
       border-radius: 2px;
-      padding: 0.2rem 0.4rem;
+      padding: 0.4rem 0.6rem;
       transition: color, background-color 0.15s;
+      font-weight: 500;
 
       :hover {
         color: #09090f;
@@ -65,7 +67,9 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    padding: 0.4rem 0;
     > li {
+      font-size: 1rem;
       > a {
         font-size: 1rem;
       }

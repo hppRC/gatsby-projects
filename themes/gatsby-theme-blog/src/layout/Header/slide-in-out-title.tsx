@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { animated, useSpring } from 'react-spring';
 import { useScroll } from 'react-use-gesture';
 
@@ -9,19 +9,23 @@ type ContainerProps = {};
 type Props = {} & ContainerProps;
 
 const Component: React.FCX<Props> = ({ className }) => {
-  const [{ translate, scale }, set] = useSpring(() => ({
-    translate: `translate3d(0rem, 0, 0)`,
-    scale: 'scale(1.0)'
+  const [{ translate, scale, width }, set] = useSpring(() => ({
+    translate: `translate3d(0px, 0, 0)`,
+    scale: 'scale(1.0)',
+    width: '10px'
   }));
+  const ref = useRef<any>(null);
 
   const bind = useScroll(
     ({ xy: [, y] }) => {
       if (typeof window === 'undefined') return;
+      const bk = window.innerWidth > 1100;
+      const sp = window.innerWidth < 480;
 
-      const bk = window.innerWidth > 1100 ? 30 : window.innerWidth > 768 ? 20 : 14.2;
       set({
-        translate: `translate3d(-${Math.min(y * 0.02, bk)}rem, 0, 0)`,
-        scale: `scale(${Math.min(1.5, 1 + y * 0.001)})`
+        translate: `translate3d(-${Math.min(y * 0.2, ref.current?.offsetWidth - (sp ? 20 : 30))}px, 0, 0)`,
+        scale: `scale(${Math.min(1.5, 1 + y * 0.001)})`,
+        width: `${bk ? 10 : Math.min(32, 5 + y * 0.05)}px`
       });
     },
     { domTarget: typeof window !== 'undefined' ? window : undefined }
@@ -34,8 +38,9 @@ const Component: React.FCX<Props> = ({ className }) => {
   return (
     <animated.div style={{ transform: translate }} className={className}>
       <Link to='/'>
-        <h1>
+        <h1 ref={ref}>
           hpp blog
+          <animated.div style={{ display: 'inline-block', width }} />
           <animated.span style={{ transform: scale }}>🌝</animated.span>
         </h1>
       </Link>
@@ -54,16 +59,21 @@ const StyledComponent = styled(Component)`
       color: #fff;
       > span {
         display: inline-block;
-        padding: 0.3rem 0.5rem;
       }
     }
   }
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 768px) {
+    padding: 0.5rem 1rem;
   }
   @media screen and (max-width: 480px) {
     padding: 0 0.5rem;
+    > a {
+      > h1 {
+        font-size: 1.8rem;
+      }
+    }
   }
   @media screen and (max-height: 430px) {
   }

@@ -45,11 +45,22 @@ const StyledComponent = styled(Component)`
   }
 
   @media screen and (max-width: 1100px) {
+    padding: 0.5rem;
+    > div {
+      > nav {
+        padding: 1.4rem 1rem;
+      }
+    }
   }
   @media screen and (max-width: 768px) {
+    padding: 0.3rem;
+    > div {
+      > nav {
+        padding: 1.2rem 0.2rem;
+      }
+    }
   }
   @media screen and (max-width: 480px) {
-    padding: 0.5rem;
     > div {
       > nav {
         padding: 0.8rem 0;

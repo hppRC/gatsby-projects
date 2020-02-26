@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { FaGithub } from 'react-icons/fa';
 
 import styled from '@emotion/styled';
 
@@ -10,13 +11,20 @@ type Props = { mode: boolean; author: string } & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ className, author }) => (
   <footer className={className}>
-    <span>
-      Copyright©2020. <a href={`https://twitter.com/${author.slice(1)}`}>{author}</a>
-    </span>
-    <span>
+    <div>
+      Copyright©2020.<a href={`https://twitter.com/${author.slice(1)}`}> {author}</a>
+    </div>
+    <div>
+      <a href='https://github.com/hppRC'>
+        <i>
+          <FaGithub />
+        </i>
+      </a>
       <a href='https://github.com/hppRC/gatsby-projects/tree/master/themes/gatsby-theme-blog'>Theme</a>by
-      <a href='https://hpprc.com'>hpp🌝</a>
-    </span>
+      <a href='https://hpprc.com'>
+        hpp<span>🌝</span>
+      </a>
+    </div>
   </footer>
 ));
 
@@ -27,18 +35,23 @@ const StyledComponent = styled(Component)`
   justify-content: center;
   width: 100%;
   height: 10vh;
-  > span {
+  > div {
+    margin: 0.2rem 0;
     font-weight: 500;
     color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
     transition: color 0.3s;
     > a {
-      margin: 0.5rem;
+      margin-right: 0.5rem;
       color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
       text-decoration: none;
+      transition: color 0.3s, opacity 0.3s;
 
       :hover {
         opacity: 0.6;
-        transition: opacity 0.3s;
+      }
+
+      > span {
+        margin-left: 0.3rem;
       }
     }
   }
