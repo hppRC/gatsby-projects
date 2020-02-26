@@ -1,6 +1,6 @@
 ---
 slug: 3ydfad
-date: 2018-11-08T14:49:23.467Z
+date: 2020-01-08T14:49:23.467Z
 title: 3yayo
 tags:
   - 3yayo

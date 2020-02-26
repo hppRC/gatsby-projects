@@ -1,24 +1,23 @@
 ---
+
 slug: 3y
-date: 2018-11-08T14:49:23.467Z
+date: 2010-11-08T14:49:23.467Z
 title: 3yayo
 tags:
-  - 3yayo
-  - react
-  - gatsby
-  - ssr
-  - tag1
-  - tag2
-  - tag3
-  - tag4
-  - tag5
-  - tag6
-  - tag7
-  - tag8
-cover: ../assets/test1.jpg
----
 
-# 3yayo
+- 3yayo
+- react
+- gatsby
+- ssr
+- tag1
+- tag2
+- tag3
+- tag4
+- tag5
+- tag6
+- tag7
+- tag8
+  ---# 3yayo
 
 ```javascript{1,5-8}:title=gatsby-config.js
 plugins: [

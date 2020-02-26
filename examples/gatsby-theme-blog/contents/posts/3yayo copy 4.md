@@ -15,10 +15,7 @@ tags:
   - tag6
   - tag7
   - tag8
-cover: ../assets/test1.jpg
----
-
-# 3yayo
+---# 3yayo
 
 ```javascript{1,5-8}:title=gatsby-config.js
 plugins: [
