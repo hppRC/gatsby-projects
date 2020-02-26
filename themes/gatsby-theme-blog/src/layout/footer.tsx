@@ -2,23 +2,46 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
+import { useSiteMetadata } from '../hooks';
 import { ColorModeContainer } from '../store';
 
 type ContainerProps = {};
-type Props = { mode: boolean } & ContainerProps;
+type Props = { mode: boolean; author: string } & ContainerProps;
 
-const Component: React.FCX<Props> = memo(({ className }) => (
-  <footer className={className}>Copyright © 2020 hppRC All Rights Reserved.</footer>
+const Component: React.FCX<Props> = memo(({ className, author }) => (
+  <footer className={className}>
+    <span>
+      Copyright © 2020 <a href={`https://twitter.com/${author.slice(1)}`}>{author}</a>
+    </span>
+    <span>
+      <a href='https://github.com/hppRC/gatsby-projects/tree/master/themes/gatsby-theme-blog'>Theme</a>by
+      <a href='https://hpprc.com'>hpp🌝</a>
+    </span>
+  </footer>
 ));
 
 const StyledComponent = styled(Component)`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 10vh;
-  color: ${({ mode }) => (mode ? '#09090f' : '#ffffff')};
-  transition: color 0.3s;
+  > span {
+    color: ${({ mode }) => (mode ? '#09090f' : '#ffffff')};
+    transition: color 0.3s;
+    > a {
+      margin: 0.5rem;
+      font-weight: 700;
+      color: ${({ mode }) => (mode ? '#09090f' : '#ffffff')};
+      text-decoration: none;
+
+      :hover {
+        opacity: 0.6;
+        transition: opacity 0.3s;
+      }
+    }
+  }
 
   @media screen and (max-width: 1100px) {
   }
@@ -32,9 +55,10 @@ const StyledComponent = styled(Component)`
 `;
 
 const Container: React.FCX<ContainerProps> = () => {
+  const { author } = useSiteMetadata();
   const { mode } = ColorModeContainer.useContainer();
 
-  return <StyledComponent mode={mode} />;
+  return <StyledComponent mode={mode} author={author || 'hppRC'} />;
 };
 
 export default memo(Container);

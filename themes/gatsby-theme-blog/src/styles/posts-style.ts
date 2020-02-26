@@ -22,6 +22,7 @@ export default css`
   > ul {
     display: grid;
     grid-template-columns: repeat(4, 24%);
+    grid-row-gap: 3rem;
     justify-content: space-between;
 
     padding: 3%;
