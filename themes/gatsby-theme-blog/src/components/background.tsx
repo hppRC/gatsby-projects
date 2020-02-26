@@ -20,16 +20,6 @@ const StyledComponent = styled(Component)`
     width: 100%;
     height: 75vh;
 
-    ::after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      content: '';
-      background-color: #09090f;
-      opacity: 0.2;
-    }
     > img,
     > picture {
       position: absolute;
@@ -43,6 +33,15 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
+    > .gatsby-image-wrapper {
+      height: 40vh;
+
+      > img,
+      > picture {
+        top: -10vh;
+        height: 50vh;
+      }
+    }
   }
   @media screen and (max-height: 430px) {
   }
