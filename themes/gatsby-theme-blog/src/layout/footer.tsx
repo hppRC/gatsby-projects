@@ -11,7 +11,7 @@ type Props = { mode: boolean; author: string } & ContainerProps;
 const Component: React.FCX<Props> = memo(({ className, author }) => (
   <footer className={className}>
     <span>
-      Copyright © 2020 <a href={`https://twitter.com/${author.slice(1)}`}>{author}</a>
+      Copyright©2020. <a href={`https://twitter.com/${author.slice(1)}`}>{author}</a>
     </span>
     <span>
       <a href='https://github.com/hppRC/gatsby-projects/tree/master/themes/gatsby-theme-blog'>Theme</a>by
@@ -28,12 +28,12 @@ const StyledComponent = styled(Component)`
   width: 100%;
   height: 10vh;
   > span {
-    color: ${({ mode }) => (mode ? '#09090f' : '#ffffff')};
+    font-weight: 500;
+    color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
     transition: color 0.3s;
     > a {
       margin: 0.5rem;
-      font-weight: 700;
-      color: ${({ mode }) => (mode ? '#09090f' : '#ffffff')};
+      color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
       text-decoration: none;
 
       :hover {

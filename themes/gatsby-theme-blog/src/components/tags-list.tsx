@@ -40,9 +40,9 @@ const StyledComponent = styled(Component)`
     padding: ${({ isTitle }) => (isTitle ? '0 0' : '0.2rem 0.4rem')};
     margin: 0 0.3rem;
     font-size: 1.4rem;
-    color: ${({ mode }) => (mode ? '#09090f' : '#ffffff')};
+    color: ${({ mode }) => (mode ? '#13131f' : '#f5f5f5')};
     word-break: keep-all;
-    border: 0.5px solid ${({ mode, isTitle }) => (!isTitle && mode ? '#09090f' : '#ffffff')};
+    border: 0.5px solid ${({ mode, isTitle }) => (!isTitle && mode ? '#13131f' : '#ffffff')};
     border-radius: 3px;
     transition: color 0.3s, border 0.3s;
 

@@ -70,7 +70,7 @@ const StyledComponent = styled(Component)`
     > a {
       height: 20rem;
       display: flex;
-      color: ${({ mode }) => (mode ? '#09090f' : '#fffffff0')};
+      color: ${({ mode }) => (mode ? '#13131f' : '#f5f5f5')};
       transition: color 0.3s;
 
       > .gatsby-image-wrapper {

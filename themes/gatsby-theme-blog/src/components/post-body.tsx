@@ -21,7 +21,7 @@ const StyledComponent = styled(Component)`
   position: relative;
   width: 100%;
 
-  color: ${({ mode }) => (mode ? '#40404f' : '#f0f0f0')};
+  color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
   transition: color 0.3s;
 
   > svg {

@@ -64,7 +64,7 @@ const StyledComponent = styled(Component)`
     position: relative;
     display: block;
 
-    color: ${({ mode }) => (mode ? '#09090fe0' : '#ffffffe0')};
+    color: ${({ mode }) => (mode ? '#13131f' : '#f5f5f5')};
     text-decoration: none;
     transition: color 0.3s;
 

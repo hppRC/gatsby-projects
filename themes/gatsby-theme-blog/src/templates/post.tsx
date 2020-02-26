@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import React, { memo } from 'react';
+import { FaRegCalendarAlt, FaTags } from 'react-icons/fa';
 
 import styled from '@emotion/styled';
 
@@ -31,8 +32,18 @@ const Component: React.FCX<Props> = memo(
       <section>
         <ScatteredChars chars={title || 'title'} />
         <div>
-          <p>{date}</p>
-          <TagsList tags={tags} isTitle />
+          <p>
+            <i>
+              <FaRegCalendarAlt />
+            </i>
+            {date}
+          </p>
+          <div>
+            <i>
+              <FaTags />
+            </i>
+            <TagsList tags={tags} isTitle />
+          </div>
         </div>
       </section>
       <article>
@@ -60,19 +71,27 @@ const StyledComponent = styled(Component)`
 
     > div {
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      justify-content: flex-start;
+
       padding: 2rem;
 
       > p {
-        padding: 0.5rem 2rem;
         color: #ffffff;
+        > i {
+          color: #ffffff;
+          font-size: 2rem;
+          padding: 0.5rem;
+        }
       }
 
-      > ul {
-        > li {
-          margin: 0 0.4rem;
-          font-size: 1.6rem;
+      > div {
+        display: flex;
+        align-items: flex-end;
+        > i {
+          color: #ffffff;
+          font-size: 2rem;
+          padding: 0.5rem;
         }
       }
     }

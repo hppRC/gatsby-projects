@@ -48,6 +48,9 @@ const GlobalCSS = () => {
             background-color: ${mode ? '#ffffff' : '#09090f'};
             /*overscroll-behavior-y: none;*/
             transition: background-color 0.15s;
+
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
           }
         }
 
