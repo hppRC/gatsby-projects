@@ -57,11 +57,11 @@ const StyledComponent = styled(Component)`
   }
 
   @media screen and (max-width: 1100px) {
+    display: none;
   }
   @media screen and (max-width: 768px) {
   }
   @media screen and (max-width: 480px) {
-    display: none;
   }
   @media screen and (max-height: 430px) {
   }

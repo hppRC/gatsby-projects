@@ -51,7 +51,7 @@ const Component: React.FCX<Props> = memo(({ className, prev, next, blogPath }) =
 ));
 
 const StyledComponent = styled(Component)`
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: min(50%, 700px) min(50%, 700px);
@@ -68,7 +68,7 @@ const StyledComponent = styled(Component)`
     transition: background-color 0.3s, box-shadow 0.15s;
 
     > a {
-      height: 20rem;
+      height: 25rem;
       display: flex;
       color: ${({ mode }) => (mode ? '#13131f' : '#f5f5f5')};
       transition: color 0.3s;
@@ -91,7 +91,6 @@ const StyledComponent = styled(Component)`
         height: 100%;
         padding: 1rem 2rem;
         transition: background-color 0.3s;
-        box-shadow: 0 -1.8rem 0.1rem -0.1rem ${({ mode }) => (mode ? '#ffffff' : '#13131f')} inset;
 
         > h2 {
           font-size: 2rem;
@@ -113,16 +112,51 @@ const StyledComponent = styled(Component)`
   }
 
   @media screen and (max-width: 1100px) {
+    > article {
+      > a {
+        height: 40rem;
+        flex-direction: column;
+        > .gatsby-image-wrapper {
+          width: 100%;
+        }
+
+        > section {
+          width: 100%;
+          height: 100%;
+          padding: 1rem 2rem;
+
+          > h2 {
+            font-size: 2rem;
+            padding: 0.6rem 0;
+          }
+
+          > p {
+            font-size: 1.4rem;
+            z-index: -1;
+          }
+        }
+      }
+    }
+    > article:nth-of-type(2) {
+      > a {
+        flex-direction: column;
+      }
+    }
   }
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
     grid-gap: 5rem;
     margin: 0;
-    padding: 0.6rem;
+    padding: 2rem;
 
     > article {
       margin: 0;
       width: 100%;
+      > a {
+        > section {
+          padding: 0rem 2rem;
+        }
+      }
     }
   }
   @media screen and (max-width: 480px) {

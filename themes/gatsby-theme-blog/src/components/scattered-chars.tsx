@@ -45,12 +45,17 @@ const StyledComponent = styled(Component)`
     cursor: pointer;
     user-select: none;
     > h2 {
-      font-size: 6vw;
+      font-size: 8rem;
       color: #ffffff;
       user-select: none;
     }
   }
   @media screen and (max-width: 1100px) {
+    > li {
+      > h2 {
+        font-size: 5rem;
+      }
+    }
   }
   @media screen and (max-width: 768px) {
   }
@@ -59,7 +64,7 @@ const StyledComponent = styled(Component)`
     padding: 0.6rem;
     > li {
       > h2 {
-        font-size: 4rem;
+        font-size: 3rem;
       }
     }
   }
