@@ -1,16 +1,14 @@
-import Img, { FluidObject } from 'gatsby-image';
-import React, { memo } from 'react';
+import React from 'react';
 
 import styled from '@emotion/styled';
 
-type ContainerProps = { fluid: FluidObject | undefined };
+type ContainerProps = {};
 type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = memo(({ fluid, className }) => (
-  <>{fluid && <Img fluid={fluid} alt='eyecatch image' className={className} />}</>
-));
+const Component: React.FCX<Props> = ({ className, children }) => <h1 className={className}>{children}</h1>;
 
 const StyledComponent = styled(Component)`
+  color: red;
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 768px) {
@@ -25,4 +23,4 @@ const Container: React.FCX<ContainerProps> = props => {
   return <StyledComponent {...props} />;
 };
 
-export default memo(Container);
+export default Container;

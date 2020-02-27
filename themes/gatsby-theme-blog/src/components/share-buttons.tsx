@@ -1,6 +1,5 @@
 import path from 'path';
 import React from 'react';
-import Helmet from 'react-helmet';
 import {
     FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon,
     TwitterShareButton
@@ -12,69 +11,62 @@ import { useHpprcThemeConfig, useSiteMetadata } from '../hooks';
 
 type ContainerProps = { title: string; slug: string };
 type Props = { twitter: string; siteUrl: string; blogPath: string } & ContainerProps;
+type HatebuProps = { url: string; title: string };
 
-const Hatebu: React.FCX = () => (
-  <>
-    <Helmet>
-      <script type='text/javascript' src='//b.st-hatena.com/js/bookmark_button.js' async />
-    </Helmet>
-    <a
-      href='http://b.hatena.ne.jp/entry/'
-      className='hatena-bookmark-button'
-      data-hatena-bookmark-layout='vertical-normal'
-      data-hatena-bookmark-lang='ja'
-      title='このエントリーをはてなブックマークに追加'
-    >
-      <img
-        src='//b.st-hatena.com/images/entry-button/button-only@2x.png'
-        alt='このエントリーをはてなブックマークに追加'
-        width='20'
-        height='20'
-        style={{ border: 'none' }}
-      />
+const HatebuButton: React.FCX<HatebuProps> = ({ className, url, title }) => (
+  <button className={className}>
+    <a href={`http://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${title}`} target='_blank' rel='nofollow'>
+      B!
     </a>
-  </>
+  </button>
 );
 
+const StyledHatebuButton = styled(HatebuButton)`
+  width: 32px;
+  height: 32px;
+  > a {
+    display: block;
+    font-weight: 700;
+    line-height: 32px;
+
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(#00a5e0 0%, #00a5e0 40%, #008de1 60%, #008de1 100%);
+    border-radius: 50%;
+  }
+`;
+
 const Component: React.FCX<Props> = ({ className, title, slug, twitter, siteUrl, blogPath }) => {
-  const twitterAccount = twitter.split('/').pop();
+  const twitterAccount = twitter.split('/').pop(); // @hpp_ricecaeke -> hpp_ricecake
   const articleUrl = `${siteUrl}${path.join(blogPath, slug)}`;
   return (
     <div className={className}>
-      <div>
-        <FacebookShareButton url={articleUrl}>
-          <FacebookIcon size={32} round />
-        </FacebookShareButton>
-        <LinkedinShareButton url={articleUrl}>
-          <LinkedinIcon size={32} round />
-        </LinkedinShareButton>
-        <TwitterShareButton title={`${title}\n`} via={twitterAccount} url={articleUrl}>
-          <TwitterIcon size={32} round />
-        </TwitterShareButton>
-      </div>
-      <div>
-        <Hatebu />
-      </div>
+      <FacebookShareButton url={articleUrl}>
+        <FacebookIcon size={32} round />
+      </FacebookShareButton>
+      <LinkedinShareButton url={articleUrl}>
+        <LinkedinIcon size={32} round />
+      </LinkedinShareButton>
+      <TwitterShareButton title={`${title}\n`} via={twitterAccount} url={articleUrl}>
+        <TwitterIcon size={32} round />
+      </TwitterShareButton>
+      <StyledHatebuButton url={articleUrl} title={title} />
     </div>
   );
 };
 
 const StyledComponent = styled(Component)`
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   width: 100%;
   padding: 5rem 1rem;
 
-  > div {
-    display: flex;
-    flex-direction: row-reverse;
-    margin: 1rem 0;
-    > button {
-      margin: 0 0.8rem 0 0;
-      transition: opacity 0.3s;
-      :hover {
-        opacity: 0.6;
-      }
+  > button {
+    margin: 0 0.8rem 0 0;
+    transition: opacity 0.3s;
+    :hover {
+      opacity: 0.6;
     }
   }
 
@@ -85,13 +77,10 @@ const StyledComponent = styled(Component)`
     padding: 4rem 2rem;
   }
   @media screen and (max-width: 480px) {
-    flex-direction: row-reverse;
-    justify-content: space-between;
     padding: 2rem;
-    > div {
-      > button {
-        margin: 0 0.4rem;
-      }
+
+    > button {
+      margin: 0 0.5rem;
     }
   }
   @media screen and (max-height: 430px) {

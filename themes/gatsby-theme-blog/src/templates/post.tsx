@@ -66,11 +66,15 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 768px) {
     > article {
       margin: 0;
-      padding: 2rem;
+      padding: 2rem 2rem 10rem 2rem;
     }
   }
   @media screen and (max-width: 480px) {
     width: 100%;
+    > article {
+      margin: 0;
+      padding: 2rem 0rem 10rem 0rem;
+    }
   }
   @media screen and (max-height: 430px) {
   }

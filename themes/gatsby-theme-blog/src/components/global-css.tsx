@@ -231,6 +231,8 @@ const GlobalCSS = () => {
         .gatsby-code-title {
           display: inline-block;
           padding: 1rem 1.2rem 1rem 1.2rem;
+
+          margin-top: 2rem;
           margin-bottom: -1em;
 
           font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
@@ -265,6 +267,7 @@ const GlobalCSS = () => {
           .gatsby-code-title {
             padding: 1.25rem;
             margin: 0;
+            margin-top: 2rem;
             font-size: 1.25rem;
             > pre {
               width: 10%;

@@ -34,29 +34,30 @@ const StyledComponent = styled(Component)`
 
   > h1 {
     left: min(calc(-1 * min((100vw - 1200px) / 2, 2vw)), -1vw);
-    padding-top: 6rem;
-    padding-bottom: 1rem;
+    margin-top: 6rem;
+    margin-bottom: 1rem;
     font-size: 5.5rem;
     color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
   }
   > h2 {
     left: min(calc(-1 * min((100vw - 1200px) / 2, 1vw)), -0.5vw);
-    padding-top: 4rem;
-    padding-bottom: 1rem;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
     font-size: 4rem;
   }
   > h3 {
     left: min(calc(-1 * min((100vw - 1200px) / 2, 0.5vw)), -0.2vw);
-    padding-top: 3rem;
+    margin-top: 3rem;
     font-size: 3rem;
   }
 
   > p {
-    padding: 1.5rem 0 3.5rem 0;
+    margin: 1.5rem 0 3.5rem 0;
     line-height: 2;
   }
 
   > .gatsby-image-wrapper {
+    margin-bottom: 5rem;
     border-radius: 3px;
   }
 
@@ -68,18 +69,17 @@ const StyledComponent = styled(Component)`
     margin: 0 auto;
   }
   @media screen and (max-width: 480px) {
-    padding: 0 3rem;
+    padding: 0 2rem;
     > h1 {
-      padding-top: 1rem;
-      padding-bottom: 0.2rem;
+      margin: 2rem 0 1rem 0;
       font-size: 3.5rem;
     }
     > h2 {
-      padding-top: 0.8rem;
+      margin-top: 0.8rem;
       font-size: 2.5rem;
     }
     > h3 {
-      padding-top: 0.4rem;
+      margin-top: 0.5rem;
       font-size: 2rem;
     }
 

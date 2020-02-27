@@ -51,7 +51,7 @@ const Component: React.FCX<Props> = memo(({ className, prev, next, blogPath }) =
 ));
 
 const StyledComponent = styled(Component)`
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: min(50%, 700px) min(50%, 700px);
@@ -174,6 +174,7 @@ const StyledComponent = styled(Component)`
 
         > section {
           width: 100%;
+          padding: 2rem;
           box-shadow: 0 0;
         }
       }

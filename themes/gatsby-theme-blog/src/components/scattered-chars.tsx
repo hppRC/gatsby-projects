@@ -64,7 +64,7 @@ const StyledComponent = styled(Component)`
     padding: 0.6rem;
     > li {
       > h2 {
-        font-size: 3rem;
+        font-size: 4rem;
       }
     }
   }
