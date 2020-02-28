@@ -7,10 +7,11 @@ import { animated, config, useSpring } from 'react-spring';
 
 import styled from '@emotion/styled';
 
-import { Frontmatter } from '../../types';
-import { useAnyImage, useHpprcThemeConfig } from '../hooks';
-import { ColorModeContainer } from '../store';
-import { DecoMoon, MemolizedImage, TagsList } from './';
+import { MemolizedImage, TagsList } from '../';
+import { Frontmatter } from '../../../types';
+import { useAnyImage, useHpprcThemeConfig } from '../../hooks';
+import { ColorModeContainer } from '../../store';
+import DecoMoon from './deco-moon';
 
 type ContainerProps = {
   frontmatter: Frontmatter;

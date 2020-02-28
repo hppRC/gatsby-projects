@@ -7,7 +7,7 @@ import {
 
 import styled from '@emotion/styled';
 
-import { useHpprcThemeConfig, useSiteMetadata } from '../hooks';
+import { useHpprcThemeConfig, useSiteMetadata } from '../../hooks';
 
 type ContainerProps = { title: string; slug: string };
 type Props = { twitter: string; siteUrl: string; blogPath: string } & ContainerProps;

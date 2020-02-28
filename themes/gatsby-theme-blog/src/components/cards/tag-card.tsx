@@ -6,9 +6,10 @@ import { animated, config, useSpring } from 'react-spring';
 
 import styled from '@emotion/styled';
 
-import { useAnyImage, useHpprcThemeConfig } from '../hooks';
-import { ColorModeContainer } from '../store';
-import { DecoMoon, MemolizedImage } from './';
+import { MemolizedImage } from '../';
+import { useAnyImage, useHpprcThemeConfig } from '../../hooks';
+import { ColorModeContainer } from '../../store';
+import DecoMoon from './deco-moon';
 
 type ContainerProps = {
   tag: string;

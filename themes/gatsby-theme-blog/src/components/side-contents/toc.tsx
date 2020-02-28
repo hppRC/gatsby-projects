@@ -4,7 +4,7 @@ import React, { memo } from 'react';
 import styled from '@emotion/styled';
 import { Location } from '@reach/router';
 
-import { ColorModeContainer } from '../store';
+import { ColorModeContainer } from '../../store';
 
 const GithubSlugger = require('github-slugger');
 const slugger = new GithubSlugger();

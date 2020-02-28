@@ -2,7 +2,8 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
-import { ShareButtons, TOC } from './';
+import ShareButtons from './share-buttons';
+import TOC from './toc';
 
 type ContainerProps = {
   headings: {
@@ -27,7 +28,7 @@ const StyledComponent = styled(Component)`
   width: 100%;
   > div {
     position: sticky;
-    top: 20vh;
+    top: 15vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

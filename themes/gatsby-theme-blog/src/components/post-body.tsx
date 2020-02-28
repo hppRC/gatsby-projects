@@ -39,8 +39,9 @@ const StyledComponent = styled(Component)`
     margin: 6rem 0 1rem 0;
     font-size: 5.5rem;
     color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
-    border-bottom: solid ${({ mode }) => (mode ? '0.25rem #096148' : '0.3rem #3F8EFC')};
+    border-bottom: solid ${({ mode }) => (mode ? '0.25rem #3F8EFC' : '0.3rem #3F8EFC')};
     border-radius: 1px;
+    transition: border-bottom 0.3s;
   }
 
   > h2 {
@@ -48,16 +49,19 @@ const StyledComponent = styled(Component)`
     padding: 0.8rem 0;
     margin: 4rem 0 0.8rem 0;
     font-size: 4rem;
-    border-bottom: solid ${({ mode }) => (mode ? '0.25rem #096148' : '0.3rem #3F8EFC')};
+    border-bottom: solid ${({ mode }) => (mode ? '0.25rem #3F8EFC' : '0.3rem #3F8EFC')};
     border-radius: 1px;
+    transition: border-bottom 0.3s;
   }
+
   > h3 {
     left: min(calc(-1 * min((100vw - 1200px) / 2, 0.5vw)), -0.2vw);
     padding: 0.5rem 0;
     margin: 2rem 0 1rem 0;
     font-size: 3rem;
-    border-bottom: solid ${({ mode }) => (mode ? '0.25rem #096148' : '0.3rem #3F8EFC')};
+    border-bottom: solid ${({ mode }) => (mode ? '0.25rem #3F8EFC' : '0.3rem #3F8EFC')};
     border-radius: 1px;
+    transition: border-bottom 0.3s;
   }
 
   > p {

@@ -40,9 +40,9 @@ const StyledComponent = styled(Component)`
     padding: ${({ isTitle }) => (isTitle ? '0 0' : '0.2rem 0.4rem')};
     margin: 0 0.3rem;
     font-size: 1.4rem;
-    color: ${({ mode }) => (mode ? '#13131f' : '#f5f5f5')};
+    color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
     word-break: keep-all;
-    border: 0.5px solid ${({ mode, isTitle }) => (!isTitle && mode ? '#13131f' : '#ffffff')};
+    border: 0.5px solid ${({ mode, isTitle }) => (!isTitle && mode ? '#30303f' : '#ffffff')};
     border-radius: 3px;
     font-weight: 500;
     transition: color 0.3s, border 0.3s;
@@ -53,7 +53,7 @@ const StyledComponent = styled(Component)`
       border-radius: 2px;
       padding: 0.4rem 0.6rem;
       transition: color, background-color 0.15s;
-      font-weight: 500;
+      font-weight: ${({ isTitle }) => (isTitle ? '700' : '500')};
 
       :hover {
         color: #09090f;
