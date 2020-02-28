@@ -123,7 +123,8 @@ const StyledComponent = styled(Component)`
         > section {
           width: 100%;
           height: 100%;
-          padding: 1rem 2rem;
+          padding: 1.5rem 2rem;
+          justify-content: flex-start;
 
           > h2 {
             font-size: 2rem;

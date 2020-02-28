@@ -20,7 +20,7 @@ const Component: React.FCX<Props> = memo(({ className, author }) => (
           <FaGithub />
         </i>
       </a>
-      <a href='https://github.com/hppRC/gatsby-projects/tree/master/themes/gatsby-theme-blog'>Theme</a>by
+      <a href='https://github.com/hppRC/gatsby-projects/tree/master/themes/gatsby-theme-blog'>Theme</a>by{' '}
       <a href='https://hpprc.com'>
         hpp<span>🌝</span>
       </a>

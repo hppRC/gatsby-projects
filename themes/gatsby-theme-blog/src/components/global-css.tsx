@@ -213,7 +213,7 @@ const GlobalCSS = () => {
         .gatsby-highlight {
           width: 100%;
           margin: 0;
-          background-color: #09090f;
+          background-color: ${mode ? '#09090f' : '#131313'};
         }
 
         .gatsby-highlight pre[class*='language-'] {
@@ -233,13 +233,12 @@ const GlobalCSS = () => {
           padding: 1rem 1.2rem 1rem 1.2rem;
 
           margin-top: 2rem;
-          margin-bottom: -1em;
 
           font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
           font-size: 1.4rem;
           line-height: 1;
           color: #fff;
-          background-color: #09090f;
+          background-color: ${mode ? '#09090f' : '#131313'};
           border-radius: 3px 3px 0 0;
         }
 

@@ -14,7 +14,9 @@ const Block: React.FCX<BlockProps> = ({ ch }) => {
     x: 0,
     y: 0
   }));
+
   const bind = useDrag(({ offset: [x, y] }) => set({ x, y }));
+
   return (
     <animated.h2 {...bind()} style={{ x: x, y: y }}>
       {ch}
@@ -41,7 +43,7 @@ const StyledComponent = styled(Component)`
 
   > li {
     display: felx;
-    touch-action: auto;
+    touch-action: none;
     cursor: pointer;
     user-select: none;
     > h2 {
@@ -53,11 +55,16 @@ const StyledComponent = styled(Component)`
   @media screen and (max-width: 1100px) {
     > li {
       > h2 {
-        font-size: 5rem;
+        font-size: 10rem;
       }
     }
   }
   @media screen and (max-width: 768px) {
+    > li {
+      > h2 {
+        font-size: 6rem;
+      }
+    }
   }
   @media screen and (max-width: 480px) {
     width: 100%;

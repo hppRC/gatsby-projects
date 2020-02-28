@@ -21,9 +21,10 @@ const Component: React.FCX<Props> = ({ className, cover, body }) => (
 );
 
 const StyledComponent = styled(Component)`
+  --borderWidth: 3px;
+
   position: relative;
   width: 100%;
-
   color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
   transition: color 0.3s;
 
@@ -34,21 +35,29 @@ const StyledComponent = styled(Component)`
 
   > h1 {
     left: min(calc(-1 * min((100vw - 1200px) / 2, 2vw)), -1vw);
-    margin-top: 6rem;
-    margin-bottom: 1rem;
+    padding: 1rem 0;
+    margin: 6rem 0 1rem 0;
     font-size: 5.5rem;
     color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
+    border-bottom: solid ${({ mode }) => (mode ? '0.25rem #096148' : '0.3rem #3F8EFC')};
+    border-radius: 1px;
   }
+
   > h2 {
     left: min(calc(-1 * min((100vw - 1200px) / 2, 1vw)), -0.5vw);
-    margin-top: 4rem;
-    margin-bottom: 1rem;
+    padding: 0.8rem 0;
+    margin: 4rem 0 0.8rem 0;
     font-size: 4rem;
+    border-bottom: solid ${({ mode }) => (mode ? '0.25rem #096148' : '0.3rem #3F8EFC')};
+    border-radius: 1px;
   }
   > h3 {
     left: min(calc(-1 * min((100vw - 1200px) / 2, 0.5vw)), -0.2vw);
-    margin-top: 3rem;
+    padding: 0.5rem 0;
+    margin: 2rem 0 1rem 0;
     font-size: 3rem;
+    border-bottom: solid ${({ mode }) => (mode ? '0.25rem #096148' : '0.3rem #3F8EFC')};
+    border-radius: 1px;
   }
 
   > p {
@@ -63,6 +72,20 @@ const StyledComponent = styled(Component)`
 
   @media screen and (max-width: 1100px) {
     padding: 1rem 10rem;
+    > h1 {
+      font-size: 4.5rem;
+    }
+    > h2 {
+      margin-top: 0.8rem;
+      font-size: 3rem;
+    }
+    > h3 {
+      margin-top: 0.5rem;
+      font-size: 3rem;
+    }
+
+    > p {
+    }
   }
   @media screen and (max-width: 768px) {
     padding: 0 4rem;
@@ -87,6 +110,18 @@ const StyledComponent = styled(Component)`
     }
   }
   @media screen and (max-height: 430px) {
+  }
+
+  @keyframes animatedgradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 `;
 

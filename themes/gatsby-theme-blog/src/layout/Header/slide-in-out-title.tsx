@@ -24,7 +24,7 @@ const Component: React.FCX<Props> = ({ className }) => {
 
       set({
         translate: `translate3d(-${Math.min(y * 0.2, ref.current?.offsetWidth - 30)}px, 0, 0)`,
-        scale: `scale(${Math.min(sp ? 2.4 : 1.5, 1 + y * 0.001)})`,
+        scale: `scale(${Math.min(sp ? 1.8 : 1.5, 1 + y * 0.001)})`,
         width: `${bk ? 10 : Math.min(32, 5 + y * 0.05)}px`
       });
     },
@@ -68,10 +68,10 @@ const StyledComponent = styled(Component)`
     padding: 0.5rem 1rem;
   }
   @media screen and (max-width: 480px) {
-    padding: 0.3rem 0.5rem;
+    padding: 0.4rem 0.5rem;
     > a {
       > h1 {
-        font-size: 1.8rem;
+        font-size: 2.5rem;
       }
     }
   }
