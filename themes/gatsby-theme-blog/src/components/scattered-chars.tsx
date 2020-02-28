@@ -44,7 +44,7 @@ const StyledComponent = styled(Component)`
   > li {
     display: felx;
     touch-action: none;
-    cursor: pointer;
+    cursor: grab;
     user-select: none;
     > h2 {
       font-size: 8rem;

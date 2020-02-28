@@ -4,7 +4,7 @@ module.exports = themeOptions => {
     siteUrl = 'https://blog.hpprc.com',
     siteDescription = 'personal blog made with Gatsby, TypeScript.',
     basePath = '/',
-    blogPath = '/blog',
+    blogPath = '/posts',
     tagsPath = '/tags',
     assetsPath = 'contents/assets',
     postsPath = 'contents/posts',
@@ -12,7 +12,7 @@ module.exports = themeOptions => {
     mdx = true,
     webpackBundleAnalyzer = true,
     iconPath = './contents/assets/icon.png',
-    googleAnalyticsTrackingId = 'UA-149661454-2',
+    googleAnalyticsTrackingId = 'UA-XXXXXXXXX-X',
     backgroundColor = '#ffffff',
     themeColor = '#09090f'
   } = themeOptions;
