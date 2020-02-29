@@ -17,5 +17,11 @@ const siteMetadata = {
 
 module.exports = {
   siteMetadata, //this is needed!
-  plugins: [`@hpprc/gatsby-theme-blog`]
+  plugins: [
+    `@hpprc/gatsby-theme-blog`,
+    {
+      resolve: `@hpprc/gatsby-theme-blog`,
+      options: {}
+    }
+  ]
 };

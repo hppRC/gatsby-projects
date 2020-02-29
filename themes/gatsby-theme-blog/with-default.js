@@ -1,5 +1,5 @@
 const defaultLightTheme = {
-  color: '#13131f',
+  color: '#30303f',
   backgroundColor: '#ffffff',
   cardBackground: 'transparent',
   cardBoxShadow: '5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff',
@@ -12,7 +12,7 @@ const defaultDarkTheme = {
   color: '#f5f5f5',
   backgroundColor: '#09090f',
   cardBackground: '#13131f',
-  cardBoxShadow: '5px 5px 10px #00000f, -5px -5px 10px #13131f',
+  cardBoxShadow: '5px 5px 10px #030303, -5px -5px 10px #090909',
   codeBackground: '#131313',
   headingBorder: 'solid 0.3rem #3f8efc',
   tocBackground: '#13131f'
@@ -22,7 +22,7 @@ module.exports = themeOptions => {
   const {
     siteTitle = 'hpp blog',
     siteUrl = 'https://blog.hpprc.com',
-    siteDescription = 'personal blog made with Gatsby, TypeScript.',
+    siteDescription = 'personal blog made with Gatsby, TypeScript, emotion.',
     basePath = '/',
     blogPath = '/posts',
     tagsPath = '/tags',

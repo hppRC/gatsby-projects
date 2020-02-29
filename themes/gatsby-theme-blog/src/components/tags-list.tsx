@@ -4,11 +4,12 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
+import { Theme } from '../../types';
 import { useHpprcThemeConfig } from '../hooks';
-import { ColorModeContainer } from '../store';
+import { useTheme } from '../theme';
 
 type ContainerProps = { tags: string[] | undefined; isTitle?: boolean };
-type Props = { mode: boolean; tagsPath: string } & ContainerProps;
+type Props = { theme: Theme; tagsPath: string } & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ className, tags, isTitle, tagsPath }) => (
   <ul className={className}>
@@ -40,9 +41,9 @@ const StyledComponent = styled(Component)`
     padding: ${({ isTitle }) => (isTitle ? '0 0' : '0.2rem 0.4rem')};
     margin: 0 0.3rem;
     font-size: 1.4rem;
-    color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
+    color: ${({ theme }) => theme.color};
     word-break: keep-all;
-    border: 0.5px solid ${({ mode, isTitle }) => (!isTitle && mode ? '#30303f' : '#ffffff')};
+    border: 0.5px solid ${({ theme, isTitle }) => (isTitle ? '#ffffff' : theme.color)};
     border-radius: 3px;
     font-weight: 500;
     transition: color 0.3s, border 0.3s;
@@ -80,9 +81,9 @@ const StyledComponent = styled(Component)`
 `;
 
 const Container: React.FCX<ContainerProps> = ({ tags, isTitle }) => {
-  const { mode } = ColorModeContainer.useContainer();
+  const theme = useTheme();
   const { tagsPath } = useHpprcThemeConfig();
-  return <StyledComponent {...{ tags, isTitle, mode, tagsPath }} />;
+  return <StyledComponent {...{ tags, isTitle, theme, tagsPath }} />;
 };
 
 export default memo(Container);

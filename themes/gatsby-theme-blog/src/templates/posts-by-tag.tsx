@@ -4,14 +4,12 @@ import styled from '@emotion/styled';
 
 import { Frontmatter, PostsByTagPageContext } from '../../types';
 import { ArticleCard, Background, ScatteredChars, SEO } from '../components';
-import { ColorModeContainer } from '../store';
 import { postsStyle } from '../styles';
 
 type ContainerProps = { pageContext: PostsByTagPageContext; path: string };
 type Props = {
   posts: { frontmatter: Frontmatter; excerpt: string }[];
   tagName: string;
-  mode: boolean;
 };
 
 const Component: React.FCX<Props> = memo(({ className, tagName, posts }) => (
@@ -47,12 +45,11 @@ const StyledComponent = styled(Component)`
 
 const Container: React.FCX<ContainerProps> = ({ pageContext, path }) => {
   const { posts, tagName }: PostsByTagPageContext = pageContext;
-  const { mode } = ColorModeContainer.useContainer();
 
   return (
     <>
       <SEO title={tagName} pathname={path} />
-      <StyledComponent tagName={tagName} posts={posts} mode={mode} />
+      <StyledComponent tagName={tagName} posts={posts} />
     </>
   );
 };
