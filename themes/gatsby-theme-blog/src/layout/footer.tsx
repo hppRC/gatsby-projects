@@ -3,11 +3,12 @@ import { FaGithub } from 'react-icons/fa';
 
 import styled from '@emotion/styled';
 
+import { Theme } from '../../types';
 import { useSiteMetadata } from '../hooks';
-import { ColorModeContainer } from '../store';
+import { useTheme } from '../theme';
 
 type ContainerProps = {};
-type Props = { mode: boolean; author: string } & ContainerProps;
+type Props = { theme: Theme; author: string } & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ className, author }) => (
   <footer className={className}>
@@ -38,11 +39,11 @@ const StyledComponent = styled(Component)`
   > div {
     margin: 0.2rem 0;
     font-weight: 500;
-    color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
+    color: ${({ theme }) => theme.color};
     transition: color 0.3s;
     > a {
       margin-right: 0.5rem;
-      color: ${({ mode }) => (mode ? '#30303f' : '#f5f5f5')};
+      color: ${({ theme }) => theme.color};
       text-decoration: none;
       transition: color 0.3s, opacity 0.3s;
 
@@ -69,9 +70,9 @@ const StyledComponent = styled(Component)`
 
 const Container: React.FCX<ContainerProps> = () => {
   const { author } = useSiteMetadata();
-  const { mode } = ColorModeContainer.useContainer();
+  const theme = useTheme();
 
-  return <StyledComponent mode={mode} author={author || 'hppRC'} />;
+  return <StyledComponent theme={theme} author={author || 'hppRC'} />;
 };
 
 export default memo(Container);

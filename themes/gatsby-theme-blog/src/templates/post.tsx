@@ -6,7 +6,6 @@ import styled from '@emotion/styled';
 
 import { PostData, PostNode, PostPageContext } from '../../types';
 import { Background, PostBody, PostHeader, PrevNextCard, SEO, SideContents } from '../components';
-import { ColorModeContainer } from '../store';
 
 type ContainerProps = { path: string; data: PostData; pageContext: PostPageContext };
 type Props = {
@@ -18,7 +17,6 @@ type Props = {
   fluid?: FluidObject;
   previous: PostNode;
   next: PostNode;
-  mode: boolean;
   slug: string;
 };
 
@@ -87,12 +85,11 @@ const Container: React.FCX<ContainerProps> = ({ data, pageContext, path }) => {
   const { title, date, tags, cover } = frontmatter;
   const fluid = cover?.childImageSharp?.fluid;
   const { previous, next, slug } = pageContext;
-  const { mode } = ColorModeContainer.useContainer();
 
   return (
     <>
       <SEO title='Posts' pathname={path} />
-      <StyledComponent {...{ body, headings, title, date, tags, fluid, previous, next, mode, slug }} />
+      <StyledComponent {...{ body, headings, title, date, tags, fluid, previous, next, slug }} />
     </>
   );
 };

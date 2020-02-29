@@ -17,6 +17,7 @@ const Component: React.FCX<Props> = memo(({ className, background }) => (
 const StyledComponent = styled(Component)`
   > .gatsby-image-wrapper {
     position: relative;
+    z-index: -1;
     width: 100%;
     height: 75vh;
 
@@ -24,6 +25,7 @@ const StyledComponent = styled(Component)`
     > picture {
       position: absolute;
       top: -25vh;
+      z-index: -1;
       width: 100%;
       height: 100vh;
     }

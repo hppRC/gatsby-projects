@@ -9,22 +9,25 @@ type Props = {} & ContainerProps;
 type BlockProps = { ch: string };
 
 const Block: React.FCX<BlockProps> = ({ ch }) => {
-  const [{ x, y }, set] = useSpring(() => ({
+  const [{ x, y, cursor }, set] = useSpring(() => ({
     config: config.stiff,
     x: 0,
-    y: 0
+    y: 0,
+    cursor: 'grab'
   }));
 
-  const bind = useDrag(({ offset: [x, y] }) => set({ x, y }));
+  const bind = useDrag(({ down, offset: [x, y] }) => {
+    set({ x, y, cursor: down ? 'grabbing' : 'grab' });
+  });
 
   return (
-    <animated.h2 {...bind()} style={{ x: x, y: y }}>
+    <animated.h2 {...bind()} style={{ x: x, y: y, cursor: cursor }}>
       {ch}
     </animated.h2>
   );
 };
 
-const Component: React.FCX<Props> = ({ className, chars }) => (
+const Component: React.FCX<Props> = memo(({ className, chars }) => (
   <ul className={className}>
     {Array.from(chars).map((ch: string, i: number) => (
       <li key={i}>
@@ -32,7 +35,7 @@ const Component: React.FCX<Props> = ({ className, chars }) => (
       </li>
     ))}
   </ul>
-);
+));
 
 const StyledComponent = styled(Component)`
   display: flex;
@@ -42,9 +45,9 @@ const StyledComponent = styled(Component)`
   max-width: 1200px;
 
   > li {
+    z-index: 1;
     display: felx;
     touch-action: none;
-    cursor: grab;
     user-select: none;
     > h2 {
       font-size: 8rem;

@@ -24,8 +24,27 @@ export default () => {
         tagsPath
         themeColor
         webpackBundleAnalyzer
+        lightTheme {
+          color
+          backgroundColor
+          cardBackground
+          cardBoxShadow
+          codeBackground
+          headingBorder
+          tocBackground
+        }
+        darkTheme {
+          color
+          backgroundColor
+          cardBackground
+          cardBoxShadow
+          codeBackground
+          headingBorder
+          tocBackground
+        }
       }
     }
   `);
+
   return hpprcBlogThemeConfig;
 };

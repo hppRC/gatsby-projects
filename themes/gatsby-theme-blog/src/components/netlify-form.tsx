@@ -2,10 +2,11 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
-import { ColorModeContainer } from '../store';
+import { Theme } from '../../types';
+import { useTheme } from '../theme';
 
 type ContainerProps = {};
-type Props = { mode: boolean } & ContainerProps;
+type Props = { theme: Theme } & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ className }) => (
   <form className={className} name='contact' method='POST' data-netlify='true' data-netlify-honeypot='bot-field'>
@@ -63,11 +64,11 @@ const StyledComponent = styled(Component)`
 
   textarea {
     width: 100%;
-    color: ${({ mode }) => (mode ? '#00000055' : '#ffffff80')};
-    border: 2px solid ${({ mode }) => (mode ? '#00000055' : '#ffffff80')};
+    color: ${({ theme }) => theme.color};
+    border: 2px solid ${({ theme }) => theme.color};
     transition: border 0.5s;
     :focus {
-      border: 2px solid ${({ mode }) => (mode ? '#00000055' : '#ffffff')};
+      border: 2px solid ${({ theme }) => theme.color};
       outline: none;
     }
   }
@@ -77,18 +78,18 @@ const StyledComponent = styled(Component)`
     width: 100%;
     padding: 0.3em;
     border: none;
-    border-bottom: 2px solid ${({ mode }) => (mode ? '#000000' : '#ffffff80')};
+    border-bottom: 2px solid ${({ theme }) => theme.color};
     transition: 0.5s;
     :focus {
-      border-bottom: 2px solid ${({ mode }) => (mode ? '#00000055' : '#ffffff')};
+      border-bottom: 2px solid ${({ theme }) => theme.color};
       outline: none;
     }
   }
 
   button {
     padding: 0.5rem 1rem;
-    color: ${({ mode }) => (mode ? '#000000' : '#ffffff')};
-    border: 2px solid ${({ mode }) => (mode ? '#00000055' : '#ffffff')};
+    color: ${({ theme }) => theme.color};
+    border: 2px solid ${({ theme }) => theme.color};
     border-radius: 5px;
   }
 
@@ -103,8 +104,8 @@ const StyledComponent = styled(Component)`
 `;
 
 const Container: React.FCX<ContainerProps> = () => {
-  const { mode } = ColorModeContainer.useContainer();
-  return <StyledComponent mode={mode} />;
+  const theme = useTheme();
+  return <StyledComponent theme={theme} />;
 };
 
 export default memo(Container);

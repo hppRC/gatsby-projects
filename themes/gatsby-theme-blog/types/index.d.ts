@@ -149,6 +149,8 @@ export type UseHpprcThemeConfig = {
     tagsPath: string;
     themeColor: string;
     webpackBundleAnalyzer: boolean;
+    lightTheme: Theme;
+    darkTheme: Theme;
   };
 };
 
@@ -181,4 +183,14 @@ export type PostData = {
 export type PostsByTagPageContext = {
   posts: { frontmatter: Frontmatter; excerpt: string }[];
   tagName: string;
+};
+
+export type Theme = {
+  color: string;
+  backgroundColor: string;
+  cardBackground: string;
+  cardBoxShadow: string;
+  codeBackground: string;
+  headingBorder: string;
+  tocBackground: string;
 };

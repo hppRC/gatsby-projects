@@ -4,7 +4,8 @@ import React, { memo } from 'react';
 import styled from '@emotion/styled';
 import { Location } from '@reach/router';
 
-import { ColorModeContainer } from '../../store';
+import { Theme } from '../../../types';
+import { useTheme } from '../../theme';
 
 const GithubSlugger = require('github-slugger');
 const slugger = new GithubSlugger();
@@ -16,7 +17,7 @@ type ContainerProps = {
   }[];
 };
 
-type Props = { mode: boolean } & ContainerProps;
+type Props = { theme: Theme } & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ className, headings }) => {
   return (
@@ -41,17 +42,18 @@ const StyledComponent = styled(Component)`
     border-radius: 3px;
     transition: background-color 0.15s;
     :hover {
-      background-color: ${({ mode }) => (mode ? '#09090f10' : '#ffffff10')};
+      background-color: ${({ theme }) => theme.tocBackground};
     }
 
     > a {
       display: block;
       padding: 0.5rem;
-      color: ${({ mode }) => (mode ? '#09090f90' : '#ffffff90')};
+      color: ${({ theme }) => theme.color};
       text-decoration: none;
-      transition: color 0.15s;
+      opacity: 0.6;
+      transition: opacity 0.15s;
       :hover {
-        color: ${({ mode }) => (mode ? '#09090fc0' : '#ffffffc0')};
+        opacity: 0.8;
       }
     }
   }
@@ -67,10 +69,10 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
-  const { mode } = ColorModeContainer.useContainer();
+const Container: React.FCX<ContainerProps> = ({ headings }) => {
+  const theme = useTheme();
   slugger.reset();
-  return <StyledComponent {...props} mode={mode} />;
+  return <StyledComponent headings={headings} theme={theme} />;
 };
 
 // when you memolize this, you'll get an error to jump headdings(you can jump only once)

@@ -7,15 +7,16 @@ import { animated, config, useSpring } from 'react-spring';
 import styled from '@emotion/styled';
 
 import { MemolizedImage } from '../';
+import { Theme } from '../../../types';
 import { useAnyImage, useHpprcThemeConfig } from '../../hooks';
-import { ColorModeContainer } from '../../store';
+import { useTheme } from '../../theme';
 import DecoMoon from './deco-moon';
 
 type ContainerProps = {
   tag: string;
 };
 type Props = {
-  mode: boolean;
+  theme: Theme;
   enter: boolean;
   setEnter: (enter: boolean) => void;
   fluid?: FluidObject;
@@ -50,10 +51,9 @@ const StyledComponent = styled(Component)`
   position: relative;
   overflow: hidden;
 
-  background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
+  background-color: ${({ theme }) => theme.backgroundColor};
   border-radius: 3px;
-  box-shadow: 5px 5px 10px ${({ mode }) => (mode ? '#d9d9d9' : '#00000f')},
-    -5px -5px 10px ${({ mode }) => (mode ? '#ffffff' : '#00000f')};
+  box-shadow: ${({ theme }) => theme.cardBoxShadow};
   transition: background-color 0.3s, box-shadow 0.15s;
 
   will-change: transform;
@@ -63,7 +63,7 @@ const StyledComponent = styled(Component)`
     display: block;
     height: 100%;
 
-    color: ${({ mode }) => (mode ? '#13131f' : '#f5f5f5')};
+    color: ${({ theme }) => theme.color};
     text-decoration: none;
     transition: color 0.3s;
 
@@ -133,10 +133,10 @@ const StyledComponent = styled(Component)`
 
 const Container: React.FCX<ContainerProps> = ({ tag }) => {
   const [enter, setEnter] = useState(false);
-  const { mode } = ColorModeContainer.useContainer();
+  const theme = useTheme();
   const { tagsPath } = useHpprcThemeConfig();
   const fluid = useAnyImage(tag) || useAnyImage('banner.png') || useAnyImage('banner.jpg');
-  return <StyledComponent {...{ fluid, enter, setEnter, mode, tag, tagsPath }} />;
+  return <StyledComponent {...{ fluid, enter, setEnter, theme, tag, tagsPath }} />;
 };
 
 export default memo(Container);

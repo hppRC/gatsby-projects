@@ -8,9 +8,9 @@ import { animated, config, useSpring } from 'react-spring';
 import styled from '@emotion/styled';
 
 import { MemolizedImage, TagsList } from '../';
-import { Frontmatter } from '../../../types';
+import { Frontmatter, Theme } from '../../../types';
 import { useAnyImage, useHpprcThemeConfig } from '../../hooks';
-import { ColorModeContainer } from '../../store';
+import { useTheme } from '../../theme';
 import DecoMoon from './deco-moon';
 
 type ContainerProps = {
@@ -18,7 +18,7 @@ type ContainerProps = {
   fluid: FluidObject | undefined;
   excerpt: string;
 };
-type Props = { mode: boolean; enter: boolean; setEnter: (enter: boolean) => void; blogPath: string } & ContainerProps;
+type Props = { theme: Theme; enter: boolean; setEnter: (enter: boolean) => void; blogPath: string } & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ className, excerpt, frontmatter, fluid, enter, setEnter, blogPath }) => {
   const { slug, title, date, tags } = frontmatter;
@@ -58,10 +58,9 @@ const StyledComponent = styled(Component)`
   position: relative;
   overflow: hidden;
 
-  background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
+  background-color: ${({ theme }) => theme.cardBackground};
   border-radius: 3px;
-  box-shadow: 5px 5px 10px ${({ mode }) => (mode ? '#d9d9d9' : '#00000f')},
-    -5px -5px 10px ${({ mode }) => (mode ? '#ffffff' : '#00000f')};
+  box-shadow: ${({ theme }) => theme.cardBoxShadow};
   transition: background-color 0.3s, box-shadow 0.15s;
 
   will-change: transform;
@@ -71,7 +70,7 @@ const StyledComponent = styled(Component)`
     display: block;
     height: 100%;
 
-    color: ${({ mode }) => (mode ? '#13131f' : '#f5f5f5')};
+    color: ${({ theme }) => theme.color};
     text-decoration: none;
     transition: color 0.3s;
 
@@ -98,7 +97,7 @@ const StyledComponent = styled(Component)`
         > i {
           padding: 0.5rem 0.2rem 0.8rem 0.2rem;
           font-size: 1.6rem;
-          color: ${({ mode }) => (mode ? '#13131f' : '#f5f5f5')};
+          color: ${({ theme }) => theme.color};
           transition: color 0.3s;
         }
       }
@@ -137,9 +136,9 @@ const Container: React.FCX<ContainerProps> = ({
   excerpt
 }) => {
   const [enter, setEnter] = useState(false);
-  const { mode } = ColorModeContainer.useContainer();
+  const theme = useTheme();
   const { blogPath } = useHpprcThemeConfig();
-  return <StyledComponent {...{ frontmatter, fluid, excerpt, enter, setEnter, mode, blogPath }} />;
+  return <StyledComponent {...{ frontmatter, fluid, excerpt, enter, setEnter, theme, blogPath }} />;
 };
 
 export default memo(Container);

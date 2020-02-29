@@ -30,8 +30,8 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FC<ContainerProps> = props => {
-  return <StyledComponent {...props} />;
+const Container: React.FC<ContainerProps> = ({ children }) => {
+  return <StyledComponent>{children}</StyledComponent>;
 };
 
 export default memo(Container);

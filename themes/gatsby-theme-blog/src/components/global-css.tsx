@@ -2,10 +2,10 @@ import React from 'react';
 
 import { css, Global } from '@emotion/core';
 
-import { ColorModeContainer } from '../store';
+import { useTheme } from '../theme';
 
 const GlobalCSS = () => {
-  const { mode } = ColorModeContainer.useContainer();
+  const theme = useTheme();
   return (
     <Global
       styles={css`
@@ -45,7 +45,7 @@ const GlobalCSS = () => {
               'Original Yu Gothic', 'Yu Gothic', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
               'Noto Sans Emoji';
             font-size: 1.6rem;
-            background-color: ${mode ? '#ffffff' : '#09090f'};
+            background-color: ${theme.backgroundColor};
             /*overscroll-behavior-y: none;*/
             transition: background-color 0.15s;
 
@@ -213,7 +213,7 @@ const GlobalCSS = () => {
         .gatsby-highlight {
           width: 100%;
           margin: 0;
-          background-color: ${mode ? '#09090f' : '#131313'};
+          background-color: ${theme.codeBackground};
         }
 
         .gatsby-highlight pre[class*='language-'] {
@@ -238,7 +238,7 @@ const GlobalCSS = () => {
           font-size: 1.4rem;
           line-height: 1;
           color: #fff;
-          background-color: ${mode ? '#09090f' : '#131313'};
+          background-color: ${theme.codeBackground};
           border-radius: 3px 3px 0 0;
         }
 

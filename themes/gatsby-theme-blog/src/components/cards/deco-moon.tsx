@@ -37,8 +37,8 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
-  return <StyledComponent {...props} />;
+const Container: React.FCX<ContainerProps> = ({ enter }) => {
+  return <StyledComponent enter={enter} />;
 };
 
 export default memo(Container);

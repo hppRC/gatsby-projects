@@ -27,6 +27,7 @@ const Component: React.FCX<Props> = ({ className, tags }) => (
 
 const StyledComponent = styled(Component)`
   ${postsStyle}
+
   @media screen and (max-width: 1500px) {
     > ul {
       grid-template-columns: repeat(4, 1fr);
@@ -54,6 +55,7 @@ const StyledComponent = styled(Component)`
 
 const Container: React.FCX<ContainerProps> = ({ path }) => {
   const tags = useAllTags();
+
   return (
     <>
       <SEO title='Top' pathname={path} />

@@ -14,7 +14,7 @@ const Component: React.FCX<Props> = memo(({ className, allPosts }) => (
   <main className={className}>
     <Background />
     <section>
-      <ScatteredChars chars={'posts'} />
+      <ScatteredChars chars='posts' />
     </section>
     <ul>
       {allPosts.map(({ excerpt, frontmatter }, i) => {
@@ -43,6 +43,7 @@ const StyledComponent = styled(Component)`
 
 const Container: React.FCX<ContainerProps> = props => {
   const nodes: AllPosts = useAllPosts();
+
   return (
     <>
       <SEO title='Posts' pathname={props.path} />

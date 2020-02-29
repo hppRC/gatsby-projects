@@ -64,7 +64,7 @@ const StyledComponent = styled(Component)`
 
   > button {
     margin: 0 0.8rem 0 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.15s;
     :hover {
       opacity: 0.6;
     }

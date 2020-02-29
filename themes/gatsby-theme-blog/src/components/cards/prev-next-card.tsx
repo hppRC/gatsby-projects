@@ -6,13 +6,13 @@ import { animated, config, useSpring } from 'react-spring';
 import styled from '@emotion/styled';
 
 import { MemolizedImage, TagsList } from '../';
-import { PostNode } from '../../../types';
+import { PostNode, Theme } from '../../../types';
 import { useAnyImage, useHpprcThemeConfig } from '../../hooks';
-import { ColorModeContainer } from '../../store';
+import { useTheme } from '../../theme';
 import DecoMoon from './deco-moon';
 
 type ContainerProps = { prev: PostNode; next: PostNode };
-type Props = { mode: boolean; blogPath: string } & ContainerProps;
+type Props = { theme: Theme; blogPath: string } & ContainerProps;
 type CardProps = { node: PostNode; blogPath: string };
 
 const Card: React.FCX<CardProps> = memo(({ node, blogPath }) => {
@@ -63,15 +63,14 @@ const StyledComponent = styled(Component)`
     margin: 0 3rem;
     overflow: hidden;
     border-radius: 3px;
-    box-shadow: 5px 5px 10px ${({ mode }) => (mode ? '#d9d9d9' : '#00000f')},
-      -5px -5px 10px ${({ mode }) => (mode ? '#ffffff' : '#00000f')};
-    background-color: ${({ mode }) => (mode ? 'transparent' : '#13131f')};
+    box-shadow: ${({ theme }) => theme.cardBoxShadow};
+    background-color: ${({ theme }) => theme.cardBackground};
     transition: background-color 0.3s, box-shadow 0.15s;
 
     > a {
       height: 25rem;
       display: flex;
-      color: ${({ mode }) => (mode ? '#13131f' : '#f5f5f5')};
+      color: ${({ theme }) => theme.color};
       transition: color 0.3s;
 
       > .gatsby-image-wrapper {
@@ -192,9 +191,9 @@ const StyledComponent = styled(Component)`
 `;
 
 const Container: React.FCX<ContainerProps> = ({ prev, next }) => {
-  const { mode } = ColorModeContainer.useContainer();
   const { blogPath } = useHpprcThemeConfig();
-  return <StyledComponent {...{ prev, next, mode, blogPath }} />;
+  const theme = useTheme();
+  return <StyledComponent {...{ prev, next, theme, blogPath }} />;
 };
 
 export default memo(Container);
