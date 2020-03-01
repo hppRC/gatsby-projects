@@ -88,7 +88,7 @@ const Container: React.FCX<ContainerProps> = ({ data, pageContext, path }) => {
 
   return (
     <>
-      <SEO title='Posts' pathname={path} />
+      <SEO title='Posts' pathname={path} image={fluid?.src} />
       <StyledComponent {...{ body, headings, title, date, tags, fluid, previous, next, slug }} />
     </>
   );
