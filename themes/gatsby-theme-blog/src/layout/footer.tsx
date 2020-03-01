@@ -16,7 +16,7 @@ const Component: React.FCX<Props> = memo(({ className, author }) => (
       Copyright©2020.<a href={`https://twitter.com/${author.slice(1)}`}> {author}</a>
     </div>
     <div>
-      <a href='https://github.com/hppRC' target='_blank' rel='noopener'>
+      <a href='https://github.com/hppRC' target='_blank' rel='noopener' aria-label='Github Link'>
         <i>
           <FaGithub />
         </i>

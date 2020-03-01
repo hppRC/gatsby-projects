@@ -15,7 +15,7 @@ const Component: React.FCX<Props> = memo(({ className, mode, toggle }) => {
   });
 
   return (
-    <button onClick={toggle} className={className}>
+    <button onClick={toggle} className={className} aria-label='color mode change button'>
       <animated.div style={sp} />
     </button>
   );
