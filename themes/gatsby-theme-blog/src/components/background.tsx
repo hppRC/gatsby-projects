@@ -5,8 +5,8 @@ import styled from '@emotion/styled';
 
 import { useAnyImage } from '../hooks';
 
-type ContainerProps = {};
-type Props = { background?: FluidObject } & ContainerProps;
+type ContainerProps = { fluid?: FluidObject };
+type Props = { background?: FluidObject };
 
 const Component: React.FCX<Props> = memo(({ className, background }) => (
   <div className={className}>
@@ -49,8 +49,8 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = () => {
-  const background = useAnyImage('background.png') || useAnyImage('background.jpg');
+const Container: React.FCX<ContainerProps> = ({ fluid }) => {
+  const background = fluid || useAnyImage('background.png') || useAnyImage('background.jpg');
   return <StyledComponent background={background} />;
 };
 
