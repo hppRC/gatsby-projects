@@ -8,7 +8,7 @@ import styled from '@emotion/styled';
 type ContainerProps = {};
 type Props = {} & ContainerProps;
 
-const Component: React.FCX<Props> = ({ className }) => {
+const Component: React.FCX<Props> = memo(({ className }) => {
   const [{ translate, scale, width }, set] = useSpring(() => ({
     translate: `translate3d(0px, 0, 0)`,
     scale: 'scale(1.0)',
@@ -46,7 +46,7 @@ const Component: React.FCX<Props> = ({ className }) => {
       </Link>
     </animated.div>
   );
-};
+});
 
 const StyledComponent = styled(Component)`
   padding: 1rem;

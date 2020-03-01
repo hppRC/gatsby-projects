@@ -16,13 +16,20 @@ const Component: React.FCX<Props> = memo(({ className, author }) => (
       Copyright©2020.<a href={`https://twitter.com/${author.slice(1)}`}> {author}</a>
     </div>
     <div>
-      <a href='https://github.com/hppRC'>
+      <a href='https://github.com/hppRC' target='_blank' rel='noopener'>
         <i>
           <FaGithub />
         </i>
       </a>
-      <a href='https://github.com/hppRC/gatsby-projects/tree/master/themes/gatsby-theme-blog'>Theme</a>by{' '}
-      <a href='https://hpprc.com'>
+      <a
+        href='https://github.com/hppRC/gatsby-projects/tree/master/themes/gatsby-theme-blog'
+        target='_blank'
+        rel='noopener'
+      >
+        Theme
+      </a>
+      by{' '}
+      <a href='https://hpprc.com' target='_blank' rel='noopener'>
         hpp<span>🌝</span>
       </a>
     </div>
