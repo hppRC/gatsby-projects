@@ -145,13 +145,14 @@ const StyledComponent = styled(Component)`
     }
   }
   @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-gap: 5rem;
+    display: flex;
+    flex-direction: column;
+
     margin: 0;
     padding: 2rem;
 
     > article {
-      margin: 0;
+      margin: 2rem 0;
       width: 100%;
       > a {
         > section {
@@ -162,6 +163,7 @@ const StyledComponent = styled(Component)`
   }
   @media screen and (max-width: 480px) {
     > article {
+      margin: 1rem 0;
       > a {
         flex-direction: column;
         height: auto;

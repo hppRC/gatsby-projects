@@ -64,8 +64,9 @@ const StyledComponent = styled(Component)`
   }
 
   > p {
+    padding: 0 1rem;
     margin: 1.5rem 0 3.5rem 0;
-    line-height: 2;
+    line-height: 1.8;
   }
 
   > .gatsby-image-wrapper {
