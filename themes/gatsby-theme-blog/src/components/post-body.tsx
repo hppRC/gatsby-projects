@@ -60,7 +60,6 @@ const StyledComponent = styled(Component)`
     font-size: 3rem;
     border-bottom: ${({ theme }) => theme.headingBorder};
     border-radius: 1px;
-    opacity: 0.6;
     transition: border-bottom 0.3s;
   }
 
