@@ -66,6 +66,16 @@ const StyledComponent = styled(Component)`
     line-height: 1.8;
   }
 
+  > ul {
+    padding: 0 1rem;
+    margin: 1.5rem 0 3.5rem 0;
+    > li {
+      padding: 0.3rem;
+      line-height: 1.8;
+      list-style: disc;
+    }
+  }
+
   > .gatsby-image-wrapper {
     margin-bottom: 5rem;
     border-radius: 3px;
