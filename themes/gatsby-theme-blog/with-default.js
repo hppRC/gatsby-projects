@@ -4,7 +4,7 @@ const defaultLightTheme = {
   cardBackground: 'transparent',
   cardBoxShadow: '5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff',
   codeBackground: '#09090f',
-  headingBorder: 'solid 0.25rem #3f8efc',
+  headingBorder: 'solid 2px #3f8efc',
   tocBackground: '#d9d9d9'
 };
 
@@ -14,7 +14,7 @@ const defaultDarkTheme = {
   cardBackground: '#13131f',
   cardBoxShadow: '5px 5px 10px #030303, -5px -5px 10px #090909',
   codeBackground: '#131313',
-  headingBorder: 'solid 0.3rem #3f8efc',
+  headingBorder: 'solid 2.5px #3f8efc',
   tocBackground: '#13131f'
 };
 
