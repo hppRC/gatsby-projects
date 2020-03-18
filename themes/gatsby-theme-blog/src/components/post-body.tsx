@@ -58,9 +58,6 @@ const StyledComponent = styled(Component)`
     padding: 0.5rem 0;
     margin: 2rem 0 1rem 0;
     font-size: 3rem;
-    border-bottom: ${({ theme }) => theme.headingBorder};
-    border-radius: 1px;
-    transition: border-bottom 0.3s;
   }
 
   > p {
