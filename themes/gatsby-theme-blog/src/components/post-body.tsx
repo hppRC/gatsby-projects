@@ -38,9 +38,6 @@ const StyledComponent = styled(Component)`
     margin: 6rem 0 1rem 0;
     font-size: 5.5rem;
     color: ${({ theme }) => theme.color};
-    border-bottom: ${({ theme }) => theme.headingBorder};
-    border-radius: 1px;
-    transition: border-bottom 0.3s;
   }
 
   > h2 {
