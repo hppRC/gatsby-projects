@@ -1,0 +1,40 @@
+{
+  "main": "index",
+  "name": "@hpprc/gatsby-theme-core",
+  "types": "index",
+  "author": "hppRC <hpp.ricecake@gmail.com>",
+  "license": "MIT",
+  "version": "0.0.1",
+  "scripts": {
+    "tweak": "git add -A && git commit -m 'tweak styling' && git push && npm version patch && npm publish --access public"
+  },
+  "repository": {
+    "url": "https://github.com/hppRC/gatsby-projects.git",
+    "type": "git",
+    "directory": "themes/gatsby-theme-core"
+  },
+  "description": "hpp's core configs",
+  "dependencies": {
+    "gatsby": "^2.20.8",
+    "gatsby-plugin-advanced-sitemap": "^1.5.2",
+    "gatsby-plugin-google-analytics": "^2.2.2",
+    "gatsby-plugin-lodash": "^3.2.1",
+    "gatsby-plugin-manifest": "^2.3.3",
+    "gatsby-plugin-netlify": "^2.2.1",
+    "gatsby-plugin-netlify-cache": "^1.2.0",
+    "gatsby-plugin-offline": "^3.1.2",
+    "gatsby-plugin-react-helmet": "^3.2.1",
+    "gatsby-plugin-react-helmet-canonical-urls": "^1.4.0",
+    "gatsby-plugin-robots-txt": "^1.5.0",
+    "gatsby-plugin-root-import": "^2.0.5",
+    "gatsby-plugin-sharp": "^2.5.3",
+    "gatsby-plugin-typescript": "^2.3.1",
+    "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
+    "gatsby-transformer-sharp": "^2.4.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.0-beta"
+  }
+}

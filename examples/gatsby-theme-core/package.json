@@ -1,0 +1,22 @@
+{
+  "name": "core",
+  "author": "hppRC <hpp.ricecake@gmail.com>",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index",
+  "scripts": {
+    "build": "gatsby build",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
+    "develop": "gatsby develop",
+    "type-check": "tsc --noEmit"
+  },
+  "description": "example site for @hpprc/gatsby-theme-core",
+  "dependencies": {
+    "@hpprc/gatsby-theme-core": "^0.0.1",
+    "gatsby": "^2.20.8"
+  },
+  "devDependencies": {}
+}
