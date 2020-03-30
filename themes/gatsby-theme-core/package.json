@@ -35,6 +35,6 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "typescript": "^3.9.0-beta"
+    "typescript": "3.9.0-beta"
   }
 }
