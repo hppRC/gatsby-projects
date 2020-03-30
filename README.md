@@ -3,7 +3,7 @@
 My Gatsby Packages
 
 
-## Included
+# Included
 
 ## @hpprc/gatsby-theme-core
 
@@ -19,13 +19,13 @@ Minimal core configs and functions for Gatsby site.
 npm: [https://www.npmjs.com/package/@hpprc/gatsby-theme-core](https://www.npmjs.com/package/@hpprc/gatsby-theme-core)
 
 
-### @hpprc/gatsby-theme-blog
+## @hpprc/gatsby-theme-blog
 
 My Blog theme package for Gatsby.js.
 
 npm: [https://www.npmjs.com/package/@hpprc/gatsby-theme-blog](https://www.npmjs.com/package/@hpprc/gatsby-theme-blog)
 
-### @hpprc/gatsby-theme-blog-core
+## @hpprc/gatsby-theme-blog-core
 
 Core implementations for gatsby-theme-blog.
 Including only core functions, not including styling and components.
