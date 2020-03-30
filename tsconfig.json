@@ -6,6 +6,7 @@
     "lib": ["dom", "es2015", "es2020"],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
 
     "strict": true,
 
