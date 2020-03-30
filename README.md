@@ -5,6 +5,20 @@ My Gatsby Packages
 
 ## Included
 
+## @hpprc/gatsby-theme-core
+
+Minimal core configs and functions for Gatsby site.
+- absolute import 
+- TypeScript
+- ServiceWorker
+- PWA
+- robot.txt
+- advanced sitemap
+- Google Analytics
+
+npm: [https://www.npmjs.com/package/@hpprc/gatsby-theme-core](https://www.npmjs.com/package/@hpprc/gatsby-theme-core)
+
+
 ### @hpprc/gatsby-theme-blog
 
 My Blog theme package for Gatsby.js.
