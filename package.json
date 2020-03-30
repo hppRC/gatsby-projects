@@ -2,7 +2,7 @@
   "name": "@hpprc/gatsby-themes",
   "author": "hppRC <hpp.ricecake@gmail.com>",
   "license": "MIT",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "scripts": {
     "blog": "yarn workspace blog start",
