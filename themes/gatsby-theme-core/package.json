@@ -32,7 +32,8 @@
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "gatsby-transformer-sharp": "^2.4.3",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-helmet": "^5.2.1"
   },
   "devDependencies": {
     "typescript": "3.9.0-beta"
