@@ -4,7 +4,7 @@
   "types": "index",
   "author": "hppRC <hpp.ricecake@gmail.com>",
   "license": "MIT",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "scripts": {
     "tweak": "git add -A && git commit -m 'tweak styling' && git push && npm version patch && npm publish --access public"
   },
@@ -36,6 +36,7 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@types/react-helmet": "^5.0.15",
     "typescript": "3.9.0-dev.20200330"
   }
 }
