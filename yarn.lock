@@ -16078,10 +16078,10 @@ typescript@3.8.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
   integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
 
-typescript@3.9.0-dev.20200330:
-  version "3.9.0-dev.20200330"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.0-dev.20200330.tgz#38bfa4a78fdac75628ea7da03a8eacb73f89a347"
-  integrity sha512-RI1hwkdnHUbQ78PT/VbLgrMjyb47/8+G2CIfuWW6lBAQIwgqjEyYlKW9PbDRG3WlHXieTMkE3Rjwn9hF08dU3Q==
+typescript@3.9.0-dev.20200405:
+  version "3.9.0-dev.20200405"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.0-dev.20200405.tgz#2cf5c787e9e99043126abcc1cc90f25a3ff8140d"
+  integrity sha512-4z2kgQDaMmhsOkCFCkLBPwgFxjI3Hft7NOzUllQ31YhT5f8oqUjcgpKWL+MX98a0/nVdZqLPTVPMXwNYsl9G+w==
 
 typescript@^3.8.2:
   version "3.8.2"
