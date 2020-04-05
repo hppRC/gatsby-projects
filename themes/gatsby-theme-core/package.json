@@ -36,6 +36,6 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "typescript": "3.9.0-beta"
+    "typescript": "3.9.0-dev.20200330"
   }
 }
