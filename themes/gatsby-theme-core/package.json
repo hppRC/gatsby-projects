@@ -4,7 +4,7 @@
   "types": "index",
   "author": "hppRC <hpp.ricecake@gmail.com>",
   "license": "MIT",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "scripts": {
     "tweak": "git add -A && git commit -m 'tweak styling' && git push && npm version patch && npm publish --access public"
   },
@@ -15,6 +15,10 @@
   },
   "description": "hpp's core configs",
   "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
+    "@types/react-helmet": "^5.0.15",
     "gatsby": "^2.20.8",
     "gatsby-plugin-advanced-sitemap": "^1.5.2",
     "gatsby-plugin-google-analytics": "^2.2.2",
@@ -33,10 +37,8 @@
     "gatsby-transformer-sharp": "^2.4.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "typescript": "^3.9.0-beta"
   },
-  "devDependencies": {
-    "@types/react-helmet": "^5.0.15",
-    "typescript": "3.9.0-dev.20200330"
-  }
+  "devDependencies": {}
 }
