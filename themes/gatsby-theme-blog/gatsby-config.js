@@ -1,7 +1,7 @@
-const withDefault = require('./with-default');
-const path = require('path');
+const withDefault = require(`./with-default`);
+const path = require(`path`);
 
-module.exports = themeOptions => {
+module.exports = (themeOptions) => {
   const {
     siteTitle,
     siteUrl,
@@ -15,12 +15,17 @@ module.exports = themeOptions => {
     iconPath,
     googleAnalyticsTrackingId,
     backgroundColor,
-    themeColor
+    themeColor,
   } = withDefault(themeOptions);
 
   return {
     plugins: [
-      `gatsby-transformer-sharp`,
+      {
+        resolve: `gatsby-transformer-sharp`,
+        options: {
+          checkSupportedExtensions: false,
+        },
+      },
       `gatsby-plugin-sharp`,
       `gatsby-plugin-typescript`,
       `gatsby-plugin-root-import`,
@@ -30,15 +35,15 @@ module.exports = themeOptions => {
         resolve: `gatsby-source-filesystem`,
         options: {
           name: `posts`,
-          path: postsPath
-        }
+          path: postsPath,
+        },
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
           name: `assets`,
-          path: assetsPath
-        }
+          path: assetsPath,
+        },
       },
       mdx && {
         resolve: `gatsby-plugin-mdx`,
@@ -50,15 +55,15 @@ module.exports = themeOptions => {
               options: {
                 offsetY: `500`,
                 icon: false,
-                className: `autolink-headers`
-              }
+                className: `autolink-headers`,
+              },
             },
             {
               resolve: `gatsby-remark-external-links`,
               options: {
                 target: `_blank`,
-                rel: `noopener`
-              }
+                rel: `noopener`,
+              },
             },
             `gatsby-remark-relative-images`,
             {
@@ -66,8 +71,8 @@ module.exports = themeOptions => {
               options: {
                 maxWidth: 1400,
                 quality: 90,
-                linkImagesToOriginal: true
-              }
+                linkImagesToOriginal: true,
+              },
             },
             `gatsby-remark-katex`,
             `gatsby-remark-code-titles`,
@@ -75,8 +80,8 @@ module.exports = themeOptions => {
               resolve: `gatsby-remark-embed-youtube`,
               options: {
                 width: 800,
-                height: 400
-              }
+                height: 400,
+              },
             },
             {
               resolve: `gatsby-remark-emojis`,
@@ -85,14 +90,14 @@ module.exports = themeOptions => {
                 size: 64,
                 class: `emoji-icon`,
                 styles: {
-                  display: 'inline',
-                  margin: '0',
-                  'margin-top': '1px',
-                  position: 'relative',
-                  top: '5px',
-                  width: '25px'
-                }
-              }
+                  display: `inline`,
+                  margin: `0`,
+                  'margin-top': `1px`,
+                  position: `relative`,
+                  top: `5px`,
+                  width: `25px`,
+                },
+              },
             },
             `gatsby-remark-graphviz`,
             {
@@ -102,18 +107,18 @@ module.exports = themeOptions => {
                 inlineCodeMarker: null,
                 aliases: {},
                 showLineNumbers: true,
-                noInlineHighlight: false
-              }
+                noInlineHighlight: false,
+              },
             },
-            ...gatsbyRemarkPlugins
-          ]
-        }
+            ...gatsbyRemarkPlugins,
+          ],
+        },
       },
       webpackBundleAnalyzer && {
         resolve: `gatsby-plugin-webpack-bundle-analyzer`,
         options: {
-          openAnalyzer: false
-        }
+          openAnalyzer: false,
+        },
       },
       `gatsby-plugin-netlify`,
       `gatsby-plugin-netlify-cache`,
@@ -121,8 +126,8 @@ module.exports = themeOptions => {
       {
         resolve: `gatsby-plugin-react-helmet-canonical-urls`,
         options: {
-          siteUrl
-        }
+          siteUrl,
+        },
       },
       `gatsby-plugin-advanced-sitemap`,
       {
@@ -130,8 +135,8 @@ module.exports = themeOptions => {
         options: {
           host: siteUrl,
           sitemap: `${siteUrl}/sitemap.xml`,
-          policy: [{ userAgent: `*`, allow: `/` }]
-        }
+          policy: [{ userAgent: `*`, allow: `/` }],
+        },
       },
       {
         resolve: `gatsby-plugin-feed`,
@@ -153,13 +158,14 @@ module.exports = themeOptions => {
                 const { siteUrl } = site.siteMetadata;
                 return allMdx.nodes.map(({ excerpt, body, frontmatter }) => {
                   const { slug, date } = frontmatter;
-                  return Object.assign({}, frontmatter, {
+                  return {
+                    ...frontmatter,
                     description: excerpt,
-                    date: date,
+                    date,
                     url: `${siteUrl}${path.join(blogPath, slug)}`,
                     guid: `${siteUrl}${path.join(blogPath, slug)}`,
-                    custom_elements: [{ 'content:encoded': body }]
-                  });
+                    custom_elements: [{ 'content:encoded': body }],
+                  };
                 });
               },
               query: `
@@ -178,17 +184,17 @@ module.exports = themeOptions => {
               }
             `,
               output: `/rss.xml`,
-              title: `${siteTitle} RSS feed`
-            }
-          ]
-        }
+              title: `${siteTitle} RSS feed`,
+            },
+          ],
+        },
       },
       {
         resolve: `gatsby-plugin-google-analytics`,
         options: {
           // replace "UA-XXXXXXXXX-X" with your own Tracking ID
-          trackingId: googleAnalyticsTrackingId
-        }
+          trackingId: googleAnalyticsTrackingId,
+        },
       },
       // gatsby-plugin-manifest should be described before gatsby-plugin-offline
       {
@@ -202,10 +208,10 @@ module.exports = themeOptions => {
           background_color: backgroundColor,
           theme_color: themeColor,
           display: `standalone`,
-          icon: iconPath
-        }
+          icon: iconPath,
+        },
       },
-      `gatsby-plugin-offline`
-    ].filter(Boolean)
+      `gatsby-plugin-offline`,
+    ].filter(Boolean),
   };
 };
