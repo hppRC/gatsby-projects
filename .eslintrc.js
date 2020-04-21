@@ -42,8 +42,9 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     'import/prefer-default-export': 0,
     'import/no-cycle': 0,
-    'space-before-function-paren': 0,
+    'import/no-useless-path-segments': 0,
     'import/extensions': 0,
+    'space-before-function-paren': 0,
     'react/jsx-one-expression-per-line': 0,
     'react/no-danger': 0,
     'react/display-name': 0,
@@ -51,6 +52,7 @@ module.exports = {
     'react/jsx-uses-react': 1,
     'react/forbid-prop-types': 0,
     'react/no-unescaped-entities': 0,
+    'react/no-array-index-key': 0,
     'react/prop-types': 0,
     'react/jsx-props-no-spreading': 0,
     'react/jsx-fragments': 0,
@@ -63,6 +65,7 @@ module.exports = {
     'jsx-a11y/href-no-hash': 'off',
     'jsx-a11y/anchor-is-valid': ['warn', { aspects: ['invalidHref'] }],
     'no-shadow': 0,
+    'object-shorthand': 0,
   },
   settings: {
     react: {
