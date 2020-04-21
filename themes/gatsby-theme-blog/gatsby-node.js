@@ -1,9 +1,9 @@
-const fs = require('fs');
-const { fmImagesToRelative } = require('gatsby-remark-relative-images');
-const mkdirp = require('mkdirp');
-const path = require('path');
+const fs = require(`fs`);
+const { fmImagesToRelative } = require(`gatsby-remark-relative-images`);
+const mkdirp = require(`mkdirp`);
+const path = require(`path`);
 
-const withDefault = require('./with-default');
+const withDefault = require(`./with-default`);
 
 exports.onPreBootstrap = ({ reporter, store }, themeOptions) => {
   const { program } = store.getState();
@@ -11,10 +11,10 @@ exports.onPreBootstrap = ({ reporter, store }, themeOptions) => {
 
   const dirs = [
     path.join(program.directory, postsPath), // default: /contents/posts
-    path.join(program.directory, assetsPath) // default: /contents/assets
+    path.join(program.directory, assetsPath), // default: /contents/assets
   ];
 
-  dirs.forEach(dir => {
+  dirs.forEach((dir) => {
     if (fs.existsSync(dir)) return;
 
     reporter.info(`Initializing "${dir}" directory by @hpprc/gatsby-theme-blog`);
@@ -35,8 +35,8 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }, themeOpti
       type: `hpprcBlogThemeConfig`,
       contentDigest: createContentDigest(config),
       content: JSON.stringify(config),
-      description: `Options for @hpprc/gatsby-theme-blog-core (with defaul option)`
-    }
+      description: `Options for @hpprc/gatsby-theme-blog-core (with defaul option)`,
+    },
   });
 };
 
@@ -44,8 +44,8 @@ exports.createPages = async ({ reporter, graphql, actions: { createPage } }, the
   const { blogPath, tagsPath, mdx } = withDefault(themeOptions);
   if (!mdx) return;
 
-  const postTemplate = require.resolve('./src/templates/post.tsx');
-  const postsByTagTemplate = require.resolve('./src/templates/posts-by-tag.tsx');
+  const postTemplate = require.resolve(`./src/templates/post.tsx`);
+  const postsByTagTemplate = require.resolve(`./src/templates/posts-by-tag.tsx`);
 
   const result = await graphql(query);
   if (!result || !result.data || !result.data.allMdx || !result.data.allMdx.edges) return;
@@ -56,41 +56,41 @@ exports.createPages = async ({ reporter, graphql, actions: { createPage } }, the
   edges.forEach(({ previous, next, node }) => {
     const { slug, tags } = node.frontmatter;
     if (!tags) return;
-    tags.forEach(tag => {
+    tags.forEach((tag) => {
       if (!postsByTag[tag]) postsByTag[tag] = [];
       postsByTag[tag].push(node);
     });
 
     createPage({
-      path: path.join(blogPath, slug || ''),
+      path: path.join(blogPath, slug || ``),
       component: postTemplate,
       context: {
         previous,
         next,
-        slug
-      }
+        slug,
+      },
     });
   });
 
   // generate each tag's posts page if template exits
   const tags = Object.keys(postsByTag);
 
-  tags.forEach(tagName => {
+  tags.forEach((tagName) => {
     const posts = postsByTag[tagName];
     createPage({
       path: path.join(tagsPath, tagName),
       component: postsByTagTemplate,
       context: {
         posts,
-        tagName
-      }
+        tagName,
+      },
     });
   });
 };
 
-exports.onCreateNode = args => {
+exports.onCreateNode = (args) => {
   const { node } = args;
-  if (node.internal.type !== 'Mdx') return;
+  if (node.internal.type !== `Mdx`) return;
 
   fmImagesToRelative(node);
 };

@@ -26,6 +26,7 @@ module.exports = (themeOptions) => {
           checkSupportedExtensions: false,
         },
       },
+      `gatsby-plugin-sass`,
       `gatsby-plugin-sharp`,
       `gatsby-plugin-typescript`,
       `gatsby-plugin-root-import`,
@@ -62,7 +63,7 @@ module.exports = (themeOptions) => {
               resolve: `gatsby-remark-external-links`,
               options: {
                 target: `_blank`,
-                rel: `noopener`,
+                rel: `noopener noreferrer`,
               },
             },
             `gatsby-remark-relative-images`,
