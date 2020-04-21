@@ -21,8 +21,6 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
-  return <StyledComponent {...props} />;
-};
+const Container: React.FCX<ContainerProps> = (props) => <StyledComponent {...props} />;
 
 export default memo(Container);

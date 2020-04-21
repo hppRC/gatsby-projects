@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable prettier/prettier */
 import path from 'path';
 import React from 'react';
 import {
@@ -14,8 +16,12 @@ type Props = { twitter: string; siteUrl: string; blogPath: string } & ContainerP
 type HatebuProps = { url: string; title: string };
 
 const HatebuButton: React.FCX<HatebuProps> = ({ className, url, title }) => (
-  <button className={className}>
-    <a href={`http://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${title}`} target='_blank' rel='nofollow'>
+  <button className={className} type='button'>
+    <a
+      href={`http://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${title}`}
+      target='_blank'
+      rel='noopener noreferrer'
+    >
       B!
     </a>
   </button>
@@ -38,7 +44,7 @@ const StyledHatebuButton = styled(HatebuButton)`
 `;
 
 const Component: React.FCX<Props> = ({ className, title, slug, twitter, siteUrl, blogPath }) => {
-  const twitterAccount = twitter.split('/').pop(); // @hpp_ricecaeke -> hpp_ricecake
+  const twitterAccount = twitter.split(`/`).pop(); // @hpp_ricecaeke -> hpp_ricecake
   const articleUrl = `${siteUrl}${path.join(blogPath, slug)}`;
   return (
     <div className={className}>
@@ -89,7 +95,7 @@ const StyledComponent = styled(Component)`
 
 const Container: React.FCX<ContainerProps> = ({ title, slug }) => {
   const { social = {} } = useSiteMetadata();
-  const { twitter = 'https://twitter.com/hpp_ricecake' } = social;
+  const { twitter = `https://twitter.com/hpp_ricecake` } = social;
   const { siteUrl, blogPath } = useHpprcThemeConfig();
 
   return <StyledComponent {...{ twitter, siteUrl, blogPath, title, slug }} />;

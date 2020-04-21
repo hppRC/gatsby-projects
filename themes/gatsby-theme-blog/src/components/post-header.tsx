@@ -10,7 +10,7 @@ type Props = {} & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ className, title, date, tags }) => (
   <section className={className}>
-    <ScatteredChars chars={title || 'title'} />
+    <ScatteredChars chars={title || `title`} />
     <div>
       <p>
         <i>
@@ -99,8 +99,6 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
-  return <StyledComponent {...props} />;
-};
+const Container: React.FCX<ContainerProps> = (props) => <StyledComponent {...props} />;
 
 export default memo(Container);

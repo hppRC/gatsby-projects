@@ -12,9 +12,10 @@ const Component: React.FCX<Props> = memo(({ className }) => (
   <form className={className} name='contact' method='POST' data-netlify='true' data-netlify-honeypot='bot-field'>
     <input type='hidden' name='form-name' value='contact' />
     <input type='hidden' name='bot-field' />
-    <label>
+    <label htmlFor='inputName'>
       name<abbr title='required'>*</abbr>
       <input
+        id='inputName'
         type='text'
         className='form-control'
         name='name'
@@ -26,11 +27,12 @@ const Component: React.FCX<Props> = memo(({ className }) => (
       />
     </label>
 
-    <label>
+    <label htmlFor='email'>
       mail<abbr title='required'>*</abbr>
       <input
         type='email'
         name='email'
+        id='email'
         placeholder='your e-mail'
         pattern="^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
         required
@@ -38,10 +40,10 @@ const Component: React.FCX<Props> = memo(({ className }) => (
       />
     </label>
 
-    <label>
+    <label htmlFor='message'>
       <p>message</p>
-      <abbr title='required'></abbr>
-      <textarea name='content' rows={8} required />
+      <abbr title='required' />
+      <textarea name='content' id='message' rows={8} required />
     </label>
 
     <button type='submit'>submit</button>

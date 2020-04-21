@@ -13,11 +13,11 @@ const Block: React.FCX<BlockProps> = ({ ch }) => {
     config: config.stiff,
     x: 0,
     y: 0,
-    cursor: 'grab'
+    cursor: `grab`,
   }));
 
   const bind = useDrag(({ down, offset: [x, y] }) => {
-    set({ x, y, cursor: down ? 'grabbing' : 'grab' });
+    set({ x, y, cursor: down ? `grabbing` : `grab` });
   });
 
   return (
@@ -82,8 +82,6 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = ({ chars }) => {
-  return <StyledComponent chars={chars} />;
-};
+const Container: React.FCX<ContainerProps> = ({ chars }) => <StyledComponent chars={chars} />;
 
 export default memo(Container);

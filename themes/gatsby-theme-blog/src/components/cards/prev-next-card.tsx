@@ -16,21 +16,23 @@ type Props = { theme: Theme; blogPath: string } & ContainerProps;
 type CardProps = { node: PostNode; blogPath: string };
 
 const Card: React.FCX<CardProps> = memo(({ node, blogPath }) => {
-  if (!node) return <div></div>;
+  const bannerPNG = useAnyImage(`banner.png`);
+  const bannerJPG = useAnyImage(`banner.jpg`);
+  const [enter, setEnter] = useState(false);
 
+  if (!node) return <div />;
   const { frontmatter, excerpt } = node;
   const { title, date, slug, cover, tags } = frontmatter;
-  const fluid = cover?.childImageSharp?.fluid || useAnyImage('banner.png') || useAnyImage('banner.jpg');
-  const [enter, setEnter] = useState(false);
+  const fluid = cover?.childImageSharp?.fluid || bannerPNG || bannerJPG;
 
   const sp = useSpring({
     config: config.wobbly,
-    transform: enter ? 'scale(1.05)' : 'scale(1.0)'
+    transform: enter ? `scale(1.05)` : `scale(1.0)`,
   });
 
   return (
     <animated.article style={sp} onMouseEnter={() => setEnter(true)} onMouseLeave={() => setEnter(false)}>
-      <Link to={path.join(blogPath, slug || '')}>
+      <Link to={path.join(blogPath, slug || ``)}>
         <MemolizedImage fluid={fluid} />
         <section>
           <h2>{title}</h2>

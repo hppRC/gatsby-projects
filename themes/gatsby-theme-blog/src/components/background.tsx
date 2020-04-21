@@ -50,7 +50,9 @@ const StyledComponent = styled(Component)`
 `;
 
 const Container: React.FCX<ContainerProps> = ({ fluid }) => {
-  const background = fluid || useAnyImage('background.png') || useAnyImage('background.jpg');
+  const backgroundPNG = useAnyImage(`background.png`);
+  const backgroundJPG = useAnyImage(`background.jpg`);
+  const background = fluid || backgroundPNG || backgroundJPG;
   return <StyledComponent background={background} />;
 };
 

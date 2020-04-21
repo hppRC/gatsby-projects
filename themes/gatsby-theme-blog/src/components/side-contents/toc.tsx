@@ -7,7 +7,8 @@ import { Location } from '@reach/router';
 import { Theme } from '../../../types';
 import { useTheme } from '../../theme';
 
-const GithubSlugger = require('github-slugger');
+const GithubSlugger = require(`github-slugger`);
+
 const slugger = new GithubSlugger();
 
 type ContainerProps = {
@@ -19,21 +20,19 @@ type ContainerProps = {
 
 type Props = { theme: Theme } & ContainerProps;
 
-const Component: React.FCX<Props> = memo(({ className, headings }) => {
-  return (
-    <Location>
-      {({ location }) => (
-        <ul className={className}>
-          {headings.map(({ value, depth }, i) => (
-            <li key={i} style={{ paddingLeft: `${depth * 1.1}rem` }}>
-              <Link to={`${location.pathname}#${slugger.slug(value)}`}>{value}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </Location>
-  );
-});
+const Component: React.FCX<Props> = memo(({ className, headings }) => (
+  <Location>
+    {({ location }) => (
+      <ul className={className}>
+        {headings.map(({ value, depth }, i) => (
+          <li key={i} style={{ paddingLeft: `${depth * 1.1}rem` }}>
+            <Link to={`${location.pathname}#${slugger.slug(value)}`}>{value}</Link>
+          </li>
+        ))}
+      </ul>
+    )}
+  </Location>
+));
 
 const StyledComponent = styled(Component)`
   list-style: none;

@@ -30,20 +30,20 @@ const StyledComponent = styled(Component)`
   padding: 0.8rem 0;
   overflow: auto;
   list-style: none;
-  ${({ isTitle }) => isTitle && 'flex-wrap: wrap;'}
-  ${({ isTitle }) => isTitle && 'justify-content: center;'}
+  ${({ isTitle }) => isTitle && `flex-wrap: wrap;`}
+  ${({ isTitle }) => isTitle && `justify-content: center;`}
 
   &::-webkit-scrollbar {
     display: none;
   }
 
   > li {
-    padding: ${({ isTitle }) => (isTitle ? '0 0' : '0.2rem 0.4rem')};
+    padding: ${({ isTitle }) => (isTitle ? `0 0` : `0.2rem 0.4rem`)};
     margin: 0 0.3rem;
     font-size: 1.4rem;
     color: ${({ theme }) => theme.color};
     word-break: keep-all;
-    border: 0.5px solid ${({ theme, isTitle }) => (isTitle ? '#ffffff' : theme.color)};
+    border: 0.5px solid ${({ theme, isTitle }) => (isTitle ? `#ffffff` : theme.color)};
     border-radius: 3px;
     font-weight: 500;
     transition: color 0.3s, border 0.3s;
@@ -54,7 +54,7 @@ const StyledComponent = styled(Component)`
       border-radius: 2px;
       padding: 0.4rem 0.6rem;
       transition: color, background-color 0.15s;
-      font-weight: ${({ isTitle }) => (isTitle ? '700' : '500')};
+      font-weight: ${({ isTitle }) => (isTitle ? `700` : `500`)};
 
       :hover {
         color: #09090f;

@@ -18,14 +18,20 @@ type ContainerProps = {
   fluid: FluidObject | undefined;
   excerpt: string;
 };
-type Props = { theme: Theme; enter: boolean; setEnter: (enter: boolean) => void; blogPath: string } & ContainerProps;
+type Props = {
+  theme: Theme;
+  enter: boolean;
+  setEnter: (enter: boolean) => void;
+  blogPath: string;
+  image: FluidObject | undefined;
+} & ContainerProps;
 
-const Component: React.FCX<Props> = memo(({ className, excerpt, frontmatter, fluid, enter, setEnter, blogPath }) => {
+const Component: React.FCX<Props> = memo(({ className, excerpt, frontmatter, image, enter, setEnter, blogPath }) => {
   const { slug, title, date, tags } = frontmatter;
 
   const sp = useSpring({
     config: config.wobbly,
-    transform: enter ? 'scale(1.05)' : 'scale(1.0)'
+    transform: enter ? `scale(1.05)` : `scale(1.0)`,
   });
 
   return (
@@ -35,8 +41,8 @@ const Component: React.FCX<Props> = memo(({ className, excerpt, frontmatter, flu
       onMouseLeave={() => setEnter(false)}
       style={sp}
     >
-      <Link to={path.join('/', blogPath, slug || '')}>
-        <MemolizedImage fluid={fluid} />
+      <Link to={path.join(`/`, blogPath, slug || ``)}>
+        <MemolizedImage fluid={image} />
         <div>
           <h2>{title}</h2>
           <p>{date}</p>
@@ -130,15 +136,14 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = ({
-  frontmatter,
-  fluid = useAnyImage('banner.png') || useAnyImage('banner.jpg'),
-  excerpt
-}) => {
+const Container: React.FCX<ContainerProps> = ({ frontmatter, fluid, excerpt }) => {
   const [enter, setEnter] = useState(false);
   const theme = useTheme();
   const { blogPath } = useHpprcThemeConfig();
-  return <StyledComponent {...{ frontmatter, fluid, excerpt, enter, setEnter, theme, blogPath }} />;
+  const bannerPNG = useAnyImage(`banner.png`);
+  const bannerJPG = useAnyImage(`banner.jpg`);
+  const image = fluid || bannerPNG || bannerJPG;
+  return <StyledComponent {...{ frontmatter, fluid, image, excerpt, enter, setEnter, theme, blogPath }} />;
 };
 
 export default memo(Container);

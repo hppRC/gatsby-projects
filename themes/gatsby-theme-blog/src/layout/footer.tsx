@@ -16,7 +16,7 @@ const Component: React.FCX<Props> = memo(({ className, author }) => (
       Copyright©2020.<a href={`https://twitter.com/${author.slice(1)}`}> {author}</a>
     </div>
     <div>
-      <a href='https://github.com/hppRC' target='_blank' rel='noopener' aria-label='Github Link'>
+      <a href='https://github.com/hppRC' target='_blank' rel='noopener noreferrer' aria-label='Github Link'>
         <i>
           <FaGithub />
         </i>
@@ -24,13 +24,16 @@ const Component: React.FCX<Props> = memo(({ className, author }) => (
       <a
         href='https://github.com/hppRC/gatsby-projects/tree/master/themes/gatsby-theme-blog'
         target='_blank'
-        rel='noopener'
+        rel='noopener noreferrer'
       >
         Theme
       </a>
-      by{' '}
-      <a href='https://hpprc.com' target='_blank' rel='noopener'>
-        hpp<span>🌝</span>
+      by{` `}
+      <a href='https://hpprc.com' target='_blank' rel='noopener noreferrer'>
+        hpp
+        <span role='img' aria-label='title icon'>
+          🌝
+        </span>
       </a>
     </div>
   </footer>
@@ -79,7 +82,7 @@ const Container: React.FCX<ContainerProps> = () => {
   const { author } = useSiteMetadata();
   const theme = useTheme();
 
-  return <StyledComponent theme={theme} author={author || 'hppRC'} />;
+  return <StyledComponent theme={theme} author={author || `hppRC`} />;
 };
 
 export default memo(Container);

@@ -26,7 +26,7 @@ type Props = {
 const Component: React.FCX<Props> = memo(({ className, fluid, enter, setEnter, tag, tagsPath }) => {
   const sp = useSpring({
     config: config.wobbly,
-    transform: enter ? 'scale(1.05)' : 'scale(1.0)'
+    transform: enter ? `scale(1.05)` : `scale(1.0)`,
   });
 
   return (
@@ -36,7 +36,7 @@ const Component: React.FCX<Props> = memo(({ className, fluid, enter, setEnter, t
       onMouseLeave={() => setEnter(false)}
       style={sp}
     >
-      <Link to={path.join('/', tagsPath, tag)}>
+      <Link to={path.join(`/`, tagsPath, tag)}>
         <MemolizedImage fluid={fluid} />
         <div>
           <h2>{tag}</h2>
@@ -135,7 +135,9 @@ const Container: React.FCX<ContainerProps> = ({ tag }) => {
   const [enter, setEnter] = useState(false);
   const theme = useTheme();
   const { tagsPath } = useHpprcThemeConfig();
-  const fluid = useAnyImage(tag) || useAnyImage('banner.png') || useAnyImage('banner.jpg');
+  const bannerPNG = useAnyImage(`banner.png`);
+  const bannerJPG = useAnyImage(`banner.jpg`);
+  const fluid = useAnyImage(tag) || bannerPNG || bannerJPG;
   return <StyledComponent {...{ fluid, enter, setEnter, theme, tag, tagsPath }} />;
 };
 

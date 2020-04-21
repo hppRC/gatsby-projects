@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
-import { GlobalCSS, ResetCSS } from '../components';
 import Footer from './footer';
 import Header from './header';
 
@@ -11,8 +10,6 @@ type Props = {} & ContainerProps;
 
 const Component: React.FCX<Props> = memo(({ children }) => (
   <>
-    <ResetCSS />
-    <GlobalCSS />
     <Header />
     {children}
     <Footer />
@@ -30,8 +27,6 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FC<ContainerProps> = ({ children }) => {
-  return <StyledComponent>{children}</StyledComponent>;
-};
+const Container: React.FC<ContainerProps> = ({ children }) => <StyledComponent>{children}</StyledComponent>;
 
 export default memo(Container);

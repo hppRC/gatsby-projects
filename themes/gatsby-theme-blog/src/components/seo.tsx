@@ -11,11 +11,16 @@ type Props = {
   image?: string;
 };
 
-const SEO: React.FCX<Props> = ({ title = '', description = '', pathname = '', image = '' }) => {
+const SEO: React.FCX<Props> = ({ title = ``, description = ``, pathname = ``, image = `` }) => {
   const siteMetadata = useSiteMetadata();
   const buildTime = useSiteBuildTime();
-  const icon = useAnyImage('icon.png') || useAnyImage('icon.jpg');
-  const banner = useAnyImage('banner.png') || useAnyImage('banner.jpg');
+  const iconPNG = useAnyImage(`icon.png`);
+  const iconJPG = useAnyImage(`icon.jpg`);
+  const bannerPNG = useAnyImage(`banner.png`);
+  const bannerJPG = useAnyImage(`banner.jpg`);
+
+  const icon = iconPNG || iconJPG;
+  const banner = bannerPNG || bannerJPG;
 
   const {
     siteTitle,
@@ -24,7 +29,7 @@ const SEO: React.FCX<Props> = ({ title = '', description = '', pathname = '', im
     siteDescription: defaultDescription,
     siteLanguage,
     author,
-    social = {}
+    social = {},
   } = siteMetadata;
 
   const { twitter, github, qiita } = social;
@@ -33,54 +38,54 @@ const SEO: React.FCX<Props> = ({ title = '', description = '', pathname = '', im
     title: title || defaultTitle,
     description: description || defaultDescription,
     url: `${siteUrl}${pathname || ``}`,
-    image: `${siteUrl}${image || banner?.src}`
+    image: `${siteUrl}${image || banner?.src}`,
   };
 
   // JSON+LD configurations
   const jsonLdAuthor = [
     {
-      '@type': 'Person',
+      '@type': `Person`,
       name: author,
       description: defaultDescription,
       image: {
-        '@type': 'ImageObject',
+        '@type': `ImageObject`,
         url: icon?.src,
         width: 60,
-        height: 60
+        height: 60,
       },
       url: siteUrl,
-      sameAs: [twitter, github, qiita]
+      sameAs: [twitter, github, qiita],
     },
     {
-      '@type': 'thing',
+      '@type': `thing`,
       name: author,
       sameas: siteTitle,
       url: siteUrl,
       image: {
-        '@type': 'ImageObject',
+        '@type': `ImageObject`,
         url: banner?.src,
         width: 60,
-        height: 60
-      }
-    }
+        height: 60,
+      },
+    },
   ];
 
   const publisher = {
-    '@type': 'Organization',
+    '@type': `Organization`,
     name: author,
     description: defaultDescription,
     logo: {
-      '@type': 'ImageObject',
+      '@type': `ImageObject`,
       url: icon?.src,
       width: 60,
-      height: 60
-    }
+      height: 60,
+    },
   };
 
   const jsonLdConfigs: JsonLdConfig = [
     {
-      '@context': 'http://schema.org',
-      '@type': 'WebSite',
+      '@context': `http://schema.org`,
+      '@type': `WebSite`,
       inLanguage: siteLanguage,
       url: siteTitle,
       name: title,
@@ -90,50 +95,50 @@ const SEO: React.FCX<Props> = ({ title = '', description = '', pathname = '', im
       author: jsonLdAuthor,
       publisher,
       potentialAction: {
-        '@type': 'SearchAction',
+        '@type': `SearchAction`,
         target: `${siteUrl}/search?q={q}`,
-        'query-input': 'required name=q'
-      }
-    }
+        'query-input': `required name=q`,
+      },
+    },
   ];
 
-  if (pathname !== '/') {
+  if (pathname !== `/`) {
     jsonLdConfigs.push({
-      '@context': 'http://schema.org',
-      '@type': 'BreadcrumbList',
+      '@context': `http://schema.org`,
+      '@type': `BreadcrumbList`,
       itemListElement: [
         {
-          '@type': 'ListItem',
+          '@type': `ListItem`,
           position: 1,
           item: {
             '@id': seo.url,
             name: seo.title,
-            image: seo.image
-          }
-        }
-      ]
+            image: seo.image,
+          },
+        },
+      ],
     });
 
     jsonLdConfigs.push({
-      '@context': 'http://schema.org',
-      '@type': 'BlogPosting',
+      '@context': `http://schema.org`,
+      '@type': `BlogPosting`,
       url: seo.url,
       name: title,
       alternateName: seo.title,
       headline: title,
       image: {
-        '@type': 'ImageObject',
-        url: seo.image
+        '@type': `ImageObject`,
+        url: seo.image,
       },
       description,
       datePublished: buildTime,
       dateModified: buildTime,
       mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': seo.url
+        '@type': `WebPage`,
+        '@id': seo.url,
       },
       author: jsonLdAuthor,
-      publisher
+      publisher,
     });
   }
 

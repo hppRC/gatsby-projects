@@ -124,7 +124,7 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
+const Container: React.FCX<ContainerProps> = (props) => {
   const theme = useTheme();
   return <StyledComponent {...props} theme={theme} />;
 };

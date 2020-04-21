@@ -46,8 +46,8 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = ({ headings, title, slug }) => {
-  return <StyledComponent headings={headings} title={title} slug={slug} />;
-};
+const Container: React.FCX<ContainerProps> = ({ headings, title, slug }) => (
+  <StyledComponent headings={headings} title={title} slug={slug} />
+);
 
 export default memo(Container);

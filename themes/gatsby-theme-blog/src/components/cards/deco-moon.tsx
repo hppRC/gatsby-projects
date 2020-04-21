@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React, { memo } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 
@@ -9,13 +10,13 @@ type Props = {} & ContainerProps;
 const Component: React.FCX<Props> = memo(({ className, enter }) => {
   const sp = useSpring({
     config: config.wobbly,
-    transform: enter ? 'translate3d(-10rem,0rem,0)' : 'translate3d(2rem,-10rem,0)'
+    transform: enter ? `translate3d(-10rem,0rem,0)` : `translate3d(2rem,-10rem,0)`,
   });
 
   return (
-    <animated.div style={sp} className={className}>
+    <animated.span role='img' aria-label='decoration' style={sp} className={className}>
       🌝
-    </animated.div>
+    </animated.span>
   );
 });
 
@@ -23,6 +24,7 @@ const StyledComponent = styled(Component)`
   position: absolute;
   top: 0;
   right: 0;
+  display: block;
   width: 1px;
   font-size: 8rem;
   will-change: transform;
@@ -37,8 +39,6 @@ const StyledComponent = styled(Component)`
   }
 `;
 
-const Container: React.FCX<ContainerProps> = ({ enter }) => {
-  return <StyledComponent enter={enter} />;
-};
+const Container: React.FCX<ContainerProps> = ({ enter }) => <StyledComponent enter={enter} />;
 
 export default memo(Container);
