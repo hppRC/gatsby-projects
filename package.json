@@ -7,7 +7,8 @@
   "scripts": {
     "blog": "yarn workspace blog start",
     "add-blog": "yarn workspace blog add",
-    "blog-core": "yarn workspace blog-core start"
+    "blog-core": "yarn workspace blog-core start",
+    "blogBuild": "yarn workspace blog build"
   },
   "workspaces": [
     "examples/*",
