@@ -9404,10 +9404,10 @@ known-css-properties@^0.18.0:
   resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.18.0.tgz#d6e00b56ee1d5b0d171fd86df1583cfb012c521f"
   integrity sha512-69AgJ1rQa7VvUsd2kpvVq+VeObDuo3zrj0CzM5Slmf6yduQFAI2kXPDQJR2IE/u6MSAUOJrwSzjg5vlz8qcMiw==
 
-konva@^4.1.5:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/konva/-/konva-4.2.2.tgz#0f1799dbe0275bb8218a03549ce931e9006a696d"
-  integrity sha512-5vq/rKy35/gdMLipjcxgFz/LhJ/S8Ct/e1XntQmH1MSwN4rMP97Oera2PzxDh3DZPsrV6TETTKHNb1G7Jb6Z5A==
+konva@^5.0.0:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/konva/-/konva-5.0.2.tgz#1b54228b40c92672fbfdfafdc6e4fb9c2da675cd"
+  integrity sha512-AvbPl+7QYX21JLCFw45OApPBqeVkuMQVrloMIpcgG8QFfMm24BtYMF0LO0sS43A3/90GL4iRMHKlkHlPBBDYtw==
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
@@ -13483,11 +13483,6 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sanitize.css@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/sanitize.css/-/sanitize.css-11.0.0.tgz#29bb394c0543616f31cd8c58fcba8323a60e2ef6"
-  integrity sha512-Ox0X2lk0kOGeODJgT9S9HFv0j5Cz89ir9ILylj62/vejHPdMmahmetfocoQwyiAnseeXyDa+KIbO6ZQJe5n2Lg==
-
 sass-graph@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/sass-graph/-/sass-graph-2.2.4.tgz#13fbd63cd1caf0908b9fd93476ad43a51d1e0b49"
@@ -15293,7 +15288,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.8.2, typescript@^3.8.3:
+typescript@^3.8.3:
   version "3.8.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
   integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
