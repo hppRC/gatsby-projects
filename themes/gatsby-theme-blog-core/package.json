@@ -28,7 +28,7 @@
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-transformer-sharp": "^2.3.14",
     "gatsby-plugin-root-import": "^2.0.5",
-    "gatsby-remark-relative-images": "^0.3.0"
+    "gatsby-remark-relative-images": "^1.0.0"
   },
   "devDependencies": {
     "webpack": "4.41.6",
