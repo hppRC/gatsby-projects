@@ -60,7 +60,7 @@
     "react-icons": "^3.9.0",
     "react-share": "^4.0.1",
     "react-spring": "^9.0.0-beta.34",
-    "react-use-gesture": "^7.0.0-beta.11",
+    "react-use-gesture": "^8.0.0",
     "react-zdog": "^1.0.11",
     "remark-parse": "^7.0.2",
     "unstated-next": "^1.1.0",
