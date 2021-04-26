@@ -52,7 +52,7 @@
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-transformer-sharp": "^2.4.6",
     "github-slugger": "^1.2.1",
-    "katex": "^0.11.1",
+    "katex": "^0.13.0",
     "konva": "^4.1.5",
     "node-sass": "^4.13.1",
     "prismjs": "^1.19.0",
