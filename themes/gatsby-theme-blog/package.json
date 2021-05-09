@@ -71,7 +71,7 @@
   "devDependencies": {
     "@types/mdx-js__react": "1.5.0",
     "@types/react": "16.9.34",
-    "@types/react-helmet": "5.0.15"
+    "@types/react-helmet": "5.0.16"
   },
   "peerDependencies": {
     "gatsby": "^2.19.19",
