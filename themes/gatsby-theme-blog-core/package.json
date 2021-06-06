@@ -31,7 +31,7 @@
     "gatsby-remark-relative-images": "^0.3.0"
   },
   "devDependencies": {
-    "webpack": "4.41.6",
+    "webpack": "5.38.1",
     "@types/react": "16.9.34"
   },
   "peerDependencies": {
